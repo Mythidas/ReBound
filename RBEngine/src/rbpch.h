@@ -2,6 +2,7 @@
 
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Debug/Assert.h"
+#include "RBEngine/Debug/Result.h"
 
 #include <iostream>
 #include <fstream>

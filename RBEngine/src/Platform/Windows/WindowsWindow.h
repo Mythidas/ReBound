@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RBEngine/Core/Window.h"
-#include "RBEngine/Render/GraphicsContext.h"
+#include "RBEngine/Rendering/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 

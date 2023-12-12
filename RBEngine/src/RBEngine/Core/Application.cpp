@@ -3,6 +3,7 @@
 
 #include "Time.h"
 #include "RBEngine/Debug/Log.h"
+#include "RBEngine/Rendering/Renderer.h"
 
 namespace RB
 {
@@ -14,6 +15,8 @@ namespace RB
 		m_Input = CreateScope<Input>();
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
 
+		Renderer::Construct();
+
 		Log::Info("Application Created!");
 
 		Window::OnWindowClose += RB_BIND_FNC(onWindowClose);
@@ -22,6 +25,8 @@ namespace RB
 	Application::~Application()
 	{
 		m_LayerStack.Clear();
+		Renderer::Destruct();
+
 		Log::Info("Application closing...");
 	}
 

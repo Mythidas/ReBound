@@ -8,6 +8,15 @@ public:
 	{
 		RB::Log::Info("SimpleLayer Attached!");
 	}
+
+	RB::Vector3 Pos{ 0 };
+
+	virtual void OnUpdate() override
+	{
+		RB::Renderer::BeginFrame();
+		RB::Renderer::DrawQuad(Pos);
+		RB::Renderer::EndFrame();
+	}
 };
 
 class SandboxApp : public RB::Application

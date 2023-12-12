@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RBEngine/Render/GraphicsContext.h"
+#include "RBEngine/Rendering/GraphicsContext.h"
 
 namespace RB::OGL
 {
