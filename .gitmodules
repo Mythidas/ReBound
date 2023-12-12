@@ -1,0 +1,15 @@
+[submodule "RBEngine/vendor/glfw"]
+	path = RBEngine/vendor/glfw
+	url = git@github.com:Mythidas/glfw.git
+[submodule "RBEngine/vendor/glm"]
+	path = RBEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "RBEngine/vendor/imgui"]
+	path = RBEngine/vendor/imgui
+	url = git@github.com:Mythidas/imgui.git
+[submodule "RBEngine/vendor/spdlog"]
+	path = RBEngine/vendor/spdlog
+	url = git@github.com:Mythidas/spdlog.git
+[submodule "RBEngine/vendor/stb_image"]
+	path = RBEngine/vendor/stb_image
+	url = https://github.com/nothings/stb.git
