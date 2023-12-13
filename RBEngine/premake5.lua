@@ -42,6 +42,7 @@ project "RBEngine"
         "GLFW",
         "Glad",
         "ImGui",
+        "ImGuizmo",
         "OpenGL32.lib"
     }
 

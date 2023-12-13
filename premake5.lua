@@ -17,6 +17,7 @@ group "Dependencies"
     include "RBEngine/vendor/GLFW"
     include "RBEngine/vendor/glad"
     include "RBEngine/vendor/imgui"
+    include "RBEngine/vendor/imguizmo"
 group ""
 
 group "Core"

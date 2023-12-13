@@ -18,6 +18,7 @@ namespace RB::OGL
 		: Layer("ImGUILayer")
 	{
 		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
 		(void)io;
 
