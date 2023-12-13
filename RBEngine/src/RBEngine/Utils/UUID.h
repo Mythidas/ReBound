@@ -10,6 +10,11 @@ namespace RB
 		UUID();
 		UUID(uint64_t uuid);
 
+		bool Valid() const
+		{
+			return m_UUID == 0;
+		}
+
 		bool operator==(const UUID& rhs) const
 		{
 			return m_UUID == rhs.m_UUID;

@@ -2,6 +2,7 @@
 
 #include "RBEngine/Core/Defines.h"
 #include "RBEngine/Debug/Assert.h"
+#include "RBEngine/Utils/Type.h"
 
 namespace RB
 {
@@ -11,7 +12,7 @@ namespace RB
 	public:
 		Singleton()
 		{
-			RB_ASSERT(!s_Instance, "{0} already exists!", GetTypeName<T>());
+			RB_ASSERT(!s_Instance, "{0} already exists!", Type<T>().ToString());
 			s_Instance = static_cast<T*>(this);
 		}
 

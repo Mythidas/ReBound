@@ -10,3 +10,8 @@
 
 // Rendering
 #include "RBEngine/Rendering/Renderer.h"
+
+// Scene
+#include "RBEngine/Scene/Scene.h"
+#include "RBEngine/Scene/Entity.h"
+#include "RBEngine/Scene/Registry.h"

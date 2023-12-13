@@ -31,4 +31,4 @@ public:
 RB::Application* RB::CreateApplication()
 {
 	return new SandboxApp();
-}
+} 

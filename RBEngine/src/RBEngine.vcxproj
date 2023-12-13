@@ -161,6 +161,10 @@
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h" />
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h" />
     <ClInclude Include="RBEngine\Rendering\Renderer.h" />
+    <ClInclude Include="RBEngine\Scene\ComponentPool.h" />
+    <ClInclude Include="RBEngine\Scene\Entity.h" />
+    <ClInclude Include="RBEngine\Scene\Registry.h" />
+    <ClInclude Include="RBEngine\Scene\Scene.h" />
     <ClInclude Include="RBEngine\Utils\Bit.h" />
     <ClInclude Include="RBEngine\Utils\Event.h" />
     <ClInclude Include="RBEngine\Utils\FileSystem.h" />
@@ -168,6 +172,7 @@
     <ClInclude Include="RBEngine\Utils\Queue.h" />
     <ClInclude Include="RBEngine\Utils\Singleton.h" />
     <ClInclude Include="RBEngine\Utils\Stringf.h" />
+    <ClInclude Include="RBEngine\Utils\Type.h" />
     <ClInclude Include="RBEngine\Utils\UUID.h" />
     <ClInclude Include="rbpch.h" />
   </ItemGroup>
@@ -185,6 +190,7 @@
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderBuffer.cpp" />
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp" />
+    <ClCompile Include="RBEngine\Scene\Registry.cpp" />
     <ClCompile Include="RBEngine\Utils\Bit.cpp" />
     <ClCompile Include="RBEngine\Utils\FileSystem.cpp" />
     <ClCompile Include="RBEngine\Utils\Stringf.cpp" />
