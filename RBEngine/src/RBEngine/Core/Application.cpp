@@ -17,6 +17,8 @@ namespace RB
 
 		Renderer::Construct();
 
+		m_ImGUILayer = ImGUILayer::Builder().Build();
+
 		Log::Info("Application Created!");
 
 		Window::OnWindowClose += RB_BIND_FNC(onWindowClose);
@@ -49,6 +51,15 @@ namespace RB
 					layer->OnFixedUpdate();
 				}
 			}
+
+#ifdef RB_DEBUG
+			m_ImGUILayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnRenderUI();
+			}
+			m_ImGUILayer->End();
+#endif
 		}
 	}
 	bool Application::onWindowClose()

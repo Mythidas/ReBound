@@ -76,7 +76,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_DEBUG;RB_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -120,7 +120,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Platform\OpenGL\OGL_GraphicsContext.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_ImGUILayer.h" />
     <ClInclude Include="Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="RBEngine.h" />
     <ClInclude Include="RBEngine\Core\Application.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="RBEngine\Debug\Assert.h" />
     <ClInclude Include="RBEngine\Debug\Log.h" />
     <ClInclude Include="RBEngine\Debug\Result.h" />
+    <ClInclude Include="RBEngine\ImGUI\ImGUILayer.h" />
     <ClInclude Include="RBEngine\Math\Mathf.h" />
     <ClInclude Include="RBEngine\Math\Vector.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h" />
@@ -178,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_ImGUILayer.cpp" />
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="RBEngine\Core\Application.cpp" />
     <ClCompile Include="RBEngine\Core\Input.cpp" />
@@ -185,6 +188,7 @@
     <ClCompile Include="RBEngine\Core\Time.cpp" />
     <ClCompile Include="RBEngine\Core\Window.cpp" />
     <ClCompile Include="RBEngine\Debug\Log.cpp" />
+    <ClCompile Include="RBEngine\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="RBEngine\Math\Mathf.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsContext.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp" />

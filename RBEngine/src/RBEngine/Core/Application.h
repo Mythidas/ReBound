@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "LayerStack.h"
 #include "Input.h"
+#include "RBEngine/ImGUI/ImGUILayer.h"
 #include "RBEngine/Utils/Singleton.h"
 
 namespace RB
@@ -30,6 +31,7 @@ namespace RB
 	private:
 		Scope<Window> m_Window;
 		Scope<Input> m_Input;
+		Ref<ImGUILayer> m_ImGUILayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
 	};

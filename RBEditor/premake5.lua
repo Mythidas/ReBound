@@ -1,8 +1,8 @@
 include "dependencies.lua"
 
-project "RBEngine"
+project "RBEditor"
     location "src"
-    kind "StaticLib"
+    kind "ConsoleApp"
     language "C++"
     cppdialect "C++latest"
     staticruntime "off"
@@ -10,42 +10,23 @@ project "RBEngine"
     targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
     objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
 
-    pchheader "rbpch.h"
-    pchsource "src/rbpch.cpp"
-
     files
     {
         "src/**.h",
         "src/**.cpp",
     }
 
-    defines
-	{
-		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_INCLUDE_NONE"
-	}
-
     includedirs
     {
-        "src",
+        "%{wks.location}/RBEngine/src",
         "%{IncludeDir.SPD}",
-        "%{IncludeDir.GLFW}",
-        "%{IncludeDir.GLAD}",
-        "%{IncludeDir.STB}",
         "%{IncludeDir.GLM}",
-        "%{IncludeDir.IMGUI}",
-        "%{IncludeDir.IMGUIZMO}"
     }
 
     links
     {
-        "GLFW",
-        "Glad",
-        "ImGui",
-        "OpenGL32.lib"
+        "RBEngine"
     }
-
-    flags { "NoPCH" }
 
     filter "system:windows"
         systemversion "latest"
@@ -56,13 +37,9 @@ project "RBEngine"
         }
 
     filter "configurations:Debug"
-        defines
-        {
-            "RB_DEBUG",
-            "RB_ASSERTS_ENABLED"
-        }
-        symbols "On"
+        defines "RB_DEBUG"
         runtime "Debug"
+        symbols "On"
 
     filter "configurations:Release"
         defines "RB_RELEASE"

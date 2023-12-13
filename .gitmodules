@@ -13,3 +13,6 @@
 [submodule "RBEngine/vendor/stb_image"]
 	path = RBEngine/vendor/stb_image
 	url = https://github.com/nothings/stb.git
+[submodule "RBEngine/vendor/imguizmo"]
+	path = RBEngine/vendor/imguizmo
+	url = https://github.com/Mythidas/ImGuizmo.git

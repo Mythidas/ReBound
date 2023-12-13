@@ -21,6 +21,7 @@ project "Sandbox"
         "%{wks.location}/RBEngine/src",
         "%{IncludeDir.SPD}",
         "%{IncludeDir.GLM}",
+        "%{IncludeDir.IMGUIZMO}",
     }
 
     links

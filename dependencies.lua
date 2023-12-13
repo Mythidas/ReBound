@@ -5,6 +5,7 @@ IncludeDir["STB"] = "%{wks.location}/RBEngine/vendor/stb_image"
 IncludeDir["GLM"] = "%{wks.location}/RBEngine/vendor/glm"
 IncludeDir["SPD"] = "%{wks.location}/RBEngine/vendor/spdlog/include"
 IncludeDir["IMGUI"] = "%{wks.location}/RBEngine/vendor/imgui"
+IncludeDir["IMGUIZMO"] = "%{wks.location}/RBEngine/vendor/imguizmo"
 
 LibraryDir = {}
 
