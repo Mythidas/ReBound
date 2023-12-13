@@ -20,7 +20,6 @@ namespace RB::OGL
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
-		(void)io;
 
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
@@ -48,15 +47,17 @@ namespace RB::OGL
 		ImGui::DestroyContext();
 	}
 
-	void OGL_ImGUILayer::Begin()
+	void OGL_ImGUILayer::BeginUI()
 	{
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 		ImGuizmo::BeginFrame();
+
+		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 	}
 
-	void OGL_ImGUILayer::End()
+	void OGL_ImGUILayer::EndUI()
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		io.DisplaySize = ImVec2((float)Application::Get().GetWindow()->GetWidth(), (float)Application::Get().GetWindow()->GetHeight());

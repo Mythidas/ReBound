@@ -10,8 +10,8 @@ namespace RB::OGL
 		OGL_ImGUILayer(const Builder& builder);
 		~OGL_ImGUILayer();
 
-		virtual void Begin() override;
-		virtual void End() override;
+		virtual void BeginUI() override;
+		virtual void EndUI() override;
 
 	private:
 		void SetDarkThemeColors();

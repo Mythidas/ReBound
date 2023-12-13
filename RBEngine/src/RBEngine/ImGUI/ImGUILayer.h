@@ -13,8 +13,8 @@ namespace RB
 			Ref<ImGUILayer> Build() { return Create(*this); }
 		};
 
-		virtual void Begin() = 0;
-		virtual void End() = 0;
+		virtual void BeginUI() = 0;
+		virtual void EndUI() = 0;
 
 		static Ref<ImGUILayer> Create(const Builder& builder);
 	};

@@ -53,12 +53,12 @@ namespace RB
 			}
 
 #ifdef RB_DEBUG
-			m_ImGUILayer->Begin();
+			m_ImGUILayer->BeginUI();
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnRenderUI();
 			}
-			m_ImGUILayer->End();
+			m_ImGUILayer->EndUI();
 #endif
 		}
 	}

@@ -1,6 +1,8 @@
 #include "RBEngine.h"
 #include "RBEngine/Core/EntryPoint.h"
 
+#include <imgui.h>
+
 class SimpleLayer : public RB::Layer
 {
 public:
@@ -16,6 +18,12 @@ public:
 		RB::Renderer::BeginFrame();
 		RB::Renderer::DrawQuad(Pos);
 		RB::Renderer::EndFrame();
+	}
+
+	virtual void OnRenderUI() override
+	{
+		bool demo = true;
+		ImGui::ShowDemoWindow(&demo);
 	}
 };
 
