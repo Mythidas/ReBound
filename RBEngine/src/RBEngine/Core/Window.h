@@ -31,6 +31,7 @@ namespace RB
 		static Event<int> OnKeyPressed; // Key
 		static Event<int> OnKeyReleased; // Key
 		static Event<double, double> OnMouseMoved; // Mouse X, Mouse Y
+		static Event<float> OnMouseScrolled;
 		static Event<int> OnMouseButtonPressed; // Button
 		static Event<int> OnMouseButtonReleased; // Button
 

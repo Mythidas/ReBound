@@ -18,6 +18,7 @@ project "Sandbox"
 
     includedirs
     {
+        "src",
         "%{wks.location}/RBEngine/src",
         "%{IncludeDir.SPD}",
         "%{IncludeDir.GLM}",

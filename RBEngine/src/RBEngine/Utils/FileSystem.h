@@ -10,14 +10,17 @@ namespace RB
 	{
 	public:
 		FileSystem() = default;
-		FileSystem(const char* path);
-		FileSystem(const std::string& path);
+		FileSystem(FS::path path) : m_InternalPath(path) {}
+		FileSystem(const char* path) : m_InternalPath(path) {}
+		FileSystem(const std::string& path) : m_InternalPath(path) {}
 
 		std::string StreamString();
 		std::vector<unsigned char> StreamBuffer();
 		std::vector<char> StreamSignedBuffer();
 
 		std::string ToString() const { return m_InternalPath.string(); }
+
+		static FileSystem GetCurrentPath() { return FS::current_path(); }
 
 	private:
 		std::ifstream getStream(bool binary = false);

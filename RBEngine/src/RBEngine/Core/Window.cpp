@@ -10,6 +10,7 @@ namespace RB
 	Event<int> Window::OnKeyPressed; // Key
 	Event<int> Window::OnKeyReleased; // Key
 	Event<double, double> Window::OnMouseMoved; // Mouse X, Mouse Y
+	Event<float> Window::OnMouseScrolled; // Scrolled
 	Event<int> Window::OnMouseButtonPressed; // Button
 	Event<int> Window::OnMouseButtonReleased; // Button
 

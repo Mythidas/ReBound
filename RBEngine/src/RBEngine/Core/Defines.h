@@ -4,6 +4,7 @@
 #include <functional>
 
 #define RB_BIND_FNC(fn)  [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
+#define RB_API __declspec(dllexport)
 
 namespace RB
 {

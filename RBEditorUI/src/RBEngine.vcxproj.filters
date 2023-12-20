@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine">
+      <UniqueIdentifier>{EFE641AA-DBB3-9CB5-04CD-8A5DF0F8D143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Core">
+      <UniqueIdentifier>{A7B85BEE-1379-D724-DCB3-20A248331C01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Debug">
+      <UniqueIdentifier>{A528DFB9-91F6-D2BF-7A8A-43E666F7AE24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\ImGUI">
+      <UniqueIdentifier>{198F3DBA-055D-31C0-EEF0-A1E6DA5D0D25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Math">
+      <UniqueIdentifier>{28F960EE-94B9-DC24-5DF4-25A2C9732101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Rendering">
+      <UniqueIdentifier>{FC66DA43-E84A-9B99-51AB-95EC3DAE851B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Scene">
+      <UniqueIdentifier>{4C8BEDBA-3859-E1C0-21ED-51E70D5ABD25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBEngine\Utils">
+      <UniqueIdentifier>{8F1F1BBB-7BED-0EC1-6481-7FE750EEEA25}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\RBEngine\src\Platform\OpenGL\OGL_GraphicsContext.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\Platform\OpenGL\OGL_ImGUILayer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine.h" />
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Application.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Defines.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\EntryPoint.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Input.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\KeyCodes.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Layer.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\LayerStack.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Time.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Core\Window.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Debug\Assert.h">
+      <Filter>RBEngine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Debug\Log.h">
+      <Filter>RBEngine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Debug\Result.h">
+      <Filter>RBEngine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\ImGUI\ImGUILayer.h">
+      <Filter>RBEngine\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Math\Mathf.h">
+      <Filter>RBEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Math\Vector.h">
+      <Filter>RBEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Rendering\GraphicsContext.h">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Rendering\GraphicsPipline.h">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Rendering\RenderBuffer.h">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Rendering\Renderer.h">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Scene\ComponentPool.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Scene\Entity.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Scene\Registry.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Scene\Scene.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Bit.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Event.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\FileSystem.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Flags.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Queue.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Singleton.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Stringf.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\Type.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\RBEngine\Utils\UUID.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RBEngine\src\rbpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\RBEngine\src\Platform\OpenGL\OGL_GraphicsContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\Platform\OpenGL\OGL_ImGUILayer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Core\Application.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Core\Input.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Core\LayerStack.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Core\Time.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Core\Window.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Debug\Log.cpp">
+      <Filter>RBEngine\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\ImGUI\ImGUILayer.cpp">
+      <Filter>RBEngine\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Math\Mathf.cpp">
+      <Filter>RBEngine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Rendering\GraphicsContext.cpp">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Rendering\GraphicsPipline.cpp">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Rendering\RenderBuffer.cpp">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Rendering\Renderer.cpp">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Scene\Registry.cpp">
+      <Filter>RBEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Utils\Bit.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Utils\FileSystem.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Utils\Stringf.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\RBEngine\Utils\UUID.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RBEngine\src\rbpch.cpp" />
+  </ItemGroup>
+</Project>

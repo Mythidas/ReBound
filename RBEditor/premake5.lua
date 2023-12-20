@@ -18,14 +18,21 @@ project "RBEditor"
 
     includedirs
     {
+        "src",
         "%{wks.location}/RBEngine/src",
+        "%{wks.location}/RBEditorUI/src",
         "%{IncludeDir.SPD}",
         "%{IncludeDir.GLM}",
+        "%{IncludeDir.IMGUI}",
+        "%{IncludeDir.IMGUIZMO}",
     }
 
     links
     {
-        "RBEngine"
+        "RBEngine",
+        "RBEditorUI",
+        "ImGui",
+        "ImGuizmo"
     }
 
     filter "system:windows"

@@ -25,6 +25,9 @@
     <Filter Include="RBEngine\Math">
       <UniqueIdentifier>{28F960EE-94B9-DC24-5DF4-25A2C9732101}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RBEngine\Reflection">
+      <UniqueIdentifier>{490AE1C3-B56B-BED1-3ED9-0484AA39F590}</UniqueIdentifier>
+    </Filter>
     <Filter Include="RBEngine\Rendering">
       <UniqueIdentifier>{FC66DA43-E84A-9B99-51AB-95EC3DAE851B}</UniqueIdentifier>
     </Filter>
@@ -88,8 +91,20 @@
     <ClInclude Include="RBEngine\Math\Mathf.h">
       <Filter>RBEngine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Math\Vector.h">
+    <ClInclude Include="RBEngine\Math\Vector3.h">
       <Filter>RBEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Reflection\Domain.h">
+      <Filter>RBEngine\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Reflection\Meta.h">
+      <Filter>RBEngine\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Reflection\Object.h">
+      <Filter>RBEngine\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Reflection\Type.h">
+      <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h">
       <Filter>RBEngine\Rendering</Filter>
@@ -103,10 +118,13 @@
     <ClInclude Include="RBEngine\Rendering\Renderer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Scene\ComponentFactory.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Scene\ComponentPool.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\Entity.h">
+    <ClInclude Include="RBEngine\Scene\EntityEntry.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\Registry.h">
@@ -136,13 +154,21 @@
     <ClInclude Include="RBEngine\Utils\Stringf.h">
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Utils\Type.h">
-      <Filter>RBEngine\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="RBEngine\Utils\UUID.h">
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="rbpch.h" />
+    <ClInclude Include="RBEngine\Rendering\Framebuffer.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_RenderBuffer.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_GraphicsPipeline.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_Framebuffer.h" />
+    <ClInclude Include="RBEngine\Math\Matrix.h" />
+    <ClInclude Include="RBEngine\Rendering\Camera.h" />
+    <ClInclude Include="RBEngine\Math\Vector2.h" />
+    <ClInclude Include="RBEngine\Math\Vector4.h" />
+    <ClInclude Include="RBEngine\Math\Vector.h" />
+    <ClInclude Include="RBEngine\Math\Quaternion.h" />
+    <ClInclude Include="RBEngine\Scene\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp">
@@ -178,6 +204,9 @@
     <ClCompile Include="RBEngine\Math\Mathf.cpp">
       <Filter>RBEngine\Math</Filter>
     </ClCompile>
+    <ClCompile Include="RBEngine\Reflection\Domain.cpp">
+      <Filter>RBEngine\Reflection</Filter>
+    </ClCompile>
     <ClCompile Include="RBEngine\Rendering\GraphicsContext.cpp">
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
@@ -206,5 +235,12 @@
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="rbpch.cpp" />
+    <ClCompile Include="RBEngine\Rendering\Framebuffer.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_RenderBuffer.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp" />
+    <ClCompile Include="RBEngine\Math\Vector3.cpp" />
+    <ClCompile Include="RBEngine\Rendering\Camera.cpp" />
+    <ClCompile Include="RBEngine\Scene\Transform.cpp" />
   </ItemGroup>
 </Project>

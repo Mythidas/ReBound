@@ -55,7 +55,12 @@ namespace RB
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos)
 		{
-				Window::OnMouseMoved(xpos, ypos);
+			Window::OnMouseMoved(xpos, ypos);
+		});
+
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset)
+		{
+			Window::OnMouseScrolled((float)yoffset);
 		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)

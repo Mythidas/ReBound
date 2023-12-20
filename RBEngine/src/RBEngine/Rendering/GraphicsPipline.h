@@ -29,16 +29,11 @@ namespace RB
 			Builder& setVertexBuffer(const Ref<RenderBuffer>& buffer) { pVertexBuffer = buffer; return *this; }
 			Builder& setIndexBuffer(const Ref<RenderBuffer>& buffer) { pIndexBuffer = buffer; return *this; }
 			Builder& setAttributes(const std::vector<VertexAttribute>& attributes) { Attributes = attributes; return *this; }
-			Ref<GraphicsPipeline> Build() { return CreateRef<GraphicsPipeline>(*this); }
+			Ref<GraphicsPipeline> Build() { return Create(*this); }
 		};
 
-		GraphicsPipeline(const Builder& builder);
+		virtual void Draw(uint32_t count) const = 0;
 
-		void Draw(uint32_t count) const;
-
-	private:
-		Builder m_Builder;
-		uint32_t m_RenderID;
-		uint32_t m_VertexID;
+		static Ref<GraphicsPipeline> Create(const Builder& builder);
 	};
 }

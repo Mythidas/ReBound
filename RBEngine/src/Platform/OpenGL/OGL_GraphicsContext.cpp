@@ -18,7 +18,5 @@ namespace RB::OGL
 	void OGL_GraphicsContext::SwapBuffers()
 	{
 		glfwSwapBuffers(static_cast<GLFWwindow*>(m_Builder.WindowHandle));
-		glClearColor(1, 0, 1, 1);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 }

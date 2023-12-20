@@ -3,16 +3,6 @@
 
 namespace RB
 {
-	FileSystem::FileSystem(const char* path)
-	{
-		m_InternalPath = path;
-	}
-
-	FileSystem::FileSystem(const std::string& path)
-	{
-		m_InternalPath = path;
-	}
-
 	std::string FileSystem::StreamString()
 	{
 		std::ifstream stream = getStream();

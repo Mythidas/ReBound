@@ -3,10 +3,12 @@
 
 namespace RB
 {
+	std::unordered_map<std::string, ComponentMeta> Registry::s_RegisteredComponents;
+
 	Registry::Registry()
 		: m_EntityIndex(0)
 	{
-		m_Entities = new Entity[MAX_ENTITIES];
+		m_Entities = new EntityEntry[MAX_ENTITIES];
 	}
 
 	Registry::~Registry()
@@ -40,6 +42,16 @@ namespace RB
 
 		m_FreeEntities.push_back(entity);
 		m_Entities[GetEntityIndex(entity)].ID = GetEntityID(GetEntityIndex(entity), UINT32_MAX);
+	}
+
+	void Registry::AddComponent(const std::string& component, const EntityID& entity)
+	{
+		s_RegisteredComponents[component].AddFunc(this, entity);
+	}
+
+	void Registry::RegisterComponent(const ComponentMeta& meta)
+	{
+		s_RegisteredComponents[meta.Object.Name] = meta;
 	}
 
 	bool Registry::IsValidEntity(EntityID entity)

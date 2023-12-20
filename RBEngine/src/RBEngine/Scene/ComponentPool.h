@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "EntityEntry.h"
 
 #include <string>
 

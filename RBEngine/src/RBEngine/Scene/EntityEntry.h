@@ -14,12 +14,12 @@ namespace RB
 	using EntityVersion = uint32_t;
 	using ComponentMask = std::bitset<MAX_COMPONENTS>;
 
-	struct Entity
+	struct EntityEntry
 	{
 		EntityID ID;
 		ComponentMask Components;
 
-		Entity() : ID(0) {}
+		EntityEntry() : ID(0) {}
 
 		operator EntityID() const
 		{
