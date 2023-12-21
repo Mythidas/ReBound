@@ -6,8 +6,8 @@
 
 namespace RB
 {
-	static const size_t MAX_ENTITIES = 1000;
-	static const size_t MAX_COMPONENTS = 32;
+	inline static const size_t MAX_ENTITIES = 1000;
+	inline static const size_t MAX_COMPONENTS = 32;
 
 	using EntityID = uint64_t;
 	using EntityIndex = uint32_t;

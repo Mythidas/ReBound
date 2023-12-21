@@ -24,6 +24,6 @@ namespace RB::Editor
 	void Viewport::OnGUIRender()
 	{
 		Ref<Framebuffer> buffer = Renderer::GetFramebuffer();
-		ImGui::Image((ImTextureID)buffer->GetRenderID(), ImVec2(GetSize().x, GetSize().y));
+		ImGui::Image((ImTextureID)buffer->GetRenderID(), ImVec2((float)GetSize().x, (float)GetSize().y));
 	}
 }

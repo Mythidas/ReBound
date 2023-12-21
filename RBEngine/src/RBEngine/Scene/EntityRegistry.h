@@ -144,7 +144,7 @@ namespace RB
 
 	private:
 		EntityEntry* m_Entities;
-		size_t m_EntityIndex;
+		EntityIndex m_EntityIndex;
 		std::vector<EntityID> m_FreeEntities;
 		std::vector<ComponentPool*> m_ComponentPools;
 	};

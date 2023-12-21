@@ -126,14 +126,14 @@ namespace RB::OGL
 		m_Builder.pVertexBuffer->Bind();
 		m_Builder.pIndexBuffer->Bind();
 
-		size_t stride = 0;
+		GLsizei stride = 0;
 		for (auto& attrib : m_Builder.Attributes)
 		{
 			stride += Utils::GetAttributeSize(attrib);
 		}
 
 		size_t offset = 0;
-		for (size_t i = 0; i < m_Builder.Attributes.size(); i++)
+		for (GLuint i = 0; i < m_Builder.Attributes.size(); i++)
 		{
 			glEnableVertexArrayAttrib(m_VertexID, i);
 			glVertexAttribPointer(i, Utils::GetAttributeCount(m_Builder.Attributes[i]), Utils::GetAttributeType(m_Builder.Attributes[i]), GL_FALSE, stride, (void*)offset);
