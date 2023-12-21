@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Registry.h"
+#include "EntityRegistry.h"
 
 namespace RB
 {
 	class Scene
 	{
 	public:
-		Registry& GetRegistry() { return m_Registry; }
+		EntityRegistry& GetRegistry() { return m_Registry; }
 		
 	private:
-		Registry m_Registry;
+		EntityRegistry m_Registry;
 	};
 }

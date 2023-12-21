@@ -25,13 +25,13 @@
 // Scene
 #include "RBEngine/Scene/Scene.h"
 #include "RBEngine/Scene/EntityEntry.h"
-#include "RBEngine/Scene/Registry.h"
+#include "RBEngine/Scene/EntityRegistry.h"
 #include "RBEngine/Scene/ComponentFactory.h"
 #include "RBEngine/Scene/Transform.h"
 
 // Reflection
 #include "RBEngine/Reflection/Domain.h"
-#include "RBEngine/Reflection/Object.h"
+#include "RBEngine/Reflection/ObjectFactory.h"
 #include "RBEngine/Reflection/Meta.h"
 #include "RBEngine/Reflection/Type.h"
 

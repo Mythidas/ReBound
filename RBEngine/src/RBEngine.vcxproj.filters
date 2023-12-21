@@ -100,7 +100,7 @@
     <ClInclude Include="RBEngine\Reflection\Meta.h">
       <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Reflection\Object.h">
+    <ClInclude Include="RBEngine\Reflection\ObjectFactory.h">
       <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Reflection\Type.h">
@@ -127,7 +127,7 @@
     <ClInclude Include="RBEngine\Scene\EntityEntry.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\Registry.h">
+    <ClInclude Include="RBEngine\Scene\EntityRegistry.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\Scene.h">
@@ -221,7 +221,7 @@
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp">
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Scene\Registry.cpp">
+    <ClCompile Include="RBEngine\Scene\EntityRegistry.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Utils\Bit.cpp">

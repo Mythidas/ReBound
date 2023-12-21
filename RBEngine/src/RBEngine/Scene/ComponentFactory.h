@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rbpch.h"
-#include "RBEngine/Scene/Registry.h"
+#include "RBEngine/Scene/EntityRegistry.h"
 #include "RBEngine/Reflection/Meta.h"
 
 namespace RB
@@ -36,12 +36,12 @@ namespace RB
 			meta.Object = object;
 			meta.AddFunc = _AddComponent;
 
-			Registry::RegisterComponent(meta);
+			EntityRegistry::RegisterComponent(meta);
 			return meta;
 		}
 
 	public:
-		static inline T* _AddComponent(Registry* registry, EntityID entity)
+		static inline T* _AddComponent(EntityRegistry* registry, EntityID entity)
 		{
 			return registry->AddComponent<T>(entity);
 		}

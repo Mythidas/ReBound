@@ -8,19 +8,19 @@
 
 namespace RB
 {
-	class Registry;
+	class EntityRegistry;
 
 	struct ComponentMeta
 	{
 		ObjectMeta Object;
-		std::function<void(Registry*, EntityID)> AddFunc;
+		std::function<void(EntityRegistry*, EntityID)> AddFunc;
 	};
 
-	class Registry
+	class EntityRegistry
 	{
 	public:
-		Registry();
-		~Registry();
+		EntityRegistry();
+		~EntityRegistry();
 
 		EntityID CreateEntity();
 		void DestroyEntity(const EntityID& entity);
@@ -40,7 +40,7 @@ namespace RB
 		template <typename ...Components>
 		struct View
 		{
-			View(Registry& registry)
+			View(EntityRegistry& registry)
 				: m_Registry(registry)
 			{
 				if (sizeof...(Components) == 0)
@@ -65,7 +65,7 @@ namespace RB
 
 			struct Iterator
 			{
-				Iterator(Registry& registry, size_t index, ComponentMask components, bool all)
+				Iterator(EntityRegistry& registry, size_t index, ComponentMask components, bool all)
 					: _Registry(registry), Index(index), Mask(components), All(all)
 				{
 				}
@@ -99,7 +99,7 @@ namespace RB
 					return _Registry.IsValidEntity(_Registry.m_Entities[Index]) && (All || Mask == (Mask & _Registry.m_Entities[Index].Components));
 				}
 
-				Registry& _Registry;
+				EntityRegistry& _Registry;
 				size_t Index{ 0 };
 				ComponentMask Mask;
 				bool All{ false };
@@ -127,7 +127,7 @@ namespace RB
 			bool m_All{ false };
 			bool m_Invalid{ false };
 			ComponentMask m_Mask;
-			Registry& m_Registry;
+			EntityRegistry& m_Registry;
 		};
 
 	private:
@@ -150,7 +150,7 @@ namespace RB
 	};
 
 	template<typename T>
-	inline T* Registry::AddComponent(const EntityID& entity)
+	inline T* EntityRegistry::AddComponent(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -171,7 +171,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline T* Registry::GetComponent(const EntityID& entity)
+	inline T* EntityRegistry::GetComponent(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -184,7 +184,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline void Registry::RemoveComponent(const EntityID& entity)
+	inline void EntityRegistry::RemoveComponent(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return;
 
@@ -193,7 +193,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline size_t Registry::FindComponentID()
+	inline size_t EntityRegistry::FindComponentID()
 	{
 		Type<T> componentType;
 

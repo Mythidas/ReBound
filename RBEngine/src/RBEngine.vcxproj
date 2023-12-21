@@ -170,7 +170,7 @@
     <ClInclude Include="RBEngine\Math\Vector4.h" />
     <ClInclude Include="RBEngine\Reflection\Domain.h" />
     <ClInclude Include="RBEngine\Reflection\Meta.h" />
-    <ClInclude Include="RBEngine\Reflection\Object.h" />
+    <ClInclude Include="RBEngine\Reflection\ObjectFactory.h" />
     <ClInclude Include="RBEngine\Reflection\Type.h" />
     <ClInclude Include="RBEngine\Rendering\Camera.h" />
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h" />
@@ -182,7 +182,7 @@
     <ClInclude Include="RBEngine\Scene\ComponentFactory.h" />
     <ClInclude Include="RBEngine\Scene\ComponentPool.h" />
     <ClInclude Include="RBEngine\Scene\EntityEntry.h" />
-    <ClInclude Include="RBEngine\Scene\Registry.h" />
+    <ClInclude Include="RBEngine\Scene\EntityRegistry.h" />
     <ClInclude Include="RBEngine\Scene\Scene.h" />
     <ClInclude Include="RBEngine\Scene\Transform.h" />
     <ClInclude Include="RBEngine\Utils\Bit.h" />
@@ -220,7 +220,7 @@
     <ClCompile Include="RBEngine\Rendering\RenderBuffer.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp" />
-    <ClCompile Include="RBEngine\Scene\Registry.cpp" />
+    <ClCompile Include="RBEngine\Scene\EntityRegistry.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />
     <ClCompile Include="RBEngine\Utils\Bit.cpp" />
     <ClCompile Include="RBEngine\Utils\FileSystem.cpp" />

@@ -1,22 +1,22 @@
 #include "rbpch.h"
-#include "Registry.h"
+#include "EntityRegistry.h"
 
 namespace RB
 {
-	std::unordered_map<std::string, ComponentMeta> Registry::s_RegisteredComponents;
+	std::unordered_map<std::string, ComponentMeta> EntityRegistry::s_RegisteredComponents;
 
-	Registry::Registry()
+	EntityRegistry::EntityRegistry()
 		: m_EntityIndex(0)
 	{
 		m_Entities = new EntityEntry[MAX_ENTITIES];
 	}
 
-	Registry::~Registry()
+	EntityRegistry::~EntityRegistry()
 	{
 		delete[] m_Entities;
 	}
 
-	EntityID Registry::CreateEntity()
+	EntityID EntityRegistry::CreateEntity()
 	{
 		if (!m_FreeEntities.empty())
 		{
@@ -36,7 +36,7 @@ namespace RB
 		}
 	}
 
-	void Registry::DestroyEntity(const EntityID& entity)
+	void EntityRegistry::DestroyEntity(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return;
 
@@ -44,32 +44,32 @@ namespace RB
 		m_Entities[GetEntityIndex(entity)].ID = GetEntityID(GetEntityIndex(entity), UINT32_MAX);
 	}
 
-	void Registry::AddComponent(const std::string& component, const EntityID& entity)
+	void EntityRegistry::AddComponent(const std::string& component, const EntityID& entity)
 	{
 		s_RegisteredComponents[component].AddFunc(this, entity);
 	}
 
-	void Registry::RegisterComponent(const ComponentMeta& meta)
+	void EntityRegistry::RegisterComponent(const ComponentMeta& meta)
 	{
 		s_RegisteredComponents[meta.Object.Name] = meta;
 	}
 
-	bool Registry::IsValidEntity(EntityID entity)
+	bool EntityRegistry::IsValidEntity(EntityID entity)
 	{
 		return GetEntityVersion(entity) != UINT32_MAX && GetEntityVersion(m_Entities[GetEntityIndex(entity)].ID) == GetEntityVersion(entity);
 	}
 
-	EntityID Registry::GetEntityID(EntityIndex index, EntityVersion version)
+	EntityID EntityRegistry::GetEntityID(EntityIndex index, EntityVersion version)
 	{
 		return EntityID((EntityID(index) << 32) | version);
 	}
 
-	EntityIndex Registry::GetEntityIndex(EntityID id)
+	EntityIndex EntityRegistry::GetEntityIndex(EntityID id)
 	{
 		return EntityIndex(id >> 32);
 	}
 
-	EntityVersion Registry::GetEntityVersion(EntityID id)
+	EntityVersion EntityRegistry::GetEntityVersion(EntityID id)
 	{
 		return EntityVersion(id);
 	}
