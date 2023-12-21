@@ -23,6 +23,6 @@ namespace RB::Editor
 		uint32_t m_Width{ 1 };
 		uint32_t m_Height{ 1 };
 		float m_Speed{ 3.0f };
-		float m_ScrollSpeed{ 300.0f };
+		float m_ScrollSpeed{ 400.0f };
 	};
 }

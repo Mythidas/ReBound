@@ -149,6 +149,11 @@ namespace RB::OGL
 		glUseProgram(m_RenderID);
 		glBindVertexArray(m_VertexID);
 
+		for (auto& buffer : m_Builder.pRenderBuffers)
+		{
+			buffer->Bind();
+		}
+
 		if (m_Builder.pIndexBuffer)
 		{
 			m_Builder.pIndexBuffer->Bind();

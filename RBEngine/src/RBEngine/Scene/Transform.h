@@ -18,5 +18,6 @@ namespace RB
 		Vector3 Up() const;
 		Vector3 Down() const;
 		Matrix4 GetMatrix() const;
+		Matrix4 GetInverseMatrix() const;
 	};
 }

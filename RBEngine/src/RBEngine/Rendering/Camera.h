@@ -15,6 +15,7 @@ namespace RB
 	{
 		Matrix4 Projection{ 1.0f };
 		Matrix4 View{ 1.0f };
+		Vector4 ClearColor{ 1.0f, 1.0f, 1.0f, 1.0f };
 		CameraMode Mode{ CameraMode::Perspective };
 		float FieldOfView{ 60.0f };
 		float NearClip{ 0.001f };

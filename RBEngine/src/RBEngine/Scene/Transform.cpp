@@ -44,4 +44,8 @@ namespace RB
 		return glm::translate(glm::mat4(1.0f), (gVec3)Position)
 			* glm::scale(glm::mat4(1.0f), (gVec3)Scale);
 	}
+	Matrix4 TransformComponent::GetInverseMatrix() const
+	{
+		return glm::inverse(GetMatrix());
+	}
 }

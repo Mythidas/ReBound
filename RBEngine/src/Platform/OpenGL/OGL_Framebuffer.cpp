@@ -7,7 +7,7 @@ namespace RB::OGL
 {
 	OGL_Framebuffer::OGL_Framebuffer(const Builder& builder)
 	{
-		Resize({ 1, 1 });
+		Resize(builder.Size);
 	}
 
 	OGL_Framebuffer::~OGL_Framebuffer()

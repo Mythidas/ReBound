@@ -12,17 +12,20 @@ namespace RB::Editor
 		void BeginRender();
 		void EndRender();
 
-		virtual void OnAttach() {};
-		virtual void OnDetach() {};
-		virtual void OnGUIRender() {};
+		virtual void OnAttach() {}
+		virtual void OnDetach() {}
+		virtual void OnUpdate() {}
+		virtual void OnGUIRender() {}
 		virtual const char* GetWindowTitle() const = 0;
 
-		Vector2 GetSize() const { return m_WindowSize; }
+		UVector2 GetSize() const { return m_WindowSize; }
 		Vector4 GetBounds() const { return m_WindowBounds; }
 		Vector2 GetCursorPosition() const { return m_CursorPosition; }
+		bool IsFocused() const { return m_IsFocused; }
+		bool IsHovered() const { return m_IsHovered; }
 
 	private:
-		Vector2 m_WindowSize;
+		UVector2 m_WindowSize;
 		Vector4 m_WindowBounds;
 		Vector2 m_CursorPosition;
 

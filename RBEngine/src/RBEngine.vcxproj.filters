@@ -169,6 +169,8 @@
     <ClInclude Include="RBEngine\Math\Vector.h" />
     <ClInclude Include="RBEngine\Math\Quaternion.h" />
     <ClInclude Include="RBEngine\Scene\Transform.h" />
+    <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp">
@@ -242,5 +244,7 @@
     <ClCompile Include="RBEngine\Math\Vector3.cpp" />
     <ClCompile Include="RBEngine\Rendering\Camera.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />
+    <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
   </ItemGroup>
 </Project>

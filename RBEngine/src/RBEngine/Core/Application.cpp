@@ -14,6 +14,7 @@ namespace RB
 		
 		m_Input = CreateScope<Input>();
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
+		m_RenderCommands = RenderCommands::Builder().Build();
 
 		Renderer::Construct();
 
@@ -21,7 +22,8 @@ namespace RB
 
 		Log::Info("Application Created!");
 
-		Window::OnWindowClose += RB_BIND_FNC(onWindowClose);
+		Window::OnWindowClose += RB_BIND_FNC(OnWindowClose);
+		Window::OnWindowResize += RB_BIND_FNC(OnWindowResize);
 	}
 
 	Application::~Application()
@@ -62,9 +64,16 @@ namespace RB
 #endif
 		}
 	}
-	bool Application::onWindowClose()
+	bool Application::OnWindowClose()
 	{
 		m_Running = false;
+		return false;
+	}
+	bool Application::OnWindowResize(int width, int height)
+	{
+		if (width > 0 && height > 0)
+			Renderer::Resize({ (uint32_t)width, (uint32_t)height });
+
 		return false;
 	}
 }

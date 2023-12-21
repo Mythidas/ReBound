@@ -4,6 +4,8 @@ namespace RB::Editor
 {
 	EditorCamera::EditorCamera()
 	{
+		ClearColor = { 0.4f, 0.5f, 0.6f, 1.0f };
+		m_Transform.Position.z = -5.0f;
 		Window::OnMouseScrolled += RB_BIND_FNC(OnScroll);
 	}
 
@@ -21,6 +23,7 @@ namespace RB::Editor
 
 		Input::LockCursor(true);
 
+		// Myth: This is for 3D rotation, don't really need it for 2D. Maybe will make variables to enable it editor
 		//m_Transform.Rotation.x -= delta.y;
 		//m_Transform.Rotation.y -= delta.x;
 
@@ -50,7 +53,6 @@ namespace RB::Editor
 			m_Height = size.y;
 
 			CalculateProjection(m_Width, m_Height);
-			Renderer::Resize({ m_Width, m_Height });
 		}
 	}
 
@@ -58,7 +60,7 @@ namespace RB::Editor
 	{
 		if (Input::IsKeyPressed(KeyCode::RightMouseButton))
 		{
-			m_Transform.Position.z -= offset * m_ScrollSpeed * Time::GetDeltaTime();
+			m_Transform.Position.z += offset * m_ScrollSpeed * Time::GetDeltaTime();
 		}
 
 		return false;

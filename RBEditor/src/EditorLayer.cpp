@@ -10,18 +10,14 @@
 
 namespace RB::Editor
 {
-    Editor::Viewport* viewport;
-    Hierarchy* hierarchy;
-    Inspector* inspector;
-    ContentBrowser* content;
     Vector3 position{ 0.0f, 0.0f, 0.0f };
 
     void EditorLayer::OnAttach()
     {
-        viewport = new Editor::Viewport();
-        hierarchy = new Hierarchy();
-        inspector = new Inspector();
-        content = new ContentBrowser();
+        PushWindow(new Viewport());
+        PushWindow(new Hierarchy());
+        PushWindow(new Inspector());
+        PushWindow(new ContentBrowser());
     }
 
     void EditorLayer::OnDetach()
@@ -31,30 +27,62 @@ namespace RB::Editor
 
     void EditorLayer::OnUpdate()
     {
-        m_Camera.OnUpdate();
-        m_Camera.OnResize({ (uint32_t)viewport->GetSize().x, (uint32_t)viewport->GetSize().y });
+        for (auto& window : m_Windows)
+        {
+            window->OnUpdate();
+        }
 
-        Renderer::BeginFrame(m_Camera, m_Camera.GetTransform());
-        Renderer::DrawQuad(position);
-        Renderer::EndFrame();
+        if (m_Camera)
+        {
+            Renderer::BeginFrame(*m_Camera, m_Camera->GetTransform());
+            Renderer::DrawQuad(position);
+            Renderer::EndFrame();
+        }
     }
 
     void EditorLayer::OnRenderUI()
     {
-        viewport->BeginRender();
-        viewport->OnGUIRender();
-        viewport->EndRender();
+        if (ImGui::BeginMainMenuBar())
+        {
+            static bool file = false;
+            ImGui::MenuItem("File", NULL, file);
 
-        hierarchy->BeginRender();
-        hierarchy->OnGUIRender();
-        hierarchy->EndRender();
+            ImGui::EndMainMenuBar();
+        }
 
-        inspector->BeginRender();
-        inspector->OnGUIRender();
-        inspector->EndRender();
+        for (auto& window : m_Windows)
+        {
+            window->BeginRender();
+            window->OnGUIRender();
+            window->EndRender();
+        }
+    }
 
-        content->BeginRender();
-        content->OnGUIRender();
-        content->EndRender();
+    void EditorLayer::PushWindow(EditorWindow* window)
+    {
+        auto it = std::find(m_Windows.begin(), m_Windows.end(), window);
+        if (it == m_Windows.end())
+        {
+            m_Windows.push_back(window);
+            window->OnAttach();
+        }
+    }
+
+    void EditorLayer::PopWindow(EditorWindow* window)
+    {
+        for (size_t i = 0; i < m_Windows.size(); i++)
+        {
+            if (strcmp(m_Windows[i]->GetWindowTitle(), window->GetWindowTitle()))
+            {
+                m_Windows.erase(m_Windows.begin() + i);
+                window->OnDetach();
+                break;
+            }
+        }
+    }
+
+    void EditorLayer::SetEditorCamera(EditorCamera* camera)
+    {
+        m_Camera = camera;
     }
 }

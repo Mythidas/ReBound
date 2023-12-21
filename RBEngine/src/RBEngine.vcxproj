@@ -145,6 +145,7 @@
     <ClInclude Include="Platform\OpenGL\OGL_GraphicsPipeline.h" />
     <ClInclude Include="Platform\OpenGL\OGL_ImGUILayer.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderBuffer.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
     <ClInclude Include="Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="RBEngine.h" />
     <ClInclude Include="RBEngine\Core\Application.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h" />
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h" />
+    <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="RBEngine\Rendering\Renderer.h" />
     <ClInclude Include="RBEngine\Scene\ComponentFactory.h" />
     <ClInclude Include="RBEngine\Scene\ComponentPool.h" />
@@ -199,6 +201,7 @@
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_ImGUILayer.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderBuffer.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="RBEngine\Core\Application.cpp" />
     <ClCompile Include="RBEngine\Core\Input.cpp" />
@@ -215,6 +218,7 @@
     <ClCompile Include="RBEngine\Rendering\GraphicsContext.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderBuffer.cpp" />
+    <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp" />
     <ClCompile Include="RBEngine\Scene\Registry.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />

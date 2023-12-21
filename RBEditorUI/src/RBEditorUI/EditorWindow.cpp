@@ -9,7 +9,7 @@ namespace RB::Editor
 		ImGui::Begin(GetWindowTitle());
 
 		ImVec2 windowSize = ImGui::GetContentRegionAvail();
-		m_WindowSize = { windowSize.x, windowSize.y };
+		m_WindowSize = { (uint32_t)windowSize.x, (uint32_t)windowSize.y };
 
 		ImVec2 vMin = ImGui::GetWindowContentRegionMin();
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();

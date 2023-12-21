@@ -34,6 +34,9 @@ namespace RB::OGL
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 
+		style.WindowPadding = ImVec2(5.0f, 5.0f);
+		style.WindowMinSize = ImVec2(175.0f, 175.0f);
+
 		SetDarkThemeColors();
 
 		ImGui_ImplGlfw_InitForOpenGL(static_cast<GLFWwindow*>(Application::Get().GetWindow()->GetNativeWindow()), true);

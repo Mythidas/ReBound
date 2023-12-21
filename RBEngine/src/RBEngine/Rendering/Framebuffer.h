@@ -10,6 +10,9 @@ namespace RB
 	public:
 		struct Builder
 		{
+			UVector2 Size;
+
+			Builder& setSize(const UVector2& size) { Size = size; return *this; }
 			Ref<Framebuffer> Build() const { return Create(*this); }
 		};
 

@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "LayerStack.h"
 #include "Input.h"
+#include "RBEngine/Rendering/RenderCommands.h"
 #include "RBEngine/ImGUI/ImGUILayer.h"
 #include "RBEngine/Utils/Singleton.h"
 
@@ -23,14 +24,16 @@ namespace RB
 		void PopLayer(Layer* layer) { m_LayerStack.PopLayer(layer); }
 		void PopOverlay(Layer* overlay) { m_LayerStack.PopOverlay(overlay); }
 
-		Scope<Window>& GetWindow() { return m_Window; }
+		static Scope<Window>& GetWindow() { return Get().m_Window; }
 
 	private:
-		bool onWindowClose();
+		bool OnWindowClose();
+		bool OnWindowResize(int width, int height);
 
 	private:
 		Scope<Window> m_Window;
 		Scope<Input> m_Input;
+		Scope<RenderCommands> m_RenderCommands;
 		Ref<ImGUILayer> m_ImGUILayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
