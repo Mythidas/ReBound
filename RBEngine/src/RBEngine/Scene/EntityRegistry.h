@@ -8,6 +8,7 @@
 
 namespace RB
 {
+	class Entity;
 	class EntityRegistry;
 
 	struct ComponentMeta
@@ -22,18 +23,20 @@ namespace RB
 		EntityRegistry();
 		~EntityRegistry();
 
-		EntityID CreateEntity();
+		Entity CreateEntity();
+		Entity CreateEntity(const std::string& name);
 		void DestroyEntity(const EntityID& entity);
 
 		void AddComponent(const std::string& component, const EntityID& entity);
 		template <typename T>
 		T* AddComponent(const EntityID& entity);
 		template <typename T>
-		T* GetComponent(const EntityID& entity);
+		T* GetComponent(const EntityID& entity) const;
 		template <typename T>
 		void RemoveComponent(const EntityID& entity);
 
 	public:
+		static void Construct();
 		static void RegisterComponent(const ComponentMeta& meta);
 
 	public:
@@ -70,7 +73,7 @@ namespace RB
 				{
 				}
 
-				EntityID operator*() const
+				EntityEntry operator*() const
 				{
 					return _Registry.m_Entities[Index];
 				}
@@ -130,14 +133,17 @@ namespace RB
 			EntityRegistry& m_Registry;
 		};
 
+		template <typename ...Components>
+		inline View<Components...> GetView() { return View<Components...>(*this); }
+
 	private:
 		template <typename T>
-		size_t FindComponentID();
+		size_t FindComponentID() const;
 
-		bool IsValidEntity(EntityID entity);
-		EntityID GetEntityID(EntityIndex index, EntityVersion version);
-		EntityIndex GetEntityIndex(EntityID id);
-		EntityVersion GetEntityVersion(EntityID id);
+		bool IsValidEntity(EntityID entity) const;
+		EntityID GetEntityID(EntityIndex index, EntityVersion version) const;
+		EntityIndex GetEntityIndex(EntityID id) const;
+		EntityVersion GetEntityVersion(EntityID id) const;
 
 	private:
 		static std::unordered_map<std::string, ComponentMeta> s_RegisteredComponents;
@@ -171,7 +177,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline T* EntityRegistry::GetComponent(const EntityID& entity)
+	inline T* EntityRegistry::GetComponent(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -193,7 +199,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline size_t EntityRegistry::FindComponentID()
+	inline size_t EntityRegistry::FindComponentID() const
 	{
 		Type<T> componentType;
 

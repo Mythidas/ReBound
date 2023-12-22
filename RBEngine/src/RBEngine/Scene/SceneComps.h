@@ -5,7 +5,7 @@
 
 namespace RB
 {
-	struct TransformComponent
+	struct Transform
 	{
 		Vector3 Position{ 0.0f };
 		Vector3 Rotation{ 0.0f };
@@ -19,5 +19,10 @@ namespace RB
 		Vector3 Down() const;
 		Matrix4 GetMatrix() const;
 		Matrix4 GetInverseMatrix() const;
+	};
+
+	struct Tag
+	{
+		std::string Name;
 	};
 }

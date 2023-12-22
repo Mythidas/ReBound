@@ -7,12 +7,15 @@ namespace RB
 	class UUID
 	{
 	public:
+		static const uint64_t INVALID = UINT64_MAX;
+
+	public:
 		UUID();
 		UUID(uint64_t uuid);
 
 		bool Valid() const
 		{
-			return m_UUID == 0;
+			return m_UUID != INVALID;
 		}
 
 		bool operator==(const UUID& rhs) const

@@ -1,11 +1,11 @@
 #include "rbpch.h"
-#include "Camera.h"
+#include "RenderComps.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace RB
 {
-	void CameraComponent::CalculateProjection(uint32_t width, uint32_t height)
+	void Camera::CalculateProjection(uint32_t width, uint32_t height)
 	{
 		float aspect = (float)width / (float)height;
 		if (Mode == CameraMode::Perspective)

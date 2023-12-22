@@ -1,5 +1,5 @@
 #include "rbpch.h"
-#include "Transform.h"
+#include "SceneComps.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
@@ -15,36 +15,36 @@ namespace RB
 		}
 	}
 
-	Vector3 TransformComponent::Forward() const
+	Vector3 Transform::Forward() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Forward);
 	}
-	Vector3 TransformComponent::Back() const
+	Vector3 Transform::Back() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Back);
 	}
-	Vector3 TransformComponent::Right() const
+	Vector3 Transform::Right() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Right);
 	}
-	Vector3 TransformComponent::Left() const
+	Vector3 Transform::Left() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Left);
 	}
-	Vector3 TransformComponent::Up() const
+	Vector3 Transform::Up() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Up);
 	}
-	Vector3 TransformComponent::Down() const
+	Vector3 Transform::Down() const
 	{
 		return (glm::vec3)glm::rotate(Utils::GetOrientation(Rotation), (gVec3)Vector3::Down);
 	}
-	Matrix4 TransformComponent::GetMatrix() const
+	Matrix4 Transform::GetMatrix() const
 	{
 		return glm::translate(glm::mat4(1.0f), (gVec3)Position)
 			* glm::scale(glm::mat4(1.0f), (gVec3)Scale);
 	}
-	Matrix4 TransformComponent::GetInverseMatrix() const
+	Matrix4 Transform::GetInverseMatrix() const
 	{
 		return glm::inverse(GetMatrix());
 	}

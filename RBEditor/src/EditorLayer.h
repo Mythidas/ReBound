@@ -6,6 +6,16 @@
 
 namespace RB::Editor
 {
+	struct EditorContext
+	{
+		UUID ID{ UUID::INVALID };
+		enum class Payloads
+		{
+			None,
+			Entity
+		} Payload = Payloads::None;
+	};
+
 	class EditorLayer : public Layer, public Singleton<EditorLayer>
 	{
 	public:
@@ -19,10 +29,14 @@ namespace RB::Editor
 
 		void SetEditorCamera(EditorCamera* camera);
 
-		EditorCamera& GetEditorCamera() { return *m_Camera; }
+		static EditorContext& GetContext() { return Get().m_Context; }
+		static EditorCamera& GetEditorCamera() { return *Get().m_Camera; }
 
 	private:
+		EditorContext m_Context;
 		EditorCamera* m_Camera;
 		std::vector<EditorWindow*> m_Windows;
+		Ref<Scene> m_ActiveScene;
+		Ref<Scene> m_LastScene;
 	};
 }

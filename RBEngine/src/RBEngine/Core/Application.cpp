@@ -4,6 +4,7 @@
 #include "Time.h"
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
+#include "RBEngine/Scene/EntityRegistry.h"
 
 namespace RB
 {
@@ -16,6 +17,7 @@ namespace RB
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
+		EntityRegistry::Construct();
 		Renderer::Construct();
 
 		m_ImGUILayer = ImGUILayer::Builder().Build();

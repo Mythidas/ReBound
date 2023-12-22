@@ -163,14 +163,15 @@
     <ClInclude Include="Platform\OpenGL\OGL_GraphicsPipeline.h" />
     <ClInclude Include="Platform\OpenGL\OGL_Framebuffer.h" />
     <ClInclude Include="RBEngine\Math\Matrix.h" />
-    <ClInclude Include="RBEngine\Rendering\Camera.h" />
     <ClInclude Include="RBEngine\Math\Vector2.h" />
     <ClInclude Include="RBEngine\Math\Vector4.h" />
     <ClInclude Include="RBEngine\Math\Vector.h" />
     <ClInclude Include="RBEngine\Math\Quaternion.h" />
-    <ClInclude Include="RBEngine\Scene\Transform.h" />
     <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
+    <ClInclude Include="RBEngine\Scene\SceneComps.h" />
+    <ClInclude Include="RBEngine\Rendering\RenderComps.h" />
+    <ClInclude Include="RBEngine\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp">
@@ -242,9 +243,12 @@
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp" />
     <ClCompile Include="RBEngine\Math\Vector3.cpp" />
-    <ClCompile Include="RBEngine\Rendering\Camera.cpp" />
-    <ClCompile Include="RBEngine\Scene\Transform.cpp" />
+    <ClCompile Include="RBEngine\Rendering\RenderComps.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
+    <ClCompile Include="RBEngine\Scene\SceneComps.cpp" />
+    <ClCompile Include="RBEngine\Scene\Scene.cpp" />
+    <ClCompile Include="RBEngine\Scene\Entity.cpp" />
+    <ClCompile Include="RBEngine\Scene\EntityEntry.cpp" />
   </ItemGroup>
 </Project>

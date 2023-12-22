@@ -1,5 +1,9 @@
 #include "rbpch.h"
 #include "EntityRegistry.h"
+#include "Entity.h"
+#include "ComponentFactory.h"
+#include "SceneComps.h"
+#include "RBEngine/Rendering/RenderComps.h"
 
 namespace RB
 {
@@ -8,7 +12,7 @@ namespace RB
 	EntityRegistry::EntityRegistry()
 		: m_EntityIndex(0)
 	{
-		m_Entities = new EntityEntry[MAX_ENTITIES];
+		m_Entities = new EntityEntry[MAX_ENTITIES]{};
 	}
 
 	EntityRegistry::~EntityRegistry()
@@ -16,7 +20,12 @@ namespace RB
 		delete[] m_Entities;
 	}
 
-	EntityID EntityRegistry::CreateEntity()
+	Entity EntityRegistry::CreateEntity()
+	{
+		return CreateEntity(std::string("Entity ") + std::to_string(m_EntityIndex));
+	}
+
+	Entity EntityRegistry::CreateEntity(const std::string& name)
 	{
 		if (!m_FreeEntities.empty())
 		{
@@ -25,14 +34,21 @@ namespace RB
 
 			m_Entities[GetEntityIndex(oldID)].Components.reset();
 			m_Entities[GetEntityIndex(oldID)].ID = GetEntityID(GetEntityIndex(oldID), GetEntityVersion(oldID) + 1);
-			return m_Entities[GetEntityIndex(oldID)].ID;
+			m_Entities[GetEntityIndex(oldID)].Registry = this;
+			AddComponent<Tag>(m_Entities[m_EntityIndex].ID)->Name = name;
+			AddComponent<Transform>(m_Entities[m_EntityIndex].ID);
+			return m_Entities[GetEntityIndex(oldID)];
 		}
 		else
 		{
 			m_Entities[m_EntityIndex].Components.reset();
 			m_Entities[m_EntityIndex].ID = GetEntityID(m_EntityIndex, 0);
+			m_Entities[m_EntityIndex].Registry = this;
+			AddComponent<Tag>(m_Entities[m_EntityIndex].ID)->Name = name;
+			AddComponent<Transform>(m_Entities[m_EntityIndex].ID);
+
 			m_EntityIndex++;
-			return m_Entities[m_EntityIndex - 1].ID;
+			return m_Entities[m_EntityIndex - 1];
 		}
 	}
 
@@ -49,27 +65,44 @@ namespace RB
 		s_RegisteredComponents[component].AddFunc(this, entity);
 	}
 
+	void EntityRegistry::Construct()
+	{
+		auto tag = ComponentFactory<Tag>()
+			.Data<&Tag::Name>("Name", offsetof(Tag, Name))
+			.Register();
+
+		auto transform = ComponentFactory<Transform>()
+			.Data<&Transform::Position>("Position", offsetof(Transform, Position))
+			.Data<&Transform::Rotation>("Rotation", offsetof(Transform, Rotation))
+			.Data<&Transform::Scale>("Scale", offsetof(Transform, Scale))
+			.Register();
+
+		auto spriteRenderer = ComponentFactory<SpriteRenderer>()
+			.Data<&SpriteRenderer::Color>("Color", offsetof(SpriteRenderer, Color))
+			.Register();
+	}
+
 	void EntityRegistry::RegisterComponent(const ComponentMeta& meta)
 	{
 		s_RegisteredComponents[meta.Object.Name] = meta;
 	}
 
-	bool EntityRegistry::IsValidEntity(EntityID entity)
+	bool EntityRegistry::IsValidEntity(EntityID entity) const
 	{
 		return GetEntityVersion(entity) != UINT32_MAX && GetEntityVersion(m_Entities[GetEntityIndex(entity)].ID) == GetEntityVersion(entity);
 	}
 
-	EntityID EntityRegistry::GetEntityID(EntityIndex index, EntityVersion version)
+	EntityID EntityRegistry::GetEntityID(EntityIndex index, EntityVersion version) const
 	{
 		return EntityID((EntityID(index) << 32) | version);
 	}
 
-	EntityIndex EntityRegistry::GetEntityIndex(EntityID id)
+	EntityIndex EntityRegistry::GetEntityIndex(EntityID id) const
 	{
 		return EntityIndex(id >> 32);
 	}
 
-	EntityVersion EntityRegistry::GetEntityVersion(EntityID id)
+	EntityVersion EntityRegistry::GetEntityVersion(EntityID id) const
 	{
 		return EntityVersion(id);
 	}

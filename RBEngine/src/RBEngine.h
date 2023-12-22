@@ -17,17 +17,18 @@
 
 // Rendering
 #include "RBEngine/Rendering/Renderer.h"
-#include "RBEngine/Rendering/Camera.h"
+#include "RBEngine/Rendering/RenderComps.h"
 #include "RBEngine/Rendering/Framebuffer.h"
 #include "RBEngine/Rendering/RenderBuffer.h"
 #include "RBEngine/Rendering/GraphicsPipline.h"
 
 // Scene
 #include "RBEngine/Scene/Scene.h"
+#include "RBEngine/Scene/Entity.h"
 #include "RBEngine/Scene/EntityEntry.h"
 #include "RBEngine/Scene/EntityRegistry.h"
 #include "RBEngine/Scene/ComponentFactory.h"
-#include "RBEngine/Scene/Transform.h"
+#include "RBEngine/Scene/SceneComps.h"
 
 // Reflection
 #include "RBEngine/Reflection/Domain.h"

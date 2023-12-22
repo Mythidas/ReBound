@@ -11,7 +11,7 @@ namespace RB
 		Orthographic
 	};
 
-	struct CameraComponent
+	struct Camera
 	{
 		Matrix4 Projection{ 1.0f };
 		Matrix4 View{ 1.0f };
@@ -24,5 +24,10 @@ namespace RB
 		bool Active{ false };
 
 		void CalculateProjection(uint32_t width, uint32_t height);
+	};
+
+	struct SpriteRenderer
+	{
+		Vector3 Color{ 1.0f, 1.0f, 1.0f };
 	};
 }

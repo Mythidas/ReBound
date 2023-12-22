@@ -102,9 +102,9 @@ namespace RB
 		delete[] s_Data.QuadStagingBuffer;
 	}
 
-	void Renderer::BeginFrame(const CameraComponent& camera, const TransformComponent& transform)
+	void Renderer::BeginFrame(const Camera& camera, const Transform& transform)
 	{
-		TransformComponent transformCopy(transform);
+		Transform transformCopy(transform);
 		transformCopy.Position.y *= -1;
 		transformCopy.Position.z *= -1;
 
@@ -145,6 +145,27 @@ namespace RB
 
 		s_Data.QuadBufferPtr->Position = Vector3(position.x - 0.5f, position.y + 0.5f, position.z);
 		s_Data.QuadBufferPtr->Color = Vector3(1.0f);
+		s_Data.QuadBufferPtr++;
+
+		s_Data.QuadIndexCount += 6;
+	}
+
+	void Renderer::DrawQuad(const Transform& transform, const SpriteRenderer& sprite)
+	{
+		s_Data.QuadBufferPtr->Position = Vector3(transform.Position.x - transform.Scale.x, transform.Position.y - transform.Scale.y, transform.Position.z);
+		s_Data.QuadBufferPtr->Color = sprite.Color;
+		s_Data.QuadBufferPtr++;
+
+		s_Data.QuadBufferPtr->Position = Vector3(transform.Position.x + transform.Scale.x, transform.Position.y - transform.Scale.y, transform.Position.z);
+		s_Data.QuadBufferPtr->Color = sprite.Color;
+		s_Data.QuadBufferPtr++;
+
+		s_Data.QuadBufferPtr->Position = Vector3(transform.Position.x + transform.Scale.x, transform.Position.y + transform.Scale.y, transform.Position.z);
+		s_Data.QuadBufferPtr->Color = sprite.Color;
+		s_Data.QuadBufferPtr++;
+
+		s_Data.QuadBufferPtr->Position = Vector3(transform.Position.x - transform.Scale.x, transform.Position.y + transform.Scale.y, transform.Position.z);
+		s_Data.QuadBufferPtr->Color = sprite.Color;
 		s_Data.QuadBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;

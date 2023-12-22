@@ -18,6 +18,10 @@ namespace RB::Editor
         PushWindow(new Hierarchy());
         PushWindow(new Inspector());
         PushWindow(new ContentBrowser());
+
+        m_ActiveScene = Scene::Create();
+
+        auto ent = m_ActiveScene->GetRegistry().CreateEntity("Test Emt");
     }
 
     void EditorLayer::OnDetach()
@@ -32,11 +36,9 @@ namespace RB::Editor
             window->OnUpdate();
         }
 
-        if (m_Camera)
+        if (m_Camera && m_ActiveScene)
         {
-            Renderer::BeginFrame(*m_Camera, m_Camera->GetTransform());
-            Renderer::DrawQuad(position);
-            Renderer::EndFrame();
+            m_ActiveScene->OnEditorUpdate(*m_Camera, m_Camera->GetTransform());
         }
     }
 

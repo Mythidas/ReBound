@@ -4,7 +4,7 @@
 
 namespace RB::Editor
 {
-	class EditorCamera : public CameraComponent
+	class EditorCamera : public Camera
 	{
 	public:
 		EditorCamera();
@@ -12,13 +12,13 @@ namespace RB::Editor
 		void OnUpdate();
 		void OnResize(const UVector2& size);
 
-		TransformComponent& GetTransform() { return m_Transform; }
+		Transform& GetTransform() { return m_Transform; }
 		
 	private:
 		bool OnScroll(float offset);
 
 	private:
-		TransformComponent m_Transform{};
+		Transform m_Transform{};
 		Vector2 m_LastMousePosition{ 0.0f };
 		uint32_t m_Width{ 1 };
 		uint32_t m_Height{ 1 };

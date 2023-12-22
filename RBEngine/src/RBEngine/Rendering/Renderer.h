@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Camera.h"
+#include "RenderComps.h"
 #include "Framebuffer.h"
-#include "RBEngine/Scene/Transform.h"
+#include "RBEngine/Scene/SceneComps.h"
 
 namespace RB
 {
@@ -18,10 +18,11 @@ namespace RB
 		static void Construct();
 		static void Destruct();
 
-		static void BeginFrame(const CameraComponent& camera, const TransformComponent& transform);
+		static void BeginFrame(const Camera& camera, const Transform& transform);
 		static void EndFrame();
 
 		static void DrawQuad(const Vector3& position);
+		static void DrawQuad(const Transform& transform, const SpriteRenderer& sprite);
 
 		static void Resize(const UVector2& size);
 

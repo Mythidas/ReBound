@@ -12,6 +12,7 @@ namespace RB
 	{
 		Unknown = 0,
 		Object,
+		String,
 		Int32,
 		Int64,
 		UInt32,
@@ -38,6 +39,8 @@ namespace RB
 		{
 			if constexpr (std::is_convertible_v<T, Object>)
 				return TypeRef::Object;
+			else if constexpr (std::is_same_v<T, std::string>)
+				return TypeRef::String;
 			else if constexpr (std::is_same_v<T, int>)
 				return TypeRef::Int32;
 			else if constexpr (std::is_same_v<T, long long>)
