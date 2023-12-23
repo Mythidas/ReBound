@@ -17,5 +17,6 @@ namespace RB
 	{
 		std::string Name;
 		std::vector<VariableMeta> Vars;
+		bool Compact{ false };
 	};
 }

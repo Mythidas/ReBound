@@ -2,7 +2,7 @@
 
 #include "RBEngine.h"
 #include "EditorCamera.h"
-#include "RBEditorUI/EditorWindow.h"
+#include "RBEditorUI/GUI.h"
 
 namespace RB::Editor
 {
@@ -27,10 +27,11 @@ namespace RB::Editor
 		void PushWindow(EditorWindow* window);
 		void PopWindow(EditorWindow* window);
 
-		void SetEditorCamera(EditorCamera* camera);
+		static void SetEditorCamera(EditorCamera* camera);
+		static void SetContext(const EditorContext& context) { Get().m_Context = context; }
 
-		static EditorContext& GetContext() { return Get().m_Context; }
 		static EditorCamera& GetEditorCamera() { return *Get().m_Camera; }
+		static EditorContext& GetContext() { return Get().m_Context; }
 
 	private:
 		EditorContext m_Context;

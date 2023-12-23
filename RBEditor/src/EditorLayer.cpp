@@ -1,6 +1,7 @@
 #include "EditorLayer.h"
 #include "RBEngine.h"
 #include "EditorCamera.h"
+#include "RBEditorUI/GUIInternal.h"
 #include "Windows/Viewport.h"
 #include "Windows/Hierarchy.h"
 #include "Windows/Inspector.h"
@@ -85,6 +86,6 @@ namespace RB::Editor
 
     void EditorLayer::SetEditorCamera(EditorCamera* camera)
     {
-        m_Camera = camera;
+        Get().m_Camera = camera;
     }
 }

@@ -1,9 +1,12 @@
 #pragma once
 
-#include "rbpch.h"
+#include <type_traits>
+#include <string>
 
 namespace RB
 {
+	using TypeID = std::string;
+
 	// Used as a tag to know which types are objects at compile time
 	// Objects still need to have a registered Meta with the Domain to be dereferenced
 	class Object {};
@@ -30,9 +33,9 @@ namespace RB
 			return typeid(T).name();
 		}
 
-		size_t Hash() const
+		TypeID ID() const
 		{
-			return typeid(T).hash_code();
+			return typeid(T).name();
 		}
 
 		TypeRef Ref() const

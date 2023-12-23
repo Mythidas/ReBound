@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RBEngine.h"
-#include "RBEditorUI/EditorWindow.h"
+#include "RBEditorUI/GUI.h"
 
 namespace RB::Editor
 {
@@ -13,6 +13,6 @@ namespace RB::Editor
 		virtual const char* GetWindowTitle() const { return "Hierarchy"; }
 
 	private:
-		void DrawEntityNode(const Entity& entity);
+		void DrawEntityNode(Entity& entity);
 	};
 }

@@ -10,6 +10,11 @@ namespace RB::Editor
 		Ref<Scene> scene = Scene::GetActive();
 		if (!scene) return;
 
+		// Deselect
+
+		if (Input::IsKeyPressed(KeyCode::LeftMouseButton) && IsHovered() && !ImGui::IsAnyItemHovered())
+			EditorLayer::SetContext({});
+
 		// Right click menu
 
 		if (ImGui::BeginPopupContextWindow("hierarchy_rmb_menu", ImGuiPopupFlags_NoOpenOverItems | ImGuiPopupFlags_MouseButtonRight))
@@ -28,13 +33,32 @@ namespace RB::Editor
 		}
 	}
 
-	void Hierarchy::DrawEntityNode(const Entity& entity)
+	void Hierarchy::DrawEntityNode(Entity& entity)
 	{
 		Ref<Scene> scene = Scene::GetActive();
 		if (!scene) return;
 
+		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf;
+		if (EditorLayer::GetContext().ID == entity)
+			flags |= ImGuiTreeNodeFlags_Selected;
+
 		Tag* tag = entity.GetComponent<Tag>();
-		if (ImGui::TreeNode(tag->Name.c_str()))
+		bool opened = ImGui::TreeNodeEx((void*)tag->Name.c_str(), flags, tag->Name.c_str());
+
+		if (ImGui::IsItemHovered() && Input::IsKeyPressed(KeyCode::LeftMouseButton))
+			EditorLayer::SetContext({ entity, EditorContext::Payloads::Entity });
+
+		if (ImGui::BeginPopupContextItem(0, ImGuiPopupFlags_NoOpenOverExistingPopup | ImGuiPopupFlags_MouseButtonRight))
+		{
+			EditorLayer::SetContext({ entity, EditorContext::Payloads::Entity });
+
+			if (ImGui::MenuItem("Delete Entity"))
+				entity.Destroy();
+
+			ImGui::EndPopup();
+		}
+
+		if (opened)
 		{
 			ImGui::TreePop();
 		}

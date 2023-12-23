@@ -1,6 +1,7 @@
 #pragma once
 
-#include "RBEditorUI/EditorWindow.h"
+#include "RBEngine.h"
+#include "RBEditorUI/GUI.h"
 
 namespace RB::Editor
 {
@@ -10,5 +11,9 @@ namespace RB::Editor
 		virtual void OnGUIRender();
 
 		virtual const char* GetWindowTitle() const { return "Inspector"; }
+
+	private:
+		void DrawEntityInfo();
+		void DrawVariableInfo(char* data, const VariableMeta& var);
 	};
 }

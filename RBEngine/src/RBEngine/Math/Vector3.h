@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include "RBEngine/Reflection/Type.h"
 
 namespace RB
 {
@@ -13,7 +14,7 @@ namespace RB
 	using UVector3 = TVector3<unsigned int>;
 
 	template <typename T>
-	struct TVector3
+	struct TVector3 : public Object
 	{
 		union { T x; T r; };
 		union { T y; T g; };

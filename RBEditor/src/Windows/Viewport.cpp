@@ -8,7 +8,7 @@ namespace RB::Editor
 {
 	void Viewport::OnAttach()
 	{
-		EditorLayer::Get().SetEditorCamera(&m_Camera);
+		EditorLayer::SetEditorCamera(&m_Camera);
 	}
 
 	void Viewport::OnUpdate()

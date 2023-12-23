@@ -34,7 +34,8 @@ namespace RB::OGL
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 
-		style.WindowPadding = ImVec2(5.0f, 5.0f);
+		style.FramePadding = ImVec2(5.0f, 5.0f);
+		style.WindowPadding = ImVec2(3.0f, 3.0f);
 		style.WindowMinSize = ImVec2(175.0f, 175.0f);
 
 		SetDarkThemeColors();

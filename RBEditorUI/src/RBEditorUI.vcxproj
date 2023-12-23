@@ -131,12 +131,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="RBEditorUI\EditorInfo.h" />
-    <ClInclude Include="RBEditorUI\EditorWindow.h" />
+    <ClInclude Include="RBEditorUI\GUI Internal\CustomDrawers.h" />
+    <ClInclude Include="RBEditorUI\GUI Internal\DrawerFactory.h" />
+    <ClInclude Include="RBEditorUI\GUI Internal\DrawerMeta.h" />
+    <ClInclude Include="RBEditorUI\GUI Internal\GUIDrawer.h" />
+    <ClInclude Include="RBEditorUI\GUI\EditorInfo.h" />
+    <ClInclude Include="RBEditorUI\GUI\EditorWindow.h" />
+    <ClInclude Include="RBEditorUI\GUI.h" />
+    <ClInclude Include="RBEditorUI\GUIInternal.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RBEditorUI\EditorInfo.cpp" />
-    <ClCompile Include="RBEditorUI\EditorWindow.cpp" />
+    <ClCompile Include="RBEditorUI\GUI Internal\CustomDrawers.cpp" />
+    <ClCompile Include="RBEditorUI\GUI Internal\GUIDrawer.cpp" />
+    <ClCompile Include="RBEditorUI\GUI\EditorInfo.cpp" />
+    <ClCompile Include="RBEditorUI\GUI\EditorWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\RBEngine\vendor\imgui\ImGui.vcxproj">

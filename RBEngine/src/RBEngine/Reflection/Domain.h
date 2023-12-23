@@ -8,6 +8,8 @@ namespace RB
 	class Domain
 	{
 	public:
+		static void Construct();
+
 		static void RegisterObject(const ObjectMeta& meta);
 		static ObjectMeta FindObject(const std::string& id);
 

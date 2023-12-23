@@ -32,8 +32,11 @@ namespace RB
 		T* AddComponent(const EntityID& entity);
 		template <typename T>
 		T* GetComponent(const EntityID& entity) const;
+		void* GetComponent(const EntityID& entity, const std::string& component);
 		template <typename T>
 		void RemoveComponent(const EntityID& entity);
+
+		std::vector<ComponentMeta> GetComponents(const EntityID& entity) const;
 
 	public:
 		static void Construct();
@@ -139,6 +142,7 @@ namespace RB
 	private:
 		template <typename T>
 		size_t FindComponentID() const;
+		size_t FindComponentID(const std::string& component) const;
 
 		bool IsValidEntity(EntityID entity) const;
 		EntityID GetEntityID(EntityIndex index, EntityVersion version) const;
@@ -201,14 +205,6 @@ namespace RB
 	template<typename T>
 	inline size_t EntityRegistry::FindComponentID() const
 	{
-		Type<T> componentType;
-
-		for (size_t i = 0; i < m_ComponentPools.size(); i++)
-		{
-			if (m_ComponentPools[i]->IsType(componentType.Name()))
-				return i;
-		}
-
-		return m_ComponentPools.size();
+		return FindComponentID(Type<T>().Name());
 	}
 }

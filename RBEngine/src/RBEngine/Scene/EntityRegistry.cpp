@@ -22,7 +22,7 @@ namespace RB
 
 	Entity EntityRegistry::CreateEntity()
 	{
-		return CreateEntity(std::string("Entity ") + std::to_string(m_EntityIndex));
+		return CreateEntity("Empty Entity");
 	}
 
 	Entity EntityRegistry::CreateEntity(const std::string& name)
@@ -35,8 +35,8 @@ namespace RB
 			m_Entities[GetEntityIndex(oldID)].Components.reset();
 			m_Entities[GetEntityIndex(oldID)].ID = GetEntityID(GetEntityIndex(oldID), GetEntityVersion(oldID) + 1);
 			m_Entities[GetEntityIndex(oldID)].Registry = this;
-			AddComponent<Tag>(m_Entities[m_EntityIndex].ID)->Name = name;
-			AddComponent<Transform>(m_Entities[m_EntityIndex].ID);
+			AddComponent<Tag>(m_Entities[GetEntityIndex(oldID)].ID)->Name = name;
+			AddComponent<Transform>(m_Entities[GetEntityIndex(oldID)].ID);
 			return m_Entities[GetEntityIndex(oldID)];
 		}
 		else
@@ -65,6 +65,32 @@ namespace RB
 		s_RegisteredComponents[component].AddFunc(this, entity);
 	}
 
+	void* EntityRegistry::GetComponent(const EntityID& entity, const std::string& component)
+	{
+		if (!IsValidEntity(entity)) return nullptr;
+
+		size_t compID = FindComponentID(component);
+
+		if (m_Entities[GetEntityIndex(entity)].Components.test(compID))
+			return (void*)(m_ComponentPools[compID]->GetData(GetEntityIndex(entity)));
+
+		return nullptr;
+	}
+
+	std::vector<ComponentMeta> EntityRegistry::GetComponents(const EntityID& entity) const
+	{
+		if (!IsValidEntity(entity)) return std::vector<ComponentMeta>();
+
+		std::vector<ComponentMeta> components;
+		for (size_t i = 0; i < m_ComponentPools.size(); i++)
+		{
+			if (m_Entities[GetEntityIndex(entity)].Components.test(i))
+				components.push_back(s_RegisteredComponents[m_ComponentPools[i]->GetType()]);
+		}
+
+		return components;
+	}
+
 	void EntityRegistry::Construct()
 	{
 		auto tag = ComponentFactory<Tag>()
@@ -85,6 +111,17 @@ namespace RB
 	void EntityRegistry::RegisterComponent(const ComponentMeta& meta)
 	{
 		s_RegisteredComponents[meta.Object.Name] = meta;
+	}
+
+	size_t EntityRegistry::FindComponentID(const std::string& component) const
+	{
+		for (size_t i = 0; i < m_ComponentPools.size(); i++)
+		{
+			if (m_ComponentPools[i]->IsType(component))
+				return i;
+		}
+
+		return m_ComponentPools.size();
 	}
 
 	bool EntityRegistry::IsValidEntity(EntityID entity) const

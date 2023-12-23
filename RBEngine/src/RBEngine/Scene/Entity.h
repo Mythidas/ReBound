@@ -41,6 +41,11 @@ namespace RB
 		static Entity Create();
 		static Entity Create(const std::string& name);
 
+		operator UUID() const
+		{
+			return UUID(m_ID);
+		}
+
 		operator EntityID() const
 		{
 			return m_ID;

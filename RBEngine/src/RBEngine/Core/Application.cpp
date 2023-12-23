@@ -5,6 +5,7 @@
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
 #include "RBEngine/Scene/EntityRegistry.h"
+#include "RBEngine/Reflection/Domain.h"
 
 namespace RB
 {
@@ -17,6 +18,7 @@ namespace RB
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
+		Domain::Construct();
 		EntityRegistry::Construct();
 		Renderer::Construct();
 

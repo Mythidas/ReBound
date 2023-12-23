@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RBEditorUI/EditorWindow.h"
+#include "RBEditorUI/GUI.h"
 #include "EditorCamera.h"
 
 namespace RB::Editor

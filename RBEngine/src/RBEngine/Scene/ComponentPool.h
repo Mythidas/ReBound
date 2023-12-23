@@ -20,14 +20,19 @@ namespace RB
 			delete[] m_Data;
 		}
 
-		bool IsType(const std::string& type)
+		std::string GetType() const
 		{
-			return m_Type == type;
+			return m_Type;
 		}
 
 		inline void* GetData(size_t index)
 		{
 			return m_Data + index * m_ComponentSize;
+		}
+
+		bool IsType(const std::string& type) const
+		{
+			return m_Type == type;
 		}
 
 	private:
