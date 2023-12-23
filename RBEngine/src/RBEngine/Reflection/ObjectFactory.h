@@ -30,7 +30,8 @@ namespace RB
 		inline ObjectMeta Register()
 		{
 			ObjectMeta meta;
-			meta.Name = Type<T>().Name();
+			meta.Info.DebugName = Type<T>().Name();
+			meta.Info.ID = Type<T>().ID();
 			meta.Vars = m_Vars;
 			Domain::RegisterObject(meta);
 			return meta;

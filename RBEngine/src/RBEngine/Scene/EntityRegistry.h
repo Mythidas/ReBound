@@ -32,7 +32,7 @@ namespace RB
 		T* AddComponent(const EntityID& entity);
 		template <typename T>
 		T* GetComponent(const EntityID& entity) const;
-		void* GetComponent(const EntityID& entity, const std::string& component);
+		void* GetComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		void RemoveComponent(const EntityID& entity);
 
@@ -41,6 +41,7 @@ namespace RB
 	public:
 		static void Construct();
 		static void RegisterComponent(const ComponentMeta& meta);
+		inline static const std::unordered_map<std::string, ComponentMeta>& GetRegisteredComponents() { return s_RegisteredComponents; }
 
 	public:
 		template <typename ...Components>

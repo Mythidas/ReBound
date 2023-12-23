@@ -1,7 +1,8 @@
 #pragma once
 
-#include "rbpch.h"
 #include "Meta.h"
+
+#include <unordered_map>
 
 namespace RB
 {
@@ -11,9 +12,9 @@ namespace RB
 		static void Construct();
 
 		static void RegisterObject(const ObjectMeta& meta);
-		static ObjectMeta FindObject(const std::string& id);
+		static ObjectMeta FindObject(const TypeID& id);
 
 	private:
-		static std::unordered_map<std::string, ObjectMeta> s_RegisteredObjects;
+		static std::unordered_map<TypeID, ObjectMeta> s_RegisteredObjects;
 	};
 }

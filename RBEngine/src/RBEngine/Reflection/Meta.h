@@ -1,22 +1,33 @@
 #pragma once
 
-#include "rbpch.h"
 #include "Type.h"
+
+#include <vector>
 
 namespace RB
 {
+	struct MetaInfo
+	{
+		std::string DebugName;
+		TypeID ID;
+
+		std::string ShortName() const
+		{
+			size_t offset = DebugName.find_last_of(':');
+			return DebugName.substr(offset);
+		}
+	};
+
 	struct VariableMeta
 	{
-		std::string Name;
-		std::string TypeID;
+		MetaInfo Info;
 		TypeRef Ref;
 		size_t Offset;
 	};
 
 	struct ObjectMeta
 	{
-		std::string Name;
+		MetaInfo Info;
 		std::vector<VariableMeta> Vars;
-		bool Compact{ false };
 	};
 }

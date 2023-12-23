@@ -29,7 +29,8 @@ namespace RB
 		inline ComponentMeta Register()
 		{
 			ObjectMeta object;
-			object.Name = Type<T>().Name();
+			object.Info.DebugName = Type<T>().Name();
+			object.Info.ID = Type<T>().ID();
 			object.Vars = m_Vars;
 
 			ComponentMeta meta;

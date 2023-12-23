@@ -25,10 +25,12 @@ namespace RB::Editor
 
 		for (auto& comp : components)
 		{
-			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Object.Name);
+			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Object.Info.ID);
 
-			if (ImGui::TreeNode(comp.Object.Name.c_str()))
+			if (ImGui::TreeNode(comp.Object.Info.DebugName.c_str()))
 			{
+				if (Internal::GUIDrawer::UseDrawer(comp.Object.Info, data)) return;
+
 				for (auto& var : comp.Object.Vars)
 				{
 					DrawVariableInfo(data, var);
@@ -37,18 +39,36 @@ namespace RB::Editor
 				ImGui::TreePop();
 			}
 		}
+
+		if (ImGui::Button("Add Component", ImVec2(ImGui::GetContentRegionAvail().x, EditorInfo::LineHeight())))
+			ImGui::OpenPopup("Add Component");
+
+		if (ImGui::BeginPopup("Add Component"))
+		{
+			for (auto& component : EntityRegistry::GetRegisteredComponents())
+			{
+				if (component.second.Object.Info.ID == Type<Tag>().ID() || component.second.Object.Info.ID == Type<Transform>().ID())
+					continue;
+
+				if (ImGui::MenuItem(component.second.Object.Info.DebugName.c_str()))
+				{
+					component.second.AddFunc(&Scene::GetActive()->GetRegistry(), context.ID);
+					ImGui::CloseCurrentPopup();
+				}
+			}
+
+			ImGui::EndPopup();
+		}
 	}
 
 	void Inspector::DrawVariableInfo(char* data, const VariableMeta& var)
 	{
-		if (Internal::GUIDrawer::UseDrawer(var.TypeID, data)) return;
+		if (Internal::GUIDrawer::UseDrawer(var.Info, data + var.Offset)) return;
 
 		if (var.Ref == TypeRef::Object)
 		{
+			auto object = Domain::FindObject(var.Info.ID);
 
-			auto object = Domain::FindObject(var.TypeID);
-
-			ImGui::Text(var.Name.c_str());
 			for (auto& objVar : object.Vars)
 			{
 				DrawVariableInfo(data + var.Offset, objVar);
@@ -56,7 +76,7 @@ namespace RB::Editor
 		}
 		else if (var.Ref == TypeRef::Float)
 		{
-			ImGui::DragFloat(var.Name.c_str(), (float*)(data + var.Offset));
+			ImGui::DragFloat(var.Info.DebugName.c_str(), (float*)(data + var.Offset));
 		}
 	}
 }

@@ -18,10 +18,10 @@ namespace RB
 
 	void Domain::RegisterObject(const ObjectMeta& meta)
 	{
-		s_RegisteredObjects[meta.Name] = meta;
+		s_RegisteredObjects[meta.Info.ID] = meta;
 	}
 
-	ObjectMeta Domain::FindObject(const std::string& id)
+	ObjectMeta Domain::FindObject(const TypeID& id)
 	{
 		return s_RegisteredObjects[id];
 	}

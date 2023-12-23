@@ -9,7 +9,7 @@ namespace RB::Editor::Internal
 	class DrawerFactory
 	{
 	public:
-		DrawerMeta Register(std::function<bool(char*)> fnc)
+		DrawerMeta Register(std::function<bool(const MetaInfo&, char*)>&& fnc)
 		{
 			DrawerMeta meta;
 			meta.Draw = fnc;

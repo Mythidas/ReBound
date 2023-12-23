@@ -17,10 +17,10 @@ namespace RB::Editor::Internal
 		s_Drawers[id] = meta;
 	}
 
-	bool GUIDrawer::UseDrawer(const TypeID& id, char* data)
+	bool GUIDrawer::UseDrawer(const MetaInfo& meta, char* data)
 	{
-		if (s_Drawers.contains(id))
-			return s_Drawers[id].Draw(data);
+		if (s_Drawers.contains(meta.ID))
+			return s_Drawers[meta.ID].Draw(meta, data);
 
 		return false;
 	}

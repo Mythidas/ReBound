@@ -65,7 +65,7 @@ namespace RB
 		s_RegisteredComponents[component].AddFunc(this, entity);
 	}
 
-	void* EntityRegistry::GetComponent(const EntityID& entity, const std::string& component)
+	void* EntityRegistry::GetComponent(const EntityID& entity, const TypeID& component)
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -110,7 +110,7 @@ namespace RB
 
 	void EntityRegistry::RegisterComponent(const ComponentMeta& meta)
 	{
-		s_RegisteredComponents[meta.Object.Name] = meta;
+		s_RegisteredComponents[meta.Object.Info.ID] = meta;
 	}
 
 	size_t EntityRegistry::FindComponentID(const std::string& component) const
