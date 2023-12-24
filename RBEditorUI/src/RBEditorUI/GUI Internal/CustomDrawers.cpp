@@ -16,6 +16,7 @@ namespace RB::Editor::Internal
 
 		ImGui::PushID(meta.DebugName.c_str());
 
+		// Myth: Maybe add a function for this
 		ImGui::SetCursorPosY(EditorInfo::TextPadding()); 
 		ImGui::Text(meta.DebugName.c_str());
 

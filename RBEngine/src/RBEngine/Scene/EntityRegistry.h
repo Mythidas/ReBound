@@ -34,6 +34,9 @@ namespace RB
 		T* GetComponent(const EntityID& entity) const;
 		void* GetComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
+		bool HasComponent(const EntityID& entity) const;
+		bool HasComponent(const EntityID& entity, const TypeID& component);
+		template <typename T>
 		void RemoveComponent(const EntityID& entity);
 
 		std::vector<ComponentMeta> GetComponents(const EntityID& entity) const;
@@ -192,6 +195,19 @@ namespace RB
 			return static_cast<T*>(m_ComponentPools[compID]->GetData(GetEntityIndex(entity)));
 
 		return nullptr;
+	}
+
+	template<typename T>
+	inline bool EntityRegistry::HasComponent(const EntityID& entity) const
+	{
+		if (!IsValidEntity(entity)) return false;
+
+		size_t compID = FindComponentID<T>();
+
+		if (m_Entities[GetEntityIndex(entity)].Components.test(compID))
+			return false;
+
+		return false;
 	}
 
 	template<typename T>

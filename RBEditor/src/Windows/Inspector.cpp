@@ -27,7 +27,7 @@ namespace RB::Editor
 		{
 			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Object.Info.ID);
 
-			if (ImGui::TreeNode(comp.Object.Info.DebugName.c_str()))
+			if (ImGui::TreeNode(comp.Object.Info.ShortName().c_str()))
 			{
 				if (Internal::GUIDrawer::UseDrawer(comp.Object.Info, data)) return;
 
@@ -40,6 +40,7 @@ namespace RB::Editor
 			}
 		}
 
+		ImGui::Spacing();
 		if (ImGui::Button("Add Component", ImVec2(ImGui::GetContentRegionAvail().x, EditorInfo::LineHeight())))
 			ImGui::OpenPopup("Add Component");
 
@@ -48,6 +49,9 @@ namespace RB::Editor
 			for (auto& component : EntityRegistry::GetRegisteredComponents())
 			{
 				if (component.second.Object.Info.ID == Type<Tag>().ID() || component.second.Object.Info.ID == Type<Transform>().ID())
+					continue;
+
+				if (Scene::GetActive()->GetRegistry().HasComponent(context.ID, component.second.Object.Info.ID))
 					continue;
 
 				if (ImGui::MenuItem(component.second.Object.Info.DebugName.c_str()))

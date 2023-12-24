@@ -13,7 +13,7 @@ namespace RB
 
 		std::string ShortName() const
 		{
-			size_t offset = DebugName.find_last_of(':');
+			size_t offset = DebugName.find_last_of(':') + 1;
 			return DebugName.substr(offset);
 		}
 	};

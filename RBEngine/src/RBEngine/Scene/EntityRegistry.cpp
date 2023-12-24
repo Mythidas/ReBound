@@ -77,6 +77,18 @@ namespace RB
 		return nullptr;
 	}
 
+	bool EntityRegistry::HasComponent(const EntityID& entity, const TypeID& component)
+	{
+		if (!IsValidEntity(entity)) return false;
+
+		size_t compID = FindComponentID(component);
+
+		if (m_Entities[GetEntityIndex(entity)].Components.test(compID))
+			return true;
+
+		return false;
+	}
+
 	std::vector<ComponentMeta> EntityRegistry::GetComponents(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return std::vector<ComponentMeta>();
