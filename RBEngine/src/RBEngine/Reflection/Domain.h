@@ -8,13 +8,22 @@ namespace RB
 {
 	class Domain
 	{
-	public:
+	private:
+		friend class Application;
 		static void Construct();
 
+	public:
 		static void RegisterObject(const ObjectMeta& meta);
-		static ObjectMeta FindObject(const TypeID& id);
+		static const ObjectMeta& FindObject(const TypeID& id);
+		static const std::unordered_map<TypeID, ObjectMeta>& GetAllObjects();
+
+		static void RegisterComponent(const ComponentMeta& meta);
+		static const ComponentMeta& FindComponent(const TypeID& id);
+		static const std::unordered_map<TypeID, ComponentMeta>& GetAllComponents();
+
 
 	private:
 		static std::unordered_map<TypeID, ObjectMeta> s_RegisteredObjects;
+		static std::unordered_map<TypeID, ComponentMeta> s_RegisteredComponents;
 	};
 }

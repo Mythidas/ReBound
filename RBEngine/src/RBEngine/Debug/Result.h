@@ -2,7 +2,7 @@
 
 #include "RBEngine/Utils/Flags.h"
 
-namespace RB
+namespace RB::Debug
 {
 	enum class Result
 	{

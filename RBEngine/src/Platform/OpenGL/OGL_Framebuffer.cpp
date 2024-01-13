@@ -56,7 +56,7 @@ namespace RB::OGL
 
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Log::Error("Failed to create Framebuffer");
+			Debug::Log::Error("Failed to create Framebuffer");
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);

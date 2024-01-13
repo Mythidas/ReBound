@@ -13,7 +13,8 @@ namespace RB::Editor
 		virtual const char* GetWindowTitle() const { return "Inspector"; }
 
 	private:
-		void DrawEntityInfo();
-		void DrawVariableInfo(char* data, const VariableMeta& var);
+		void _DrawEntityInfo();
+		void _DrawTag(char* data);
+		void _DrawVariableInfo(char* data, const VariableMeta& var);
 	};
 }

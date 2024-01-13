@@ -1,14 +1,12 @@
 #include "rbpch.h"
 #include "EntityRegistry.h"
 #include "Entity.h"
-#include "ComponentFactory.h"
-#include "SceneComps.h"
-#include "RBEngine/Rendering/RenderComps.h"
+#include "Transform.h"
+#include "Tag.h"
+#include "RBEngine/Reflection/Domain.h"
 
 namespace RB
 {
-	std::unordered_map<std::string, ComponentMeta> EntityRegistry::s_RegisteredComponents;
-
 	EntityRegistry::EntityRegistry()
 		: m_EntityIndex(0)
 	{
@@ -60,9 +58,9 @@ namespace RB
 		m_Entities[GetEntityIndex(entity)].ID = GetEntityID(GetEntityIndex(entity), UINT32_MAX);
 	}
 
-	void EntityRegistry::AddComponent(const std::string& component, const EntityID& entity)
+	void EntityRegistry::AddComponent(const EntityID& entity, const TypeID& component)
 	{
-		s_RegisteredComponents[component].AddFunc(this, entity);
+		Domain::FindComponent(component).AddFunc(entity);
 	}
 
 	void* EntityRegistry::GetComponent(const EntityID& entity, const TypeID& component)
@@ -89,6 +87,14 @@ namespace RB
 		return false;
 	}
 
+	void EntityRegistry::RemoveComponent(const EntityID& entity, const TypeID& component)
+	{
+		if (!IsValidEntity(entity)) return;
+
+		size_t compID = FindComponentID(component);
+		m_Entities[GetEntityIndex(entity)].Components.reset(compID);
+	}
+
 	std::vector<ComponentMeta> EntityRegistry::GetComponents(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return std::vector<ComponentMeta>();
@@ -97,35 +103,13 @@ namespace RB
 		for (size_t i = 0; i < m_ComponentPools.size(); i++)
 		{
 			if (m_Entities[GetEntityIndex(entity)].Components.test(i))
-				components.push_back(s_RegisteredComponents[m_ComponentPools[i]->GetType()]);
+				components.push_back(Domain::FindComponent(m_ComponentPools[i]->GetType()));
 		}
 
 		return components;
 	}
 
-	void EntityRegistry::Construct()
-	{
-		auto tag = ComponentFactory<Tag>()
-			.Data<&Tag::Name>("Name", offsetof(Tag, Name))
-			.Register();
-
-		auto transform = ComponentFactory<Transform>()
-			.Data<&Transform::Position>("Position", offsetof(Transform, Position))
-			.Data<&Transform::Rotation>("Rotation", offsetof(Transform, Rotation))
-			.Data<&Transform::Scale>("Scale", offsetof(Transform, Scale))
-			.Register();
-
-		auto spriteRenderer = ComponentFactory<SpriteRenderer>()
-			.Data<&SpriteRenderer::Color>("Color", offsetof(SpriteRenderer, Color))
-			.Register();
-	}
-
-	void EntityRegistry::RegisterComponent(const ComponentMeta& meta)
-	{
-		s_RegisteredComponents[meta.Object.Info.ID] = meta;
-	}
-
-	size_t EntityRegistry::FindComponentID(const std::string& component) const
+	size_t EntityRegistry::FindComponentID(const TypeID& component) const
 	{
 		for (size_t i = 0; i < m_ComponentPools.size(); i++)
 		{

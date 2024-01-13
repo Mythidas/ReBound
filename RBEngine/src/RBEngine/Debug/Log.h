@@ -6,40 +6,43 @@
 
 namespace spdlog
 {
-	class logger;
+	class spdlog::logger;
 }
 
-namespace RB
+namespace RB::Debug
 {
 	class Log
 	{
 	public:
-		static void Construct();
-
 		template <typename... Args>
 		static void Trace(spdlog::format_string_t<Args...> message, Args &&...args)
 		{
-			s_ClientLogger->trace(message, std::forward<Args>(args)...);
+			_Initialize();
+			s_ClientLog->trace(message, std::forward<Args>(args)...);
 		}
 		template <typename... Args>
 		static void Info(spdlog::format_string_t<Args...> message, Args &&...args)
 		{
-			s_ClientLogger->info(message, std::forward<Args>(args)...);
+			_Initialize();
+			s_ClientLog->info(message, std::forward<Args>(args)...);
 		}
 		template <typename... Args>
 		static void Warn(spdlog::format_string_t<Args...> message, Args &&...args)
 		{
-			s_ClientLogger->warn(message, std::forward<Args>(args)...);
+			_Initialize();
+			s_ClientLog->warn(message, std::forward<Args>(args)...);
 		}
 		template <typename... Args>
 		static void Error(spdlog::format_string_t<Args...> message, Args &&...args)
 		{
-			s_ClientLogger->error(message, std::forward<Args>(args)...);
+			_Initialize();
+			s_ClientLog->error(message, std::forward<Args>(args)...);
 		}
 		template <typename... Args>
 		static void Critical(spdlog::format_string_t<Args...> message, Args &&...args)
 		{
-			s_ClientLogger->critical(message, std::forward<Args>(args)...);
+			_Initialize();
+			s_ClientLog->critical(message, std::forward<Args>(args)...);
 		}
 
 		static void Trace(const char* message);
@@ -49,6 +52,10 @@ namespace RB
 		static void Critical(const char* message);
 
 	private:
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+		static void _Initialize();
+
+	private:
+		static std::shared_ptr<spdlog::logger> s_ClientLog;
+		static bool s_Initialized;
 	};
 }

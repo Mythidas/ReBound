@@ -10,6 +10,8 @@ namespace RB::Editor::Internal
 	{
 		auto vec3Draw = DrawerFactory<Vector3>()
 			.Register(Vector3Drawer::Draw);
+		auto strDraw = DrawerFactory<std::string>()
+			.Register(StringDrawer::Draw);
 	}
 
 	void GUIDrawer::RegisterDrawer(const TypeID& id, const DrawerMeta& meta)

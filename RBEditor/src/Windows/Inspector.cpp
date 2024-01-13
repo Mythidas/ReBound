@@ -1,6 +1,7 @@
 #include "Inspector.h"
 #include "EditorLayer.h"
 #include "RBEditorUI/GUIInternal.h"
+#include "RBEditorUI/GUI.h"
 
 #include <imgui.h>
 
@@ -13,11 +14,11 @@ namespace RB::Editor
 		
 		switch (context.Payload)
 		{
-		case EditorContext::Payloads::Entity: DrawEntityInfo(); return;
+		case EditorContext::Payloads::Entity: _DrawEntityInfo(); return;
 		}
 	}
 
-	void Inspector::DrawEntityInfo()
+	void Inspector::_DrawEntityInfo()
 	{
 		EditorContext context = EditorLayer::GetContext();
 
@@ -25,38 +26,57 @@ namespace RB::Editor
 
 		for (auto& comp : components)
 		{
-			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Object.Info.ID);
+			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Info.ID);
 
-			if (ImGui::TreeNode(comp.Object.Info.ShortName().c_str()))
+			if (comp.Info.ID == Type<Tag>().ID())
 			{
-				if (Internal::GUIDrawer::UseDrawer(comp.Object.Info, data)) return;
+				_DrawTag(data);
+				continue;
+			}
 
-				for (auto& var : comp.Object.Vars)
-				{
-					DrawVariableInfo(data, var);
+			// TODO Myth: Change this to a ImageButton once textures are implemented in engine
+			// TODO Myth: Change the button to a drop down with options Reset and Remove
+			bool node = ImGui::TreeNodeEx(comp.Info.ShortName().c_str(), ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_FramePadding); ImGui::SameLine(GetSize().x - 15.0f);
+			if (ImGui::Button("R"))
+			{
+				Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
+				Scene::GetActive()->GetRegistry().AddComponent(context.ID, comp.Info.ID);
+			}
+
+			if (node)
+			{
+				if (!Internal::GUIDrawer::UseDrawer(comp.Info, data))
+	{
+					for (auto& var : comp.Vars)
+					{
+						_DrawVariableInfo(data, var);
+					}
 				}
 
+				ImGui::Spacing();
 				ImGui::TreePop();
 			}
+
+			ImGui::Separator();
 		}
 
-		ImGui::Spacing();
+		ImGui::Spacing(); ImGui::Spacing();
 		if (ImGui::Button("Add Component", ImVec2(ImGui::GetContentRegionAvail().x, EditorInfo::LineHeight())))
 			ImGui::OpenPopup("Add Component");
 
 		if (ImGui::BeginPopup("Add Component"))
 		{
-			for (auto& component : EntityRegistry::GetRegisteredComponents())
+			for (auto& component : Domain::GetAllComponents())
 			{
-				if (component.second.Object.Info.ID == Type<Tag>().ID() || component.second.Object.Info.ID == Type<Transform>().ID())
+				if (component.second.Info.ID == Type<Tag>().ID() || component.second.Info.ID == Type<Transform>().ID())
 					continue;
 
-				if (Scene::GetActive()->GetRegistry().HasComponent(context.ID, component.second.Object.Info.ID))
+				if (Scene::GetActive()->GetRegistry().HasComponent(context.ID, component.second.Info.ID))
 					continue;
 
-				if (ImGui::MenuItem(component.second.Object.Info.DebugName.c_str()))
+				if (ImGui::MenuItem(component.second.Info.ShortName().c_str()))
 				{
-					component.second.AddFunc(&Scene::GetActive()->GetRegistry(), context.ID);
+					component.second.AddFunc(context.ID);
 					ImGui::CloseCurrentPopup();
 				}
 			}
@@ -65,7 +85,17 @@ namespace RB::Editor
 		}
 	}
 
-	void Inspector::DrawVariableInfo(char* data, const VariableMeta& var)
+	void Inspector::_DrawTag(char* data)
+	{
+		Tag* tag = reinterpret_cast<Tag*>(data);
+		ImGui::Spacing();
+		Controls::Checkbox("", tag->Active); ImGui::SameLine();
+		Controls::Text("", tag->Name);
+		ImGui::Spacing();
+		ImGui::Separator();
+	}
+
+	void Inspector::_DrawVariableInfo(char* data, const VariableMeta& var)
 	{
 		if (Internal::GUIDrawer::UseDrawer(var.Info, data + var.Offset)) return;
 
@@ -75,7 +105,7 @@ namespace RB::Editor
 
 			for (auto& objVar : object.Vars)
 			{
-				DrawVariableInfo(data + var.Offset, objVar);
+				_DrawVariableInfo(data + var.Offset, objVar);
 			}
 		}
 		else if (var.Ref == TypeRef::Float)

@@ -1,8 +1,10 @@
 #pragma once
 
-#include "rbpch.h"
-#include "RBEngine/Scene/EntityRegistry.h"
-#include "RBEngine/Reflection/Meta.h"
+#include "Meta.h"
+#include "Domain.h"
+#include "RBEngine/Scene/Scene.h"
+
+#include <functional>
 
 namespace RB
 {
@@ -28,23 +30,20 @@ namespace RB
 
 		inline ComponentMeta Register()
 		{
-			ObjectMeta object;
-			object.Info.DebugName = Type<T>().Name();
-			object.Info.ID = Type<T>().ID();
-			object.Vars = m_Vars;
-
 			ComponentMeta meta;
-			meta.Object = object;
+			meta.Info.DebugName = Type<T>().Name();
+			meta.Info.ID = Type<T>().ID();
+			meta.Vars = m_Vars;
 			meta.AddFunc = _AddComponent;
 
-			EntityRegistry::RegisterComponent(meta);
+			Domain::RegisterComponent(meta);
 			return meta;
 		}
 
 	public:
-		static inline T* _AddComponent(EntityRegistry* registry, EntityID entity)
+		static inline T* _AddComponent(EntityID entity)
 		{
-			return registry->AddComponent<T>(entity);
+			return Scene::GetActive()->GetRegistry().AddComponent<T>(entity);
 		}
 
 	private:

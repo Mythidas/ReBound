@@ -1,8 +1,9 @@
 #pragma once
 
-#include "RenderComps.h"
+#include "SpriteRenderer.h"
 #include "Framebuffer.h"
-#include "RBEngine/Scene/SceneComps.h"
+#include "Camera.h"
+#include "RBEngine/Scene/Transform.h"
 
 namespace RB
 {
@@ -14,10 +15,12 @@ namespace RB
 
 	class Renderer
 	{
-	public:
+	private:
+		friend class Application;
 		static void Construct();
 		static void Destruct();
 
+	public:
 		static void BeginFrame(const Camera& camera, const Transform& transform);
 		static void EndFrame();
 

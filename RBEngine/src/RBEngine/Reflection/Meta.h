@@ -3,6 +3,7 @@
 #include "Type.h"
 
 #include <vector>
+#include <functional>
 
 namespace RB
 {
@@ -29,5 +30,12 @@ namespace RB
 	{
 		MetaInfo Info;
 		std::vector<VariableMeta> Vars;
+	};
+
+	struct ComponentMeta
+	{
+		MetaInfo Info;
+		std::vector<VariableMeta> Vars;
+		std::function<void(unsigned long long)> AddFunc;
 	};
 }

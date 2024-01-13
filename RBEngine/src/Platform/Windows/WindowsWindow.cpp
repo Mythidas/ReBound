@@ -28,7 +28,7 @@ namespace RB
 
 		glfwSetErrorCallback([](int error, const char* desc)
 		{
-			Log::Error(desc);
+			Debug::Log::Error(desc);
 		});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
@@ -73,7 +73,7 @@ namespace RB
 				Window::OnMouseButtonReleased(button);
 		});
 
-		Log::Info("Window Created {0} {1}:{2}", specs.Title, specs.Width, specs.Height);
+		Debug::Log::Info("Window Created {0} {1}:{2}", specs.Title, specs.Width, specs.Height);
 	}
 
 	WindowsWindow::~WindowsWindow()
@@ -81,7 +81,7 @@ namespace RB
 		glfwDestroyWindow(m_Window);
 		glfwTerminate();
 
-		Log::Info("WindowsWindow Released");
+		Debug::Log::Info("WindowsWindow Released");
 	}
 
 	void WindowsWindow::OnUpdate()

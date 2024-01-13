@@ -8,13 +8,18 @@ namespace RB
 	using TypeID = std::string;
 
 	// Used as a tag to know which types are objects at compile time
-	// Objects still need to have a registered Meta with the Domain to be dereferenced
+	// Objects still need to have a registered ObjectMeta with the Domain to be dereferenced
 	class Object {};
+
+	// Used as a tag to know which types are objects at compile time
+	// Objects still need to have a registered ComponentMeta with the ComponentRegistry to be dereferenced
+	class Component {};
 
 	enum class TypeRef : int
 	{
 		Unknown = 0,
 		Object,
+		Component,
 		String,
 		Int32,
 		Int64,
@@ -42,6 +47,8 @@ namespace RB
 		{
 			if constexpr (std::is_convertible_v<T, Object>)
 				return TypeRef::Object;
+			else if constexpr (std::is_convertible_v<T, Component>)
+				return TypeRef::Component;
 			else if constexpr (std::is_same_v<T, std::string>)
 				return TypeRef::String;
 			else if constexpr (std::is_same_v<T, int>)

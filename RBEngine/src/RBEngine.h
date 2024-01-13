@@ -17,7 +17,6 @@
 
 // Rendering
 #include "RBEngine/Rendering/Renderer.h"
-#include "RBEngine/Rendering/RenderComps.h"
 #include "RBEngine/Rendering/Framebuffer.h"
 #include "RBEngine/Rendering/RenderBuffer.h"
 #include "RBEngine/Rendering/GraphicsPipline.h"
@@ -27,14 +26,14 @@
 #include "RBEngine/Scene/Entity.h"
 #include "RBEngine/Scene/EntityEntry.h"
 #include "RBEngine/Scene/EntityRegistry.h"
-#include "RBEngine/Scene/ComponentFactory.h"
-#include "RBEngine/Scene/SceneComps.h"
+#include "RBEngine/Scene/Components.h"
 
 // Reflection
 #include "RBEngine/Reflection/Domain.h"
-#include "RBEngine/Reflection/ObjectFactory.h"
 #include "RBEngine/Reflection/Meta.h"
 #include "RBEngine/Reflection/Type.h"
+#include "RBEngine/Reflection/ObjectFactory.h"
+#include "RBEngine/Reflection/ComponentFactory.h"
 
 // Utils
 #include "RBEngine/Utils/Event.h"

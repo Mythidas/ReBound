@@ -7,14 +7,14 @@ namespace RB
 	class Time
 	{
 		typedef std::chrono::steady_clock::time_point TimePoint;
-	public:
+
+	private:
+		friend class Application;
+		static void Tick();
+
 		static const float FixedDeltaTime;
 
 	public:
-		static void Construct();
-
-		static void OnUpdate();
-
 		static const float GetFPS() { return s_AverageFPS; }
 		static const float GetMSPerFrame() { return 1.0f / s_AverageFPS * 1000.0f; }
 		static const float GetDeltaTime() { return s_DeltaTime; }

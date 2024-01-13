@@ -50,7 +50,7 @@ namespace RB
 			std::ifstream stream(m_InternalPath.c_str(), std::ios::binary);
 			if (!stream.is_open())
 			{
-				Log::Warn("Failed to open file {0}", m_InternalPath.string());
+				Debug::Log::Warn("Failed to open file {0}", m_InternalPath.string());
 			}
 
 			return stream;
@@ -60,7 +60,7 @@ namespace RB
 			std::ifstream stream(m_InternalPath.c_str());
 			if (!stream.is_open())
 			{
-				Log::Warn("Failed to open file {0}", m_InternalPath.string());
+				Debug::Log::Warn("Failed to open file {0}", m_InternalPath.string());
 			}
 
 			return stream;

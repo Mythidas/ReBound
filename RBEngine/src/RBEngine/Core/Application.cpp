@@ -11,20 +11,16 @@ namespace RB
 {
 	Application::Application()
 	{
-		Log::Construct();
-		Time::Construct();
-		
 		m_Input = CreateScope<Input>();
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
 		Domain::Construct();
-		EntityRegistry::Construct();
 		Renderer::Construct();
 
 		m_ImGUILayer = ImGUILayer::Builder().Build();
 
-		Log::Info("Application Created!");
+		Debug::Log::Info("Application Created!");
 
 		Window::OnWindowClose += RB_BIND_FNC(OnWindowClose);
 		Window::OnWindowResize += RB_BIND_FNC(OnWindowResize);
@@ -35,14 +31,14 @@ namespace RB
 		m_LayerStack.Clear();
 		Renderer::Destruct();
 
-		Log::Info("Application closing...");
+		Debug::Log::Info("Application closing...");
 	}
 
 	void Application::Run()
 	{
 		while (m_Running)
 		{
-			Time::OnUpdate();
+			Time::Tick();
 			m_Window->OnUpdate();
 			
 			for (Layer* layer : m_LayerStack)

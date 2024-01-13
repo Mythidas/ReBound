@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SceneComps.h"
+#include "Transform.h"
 #include "EntityRegistry.h"
-#include "RBEngine/Rendering/RenderComps.h"
+#include "RBEngine/Rendering/Camera.h"
 
 namespace RB
 {

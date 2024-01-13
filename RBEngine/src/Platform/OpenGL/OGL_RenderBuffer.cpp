@@ -63,7 +63,7 @@ namespace RB::OGL
 	{
 		if (size + offset > m_Builder.Size)
 		{
-			Log::Error("Size exceeds allocated RenderBuffer: {0}", m_Builder.Size);
+			Debug::Log::Error("Size exceeds allocated RenderBuffer: {0}", m_Builder.Size);
 		}
 
 		Bind();

@@ -79,7 +79,7 @@
     <ClInclude Include="RBEngine\Debug\Assert.h">
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Debug\Log.h">
+    <ClInclude Include="RBEngine\Debug\Debug::Log.h">
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Debug\Result.h">
@@ -95,9 +95,6 @@
       <Filter>RBEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Reflection\Domain.h">
-      <Filter>RBEngine\Reflection</Filter>
-    </ClInclude>
-    <ClInclude Include="RBEngine\Reflection\Meta.h">
       <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Reflection\ObjectFactory.h">
@@ -118,7 +115,7 @@
     <ClInclude Include="RBEngine\Rendering\Renderer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\ComponentFactory.h">
+    <ClInclude Include="RBEngine\Reflection\ComponentFactory.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\ComponentPool.h">
@@ -169,9 +166,13 @@
     <ClInclude Include="RBEngine\Math\Quaternion.h" />
     <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
-    <ClInclude Include="RBEngine\Scene\SceneComps.h" />
-    <ClInclude Include="RBEngine\Rendering\RenderComps.h" />
+    <ClInclude Include="RBEngine\Rendering\SpriteRenderer.h" />
     <ClInclude Include="RBEngine\Scene\Entity.h" />
+    <ClInclude Include="RBEngine\Reflection\Meta.h" />
+    <ClInclude Include="RBEngine\Scene\Transform.h" />
+    <ClInclude Include="RBEngine\Scene\Tag.h" />
+    <ClInclude Include="RBEngine\Rendering\Camera.h" />
+    <ClInclude Include="RBEngine\Scene\Components.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp">
@@ -198,7 +199,7 @@
     <ClCompile Include="RBEngine\Core\Window.cpp">
       <Filter>RBEngine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Debug\Log.cpp">
+    <ClCompile Include="RBEngine\Debug\Debug::Log.cpp">
       <Filter>RBEngine\Debug</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\ImGUI\ImGUILayer.cpp">
@@ -243,12 +244,12 @@
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp" />
     <ClCompile Include="RBEngine\Math\Vector3.cpp" />
-    <ClCompile Include="RBEngine\Rendering\RenderComps.cpp" />
+    <ClCompile Include="RBEngine\Rendering\Camera.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
-    <ClCompile Include="RBEngine\Scene\SceneComps.cpp" />
     <ClCompile Include="RBEngine\Scene\Scene.cpp" />
     <ClCompile Include="RBEngine\Scene\Entity.cpp" />
     <ClCompile Include="RBEngine\Scene\EntityEntry.cpp" />
+    <ClCompile Include="RBEngine\Scene\Transform.cpp" />
   </ItemGroup>
 </Project>

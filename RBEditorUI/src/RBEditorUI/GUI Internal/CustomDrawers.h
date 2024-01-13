@@ -11,4 +11,10 @@ namespace RB::Editor::Internal
 	public:
 		static bool Draw(const MetaInfo& meta, char* data);
 	};
+
+	class StringDrawer : public CustomDrawer<std::string>
+	{
+	public:
+		static bool Draw(const MetaInfo& meta, char* data);
+	};
 }

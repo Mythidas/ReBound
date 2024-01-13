@@ -8,7 +8,7 @@ namespace RB::OGL
 {
 	namespace Utils
 	{
-		Result LogShaderError(uint32_t shader)
+		Debug::Result LogShaderError(uint32_t shader)
 		{
 			int success;
 			char infoLog[512];
@@ -17,14 +17,14 @@ namespace RB::OGL
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-				Log::Error("Shader Compile Error: {0}", infoLog);
-				return Result::Error;
+				Debug::Log::Error("Shader Compile Error: {0}", infoLog);
+				return Debug::Result::Error;
 			}
 
-			return Result::Success;
+			return Debug::Result::Success;
 		}
 
-		Result LogProgramError(uint32_t program)
+		Debug::Result LogProgramError(uint32_t program)
 		{
 			int success;
 			char infoLog[512];
@@ -32,12 +32,12 @@ namespace RB::OGL
 			glGetProgramiv(program, GL_LINK_STATUS, &success);
 			if (!success)
 			{
-				glGetProgramInfoLog(program, 512, nullptr, infoLog);
-				Log::Error("Program Link Error: {0}", infoLog);
-				return Result::Error;
+				glGetShaderInfoLog(program, 512, nullptr, infoLog);
+				Debug::Log::Error("Program Link Error: {0}", infoLog);
+				return Debug::Result::Error;
 			}
 
-			return Result::Success;
+			return Debug::Result::Success;
 		}
 
 		int GetAttributeSize(VertexAttribute attrib)
@@ -90,9 +90,9 @@ namespace RB::OGL
 		glShaderSource(vertShader, 1, &vertCode, nullptr);
 		glCompileShader(vertShader);
 
-		if (Utils::LogShaderError(vertShader) != Result::Success)
+		if (Utils::LogShaderError(vertShader) != Debug::Result::Success)
 		{
-			Log::Error("Failed to Create Shader: {0}", builder.VertPath);
+			Debug::Log::Error("Failed to Create Shader: {0}", builder.VertPath);
 			return;
 		}
 
@@ -100,9 +100,9 @@ namespace RB::OGL
 		glShaderSource(fragShader, 1, &fragCode, nullptr);
 		glCompileShader(fragShader);
 
-		if (Utils::LogShaderError(fragShader) != Result::Success)
+		if (Utils::LogShaderError(fragShader) != Debug::Result::Success)
 		{
-			Log::Error("Failed to Create Shader: {0}", builder.FragPath);
+			Debug::Log::Error("Failed to Create Shader: {0}", builder.FragPath);
 			return;
 		}
 
@@ -111,9 +111,9 @@ namespace RB::OGL
 		glAttachShader(m_RenderID, fragShader);
 		glLinkProgram(m_RenderID);
 
-		if (Utils::LogProgramError(m_RenderID) != Result::Success)
+		if (Utils::LogProgramError(m_RenderID) != Debug::Result::Success)
 		{
-			Log::Error("Failed to Create Program ID {0}: Link Error", m_RenderID);
+			Debug::Log::Error("Failed to Create Program ID {0}: Link Error", m_RenderID);
 			return;
 		}
 

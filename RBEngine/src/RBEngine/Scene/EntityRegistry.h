@@ -3,19 +3,12 @@
 #include "rbpch.h"
 #include "EntityEntry.h"
 #include "ComponentPool.h"
-#include "RBEngine/Reflection/Meta.h"
 #include "RBEngine/Reflection/Type.h"
+#include "RBEngine/Reflection/Meta.h"
 
 namespace RB
 {
 	class Entity;
-	class EntityRegistry;
-
-	struct ComponentMeta
-	{
-		ObjectMeta Object;
-		std::function<void(EntityRegistry*, EntityID)> AddFunc;
-	};
 
 	class EntityRegistry
 	{
@@ -27,7 +20,7 @@ namespace RB
 		Entity CreateEntity(const std::string& name);
 		void DestroyEntity(const EntityID& entity);
 
-		void AddComponent(const std::string& component, const EntityID& entity);
+		void AddComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		T* AddComponent(const EntityID& entity);
 		template <typename T>
@@ -38,13 +31,9 @@ namespace RB
 		bool HasComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		void RemoveComponent(const EntityID& entity);
+		void RemoveComponent(const EntityID& entity, const TypeID& component);
 
 		std::vector<ComponentMeta> GetComponents(const EntityID& entity) const;
-
-	public:
-		static void Construct();
-		static void RegisterComponent(const ComponentMeta& meta);
-		inline static const std::unordered_map<std::string, ComponentMeta>& GetRegisteredComponents() { return s_RegisteredComponents; }
 
 	public:
 		template <typename ...Components>
@@ -146,15 +135,12 @@ namespace RB
 	private:
 		template <typename T>
 		size_t FindComponentID() const;
-		size_t FindComponentID(const std::string& component) const;
+		size_t FindComponentID(const TypeID& component) const;
 
 		bool IsValidEntity(EntityID entity) const;
 		EntityID GetEntityID(EntityIndex index, EntityVersion version) const;
 		EntityIndex GetEntityIndex(EntityID id) const;
 		EntityVersion GetEntityVersion(EntityID id) const;
-
-	private:
-		static std::unordered_map<std::string, ComponentMeta> s_RegisteredComponents;
 
 	private:
 		EntityEntry* m_Entities;

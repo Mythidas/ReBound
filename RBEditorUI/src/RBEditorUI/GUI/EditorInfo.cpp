@@ -14,4 +14,9 @@ namespace RB::Editor
 	{
 		return LineHeight() * 0.15f + ImGui::GetCursorPosY();
 	}
+
+	float EditorInfo::ElementPadding()
+	{
+		return ImGui::GetStyle().WindowPadding.x;
+	}
 }

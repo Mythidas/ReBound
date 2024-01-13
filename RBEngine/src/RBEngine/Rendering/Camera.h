@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RBEngine/Reflection/Type.h"
 #include "RBEngine/Math/Matrix.h"
 #include "RBEngine/Math/Vector.h"
 
@@ -11,7 +12,7 @@ namespace RB
 		Orthographic
 	};
 
-	struct Camera
+	struct Camera : public Component
 	{
 		Matrix4 Projection{ 1.0f };
 		Matrix4 View{ 1.0f };
@@ -24,10 +25,5 @@ namespace RB
 		bool Active{ false };
 
 		void CalculateProjection(uint32_t width, uint32_t height);
-	};
-
-	struct SpriteRenderer
-	{
-		Vector3 Color{ 1.0f, 1.0f, 1.0f };
 	};
 }

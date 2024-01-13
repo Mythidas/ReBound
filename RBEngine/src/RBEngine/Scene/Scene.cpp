@@ -13,7 +13,7 @@ namespace RB
 	void Scene::OnEditorUpdate(const Camera& camera, const Transform& cameraTransform)
 	{
 		Renderer::BeginFrame(camera, cameraTransform);
-		for (auto ent : EntityRegistry::View<SpriteRenderer>(m_Registry))
+		for (const auto& ent : EntityRegistry::View<SpriteRenderer>(m_Registry))
 		{
 			auto transform = m_Registry.GetComponent<Transform>(ent);
 			auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
