@@ -15,7 +15,9 @@ namespace RB::Editor
 		Transform& GetTransform() { return m_Transform; }
 		
 	private:
-		bool OnScroll(float offset);
+		float _GetSpeed();
+		float _GetScrollSpeed();
+		bool _OnScroll(float offset);
 
 	private:
 		Transform m_Transform{};
@@ -24,5 +26,6 @@ namespace RB::Editor
 		uint32_t m_Height{ 1 };
 		float m_Speed{ 3.0f };
 		float m_ScrollSpeed{ 400.0f };
+		float m_FastSpeed{ 3.0f };
 	};
 }
