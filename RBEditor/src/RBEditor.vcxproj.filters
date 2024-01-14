@@ -6,6 +6,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorLayer.h" />
     <ClInclude Include="RBEditor.h" />
     <ClInclude Include="Windows\ContentBrowser.h">
@@ -22,13 +23,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="EditorLayer.cpp" />
     <ClCompile Include="RBEditor.cpp" />
-    <ClCompile Include="Windows\Viewport.cpp" />
-    <ClCompile Include="Windows\Inspector.cpp" />
-    <ClCompile Include="Windows\Hierarchy.cpp" />
-    <ClCompile Include="Windows\ContentBrowser.cpp" />
-    <ClCompile Include="EditorCamera.h" />
-    <ClCompile Include="EditorCamera.cpp" />
+    <ClCompile Include="Windows\ContentBrowser.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Hierarchy.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Inspector.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Viewport.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

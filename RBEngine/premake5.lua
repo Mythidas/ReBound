@@ -22,7 +22,8 @@ project "RBEngine"
     defines
 	{
 		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_INCLUDE_NONE"
+		"GLFW_INCLUDE_NONE",
+        "YAML_CPP_DLL"
 	}
 
     includedirs
@@ -34,7 +35,8 @@ project "RBEngine"
         "%{IncludeDir.STB}",
         "%{IncludeDir.GLM}",
         "%{IncludeDir.IMGUI}",
-        "%{IncludeDir.IMGUIZMO}"
+        "%{IncludeDir.IMGUIZMO}",
+        "%{IncludeDir.YAML_CPP}"
     }
 
     links

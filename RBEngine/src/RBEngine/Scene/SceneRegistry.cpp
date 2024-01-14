@@ -1,5 +1,5 @@
 #include "rbpch.h"
-#include "EntityRegistry.h"
+#include "SceneRegistry.h"
 #include "Entity.h"
 #include "Transform.h"
 #include "Tag.h"
@@ -7,23 +7,23 @@
 
 namespace RB
 {
-	EntityRegistry::EntityRegistry()
+	SceneRegistry::SceneRegistry()
 		: m_EntityIndex(0)
 	{
 		m_Entities = new EntityEntry[MAX_ENTITIES]{};
 	}
 
-	EntityRegistry::~EntityRegistry()
+	SceneRegistry::~SceneRegistry()
 	{
 		delete[] m_Entities;
 	}
 
-	Entity EntityRegistry::CreateEntity()
+	Entity SceneRegistry::CreateEntity()
 	{
 		return CreateEntity("Empty Entity");
 	}
 
-	Entity EntityRegistry::CreateEntity(const std::string& name)
+	Entity SceneRegistry::CreateEntity(const std::string& name)
 	{
 		if (!m_FreeEntities.empty())
 		{
@@ -50,7 +50,7 @@ namespace RB
 		}
 	}
 
-	void EntityRegistry::DestroyEntity(const EntityID& entity)
+	void SceneRegistry::DestroyEntity(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return;
 
@@ -58,12 +58,12 @@ namespace RB
 		m_Entities[GetEntityIndex(entity)].ID = GetEntityID(GetEntityIndex(entity), UINT32_MAX);
 	}
 
-	void EntityRegistry::AddComponent(const EntityID& entity, const TypeID& component)
+	void SceneRegistry::AddComponent(const EntityID& entity, const TypeID& component)
 	{
 		Domain::FindComponent(component).AddFunc(entity);
 	}
 
-	void* EntityRegistry::GetComponent(const EntityID& entity, const TypeID& component)
+	void* SceneRegistry::GetComponent(const EntityID& entity, const TypeID& component) const
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -75,7 +75,7 @@ namespace RB
 		return nullptr;
 	}
 
-	bool EntityRegistry::HasComponent(const EntityID& entity, const TypeID& component)
+	bool SceneRegistry::HasComponent(const EntityID& entity, const TypeID& component) const
 	{
 		if (!IsValidEntity(entity)) return false;
 
@@ -87,7 +87,7 @@ namespace RB
 		return false;
 	}
 
-	void EntityRegistry::RemoveComponent(const EntityID& entity, const TypeID& component)
+	void SceneRegistry::RemoveComponent(const EntityID& entity, const TypeID& component)
 	{
 		if (!IsValidEntity(entity)) return;
 
@@ -95,7 +95,7 @@ namespace RB
 		m_Entities[GetEntityIndex(entity)].Components.reset(compID);
 	}
 
-	std::vector<ComponentMeta> EntityRegistry::GetComponents(const EntityID& entity) const
+	std::vector<ComponentMeta> SceneRegistry::GetComponents(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return std::vector<ComponentMeta>();
 
@@ -109,7 +109,7 @@ namespace RB
 		return components;
 	}
 
-	size_t EntityRegistry::FindComponentID(const TypeID& component) const
+	size_t SceneRegistry::FindComponentID(const TypeID& component) const
 	{
 		for (size_t i = 0; i < m_ComponentPools.size(); i++)
 		{
@@ -120,22 +120,22 @@ namespace RB
 		return m_ComponentPools.size();
 	}
 
-	bool EntityRegistry::IsValidEntity(EntityID entity) const
+	bool SceneRegistry::IsValidEntity(EntityID entity) const
 	{
 		return GetEntityVersion(entity) != UINT32_MAX && GetEntityVersion(m_Entities[GetEntityIndex(entity)].ID) == GetEntityVersion(entity);
 	}
 
-	EntityID EntityRegistry::GetEntityID(EntityIndex index, EntityVersion version) const
+	EntityID SceneRegistry::GetEntityID(EntityIndex index, EntityVersion version) const
 	{
 		return EntityID((EntityID(index) << 32) | version);
 	}
 
-	EntityIndex EntityRegistry::GetEntityIndex(EntityID id) const
+	EntityIndex SceneRegistry::GetEntityIndex(EntityID id) const
 	{
 		return EntityIndex(id >> 32);
 	}
 
-	EntityVersion EntityRegistry::GetEntityVersion(EntityID id) const
+	EntityVersion SceneRegistry::GetEntityVersion(EntityID id) const
 	{
 		return EntityVersion(id);
 	}

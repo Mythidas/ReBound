@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorLayer.h" />
     <ClInclude Include="RBEditor.h" />
     <ClInclude Include="Windows\ContentBrowser.h" />
@@ -143,7 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EditorCamera.cpp" />
-    <ClCompile Include="EditorCamera.h" />
     <ClCompile Include="EditorLayer.cpp" />
     <ClCompile Include="RBEditor.cpp" />
     <ClCompile Include="Windows\ContentBrowser.cpp" />

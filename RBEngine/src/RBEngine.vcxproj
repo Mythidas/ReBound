@@ -75,8 +75,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_DEBUG;RB_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_DEBUG;RB_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -95,8 +95,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,8 +119,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -165,28 +165,29 @@
     <ClInclude Include="RBEngine\Math\Matrix.h" />
     <ClInclude Include="RBEngine\Math\Quaternion.h" />
     <ClInclude Include="RBEngine\Math\Vector.h" />
-    <ClInclude Include="RBEngine\Math\Vector3.h" />
     <ClInclude Include="RBEngine\Math\Vector2.h" />
+    <ClInclude Include="RBEngine\Math\Vector3.h" />
     <ClInclude Include="RBEngine\Math\Vector4.h" />
+    <ClInclude Include="RBEngine\Reflection\ComponentFactory.h" />
     <ClInclude Include="RBEngine\Reflection\Domain.h" />
     <ClInclude Include="RBEngine\Reflection\Meta.h" />
     <ClInclude Include="RBEngine\Reflection\ObjectFactory.h" />
     <ClInclude Include="RBEngine\Reflection\Type.h" />
     <ClInclude Include="RBEngine\Rendering\Camera.h" />
-    <ClInclude Include="RBEngine\Rendering\SpriteRenderer.h" />
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h" />
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h" />
     <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="RBEngine\Rendering\Renderer.h" />
-    <ClInclude Include="RBEngine\Reflection\ComponentFactory.h" />
+    <ClInclude Include="RBEngine\Rendering\SpriteRenderer.h" />
     <ClInclude Include="RBEngine\Scene\ComponentPool.h" />
     <ClInclude Include="RBEngine\Scene\Components.h" />
     <ClInclude Include="RBEngine\Scene\Entity.h" />
     <ClInclude Include="RBEngine\Scene\EntityEntry.h" />
-    <ClInclude Include="RBEngine\Scene\EntityRegistry.h" />
     <ClInclude Include="RBEngine\Scene\Scene.h" />
+    <ClInclude Include="RBEngine\Scene\SceneRegistry.h" />
+    <ClInclude Include="RBEngine\Scene\SceneSerializer.h" />
     <ClInclude Include="RBEngine\Scene\Tag.h" />
     <ClInclude Include="RBEngine\Scene\Transform.h" />
     <ClInclude Include="RBEngine\Utils\Bit.h" />
@@ -226,8 +227,9 @@
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp" />
     <ClCompile Include="RBEngine\Scene\Entity.cpp" />
     <ClCompile Include="RBEngine\Scene\EntityEntry.cpp" />
-    <ClCompile Include="RBEngine\Scene\EntityRegistry.cpp" />
     <ClCompile Include="RBEngine\Scene\Scene.cpp" />
+    <ClCompile Include="RBEngine\Scene\SceneRegistry.cpp" />
+    <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />
     <ClCompile Include="RBEngine\Utils\Bit.cpp" />
     <ClCompile Include="RBEngine\Utils\FileSystem.cpp" />

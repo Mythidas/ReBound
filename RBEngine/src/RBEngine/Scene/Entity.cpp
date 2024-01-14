@@ -14,7 +14,7 @@ namespace RB
 	{
 	}
 
-	Entity::Entity(const EntityID& id, EntityRegistry& registry)
+	Entity::Entity(const EntityID& id, SceneRegistry& registry)
 		: m_ID(id), m_Registry(&registry)
 	{
 	}

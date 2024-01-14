@@ -1,25 +1,34 @@
 #pragma once
 
 #include "Transform.h"
-#include "EntityRegistry.h"
+#include "SceneRegistry.h"
 #include "RBEngine/Rendering/Camera.h"
+#include "RBEngine/Utils/FileSystem.h"
 
 namespace RB
 {
 	class Scene
 	{
+		friend class SceneSerializer;
+
 	public:
+		Scene() = default;
+		Scene(const FileSystem& path);
+
 		void OnRuntimeUpdate();
 		void OnEditorUpdate(const Camera& camera, const Transform& cameraTransform);
 
-		EntityRegistry& GetRegistry() { return m_Registry; }
+		SceneRegistry& GetRegistry() { return m_Registry; }
 
-		static Ref<Scene>& GetActive() { return s_Active; }
+	public:
 		static Ref<Scene> Create();
+		static Ref<Scene> Create(const FileSystem& path);
+		static Ref<Scene>& GetActive() { return s_Active; }
 		
 	private:
 		static Ref<Scene> s_Active;
 
-		EntityRegistry m_Registry;
+		SceneRegistry m_Registry;
+		FileSystem m_LocalPath;
 	};
 }

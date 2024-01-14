@@ -6,6 +6,11 @@ namespace RB
 {
 	Ref<Scene> Scene::s_Active = nullptr;
 
+	Scene::Scene(const FileSystem& path)
+		: m_LocalPath(path)
+	{
+	}
+
 	void Scene::OnRuntimeUpdate()
 	{
 	}
@@ -13,7 +18,7 @@ namespace RB
 	void Scene::OnEditorUpdate(const Camera& camera, const Transform& cameraTransform)
 	{
 		Renderer::BeginFrame(camera, cameraTransform);
-		for (const auto& ent : EntityRegistry::View<SpriteRenderer>(m_Registry))
+		for (const auto& ent : SceneRegistry::View<SpriteRenderer>(m_Registry))
 		{
 			auto transform = m_Registry.GetComponent<Transform>(ent);
 			auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
@@ -25,6 +30,13 @@ namespace RB
 	Ref<Scene> Scene::Create()
 	{
 		Ref<Scene> scene = CreateRef<Scene>();
+		if (!s_Active) s_Active = scene;
+		return scene;
+	}
+
+	Ref<Scene> Scene::Create(const FileSystem& path)
+	{
+		Ref<Scene> scene = CreateRef<Scene>(path);
 		if (!s_Active) s_Active = scene;
 		return scene;
 	}

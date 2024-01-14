@@ -14,16 +14,16 @@ namespace RB
 	using EntityVersion = uint32_t;
 	using ComponentMask = std::bitset<MAX_COMPONENTS>;
 
-	class EntityRegistry;
+	class SceneRegistry;
 
 	struct EntityEntry
 	{
 		EntityID ID{ 0 };
 		ComponentMask Components;
-		EntityRegistry* Registry{ nullptr };
+		SceneRegistry* Registry{ nullptr };
 
 		EntityEntry() : ID(0) {}
-		EntityEntry(EntityRegistry* registry) : ID(0), Registry(registry) {}
+		EntityEntry(SceneRegistry* registry) : ID(0), Registry(registry) {}
 
 		operator EntityID() const
 		{

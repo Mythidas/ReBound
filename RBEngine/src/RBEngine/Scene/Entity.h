@@ -1,7 +1,7 @@
 #pragma once
 
 #include "EntityEntry.h"
-#include "EntityRegistry.h"
+#include "SceneRegistry.h"
 
 namespace RB
 {
@@ -11,7 +11,7 @@ namespace RB
 	public:
 		Entity(const EntityID& id);
 		Entity(const EntityEntry& entry);
-		Entity(const EntityID& id, EntityRegistry& registry);
+		Entity(const EntityID& id, SceneRegistry& registry);
 
 		template <typename T>
 		inline T* AddComponent()
@@ -26,10 +26,43 @@ namespace RB
 			return m_Registry->GetComponent<T>(m_ID);
 		}
 		template <typename T>
+		inline T* HasComponent() const
+		{
+			if (!m_Registry) return nullptr;
+			return m_Registry->HasComponent<T>(m_ID);
+		}
+		template <typename T>
 		inline void RemoveComponent()
 		{
 			if (!m_Registry) return;
 			m_Registry->RemoveComponent<T>(m_ID);
+		}
+
+		inline std::vector<ComponentMeta> GetComponents() const
+		{
+			if (!m_Registry) return std::vector<ComponentMeta>();
+			return m_Registry->GetComponents(m_ID);
+		}
+
+		inline void AddComponent(const TypeID& component)
+		{
+			if (!m_Registry) return;
+			return m_Registry->AddComponent(m_ID, component);
+		}
+		inline void* GetComponent(const TypeID& component) const
+		{
+			if (!m_Registry) return nullptr;
+			return m_Registry->GetComponent(m_ID, component);
+		}
+		inline bool HasComponent(const TypeID& component) const
+		{
+			if (!m_Registry) return false;
+			return m_Registry->HasComponent(m_ID, component);
+		}
+		inline void RemoveComponent(const TypeID& component)
+		{
+			if (!m_Registry) return;
+			return m_Registry->RemoveComponent(m_ID, component);
 		}
 
 		inline void Destroy()
@@ -37,9 +70,6 @@ namespace RB
 			if (!m_Registry) return;
 			m_Registry->DestroyEntity(m_ID);
 		}
-
-		static Entity Create();
-		static Entity Create(const std::string& name);
 
 		operator UUID() const
 		{
@@ -51,8 +81,12 @@ namespace RB
 			return m_ID;
 		}
 
+	public:
+		static Entity Create();
+		static Entity Create(const std::string& name);
+
 	private:
 		EntityID m_ID;
-		EntityRegistry* m_Registry;
+		SceneRegistry* m_Registry;
 	};
 }

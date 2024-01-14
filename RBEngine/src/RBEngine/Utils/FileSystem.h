@@ -14,6 +14,8 @@ namespace RB
 		FileSystem(const char* path) : m_InternalPath(path) {}
 		FileSystem(const std::string& path) : m_InternalPath(path) {}
 
+		void Write(const std::string& str);
+
 		std::string StreamString();
 		std::vector<unsigned char> StreamBuffer();
 		std::vector<char> StreamSignedBuffer();

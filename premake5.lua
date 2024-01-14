@@ -18,6 +18,7 @@ group "Dependencies"
     include "RBEngine/vendor/glad"
     include "RBEngine/vendor/imgui"
     include "RBEngine/vendor/imguizmo"
+    include "RBEngine/vendor/yaml-cpp"
 group ""
 
 group "Core"

@@ -4,7 +4,7 @@
 #include "Time.h"
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
-#include "RBEngine/Scene/EntityRegistry.h"
+#include "RBEngine/Scene/SceneRegistry.h"
 #include "RBEngine/Reflection/Domain.h"
 
 namespace RB

@@ -16,3 +16,6 @@
 [submodule "RBEngine/vendor/imguizmo"]
 	path = RBEngine/vendor/imguizmo
 	url = https://github.com/Mythidas/ImGuizmo.git
+[submodule "RBEngine/vendor/yaml-cpp"]
+	path = RBEngine/vendor/yaml-cpp
+	url = https://github.com/TheCherno/yaml-cpp.git

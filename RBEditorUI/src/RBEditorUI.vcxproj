@@ -135,10 +135,10 @@
     <ClInclude Include="RBEditorUI\GUI Internal\DrawerFactory.h" />
     <ClInclude Include="RBEditorUI\GUI Internal\DrawerMeta.h" />
     <ClInclude Include="RBEditorUI\GUI Internal\GUIDrawer.h" />
+    <ClInclude Include="RBEditorUI\GUI.h" />
     <ClInclude Include="RBEditorUI\GUI\Controls.h" />
     <ClInclude Include="RBEditorUI\GUI\EditorInfo.h" />
     <ClInclude Include="RBEditorUI\GUI\EditorWindow.h" />
-    <ClInclude Include="RBEditorUI\GUI.h" />
     <ClInclude Include="RBEditorUI\GUIInternal.h" />
   </ItemGroup>
   <ItemGroup>

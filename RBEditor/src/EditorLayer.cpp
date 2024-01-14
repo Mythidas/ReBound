@@ -20,7 +20,7 @@ namespace RB::Editor
         PushWindow(new Inspector());
         PushWindow(new ContentBrowser());
 
-        m_ActiveScene = Scene::Create();
+        m_ActiveScene = Scene::Create("/test.rbscene");
 
         auto ent = m_ActiveScene->GetRegistry().CreateEntity("Test Emt");
     }
@@ -48,7 +48,11 @@ namespace RB::Editor
         if (ImGui::BeginMainMenuBar())
         {
             static bool file = false;
-            ImGui::MenuItem("File", NULL, file);
+            if (ImGui::MenuItem("File", NULL, file))
+            {
+                SceneSerializer serial(m_ActiveScene);
+                serial.Serialize();
+            }
 
             ImGui::EndMainMenuBar();
         }

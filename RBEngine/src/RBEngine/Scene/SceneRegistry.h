@@ -10,27 +10,28 @@ namespace RB
 {
 	class Entity;
 
-	class EntityRegistry
+	class SceneRegistry
 	{
 	public:
-		EntityRegistry();
-		~EntityRegistry();
+		SceneRegistry();
+		~SceneRegistry();
 
 		Entity CreateEntity();
 		Entity CreateEntity(const std::string& name);
 		void DestroyEntity(const EntityID& entity);
 
-		void AddComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		T* AddComponent(const EntityID& entity);
 		template <typename T>
 		T* GetComponent(const EntityID& entity) const;
-		void* GetComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		bool HasComponent(const EntityID& entity) const;
-		bool HasComponent(const EntityID& entity, const TypeID& component);
 		template <typename T>
 		void RemoveComponent(const EntityID& entity);
+
+		void AddComponent(const EntityID& entity, const TypeID& component);
+		void* GetComponent(const EntityID& entity, const TypeID& component) const;
+		bool HasComponent(const EntityID& entity, const TypeID& component) const;
 		void RemoveComponent(const EntityID& entity, const TypeID& component);
 
 		std::vector<ComponentMeta> GetComponents(const EntityID& entity) const;
@@ -39,7 +40,7 @@ namespace RB
 		template <typename ...Components>
 		struct View
 		{
-			View(EntityRegistry& registry)
+			View(SceneRegistry& registry)
 				: m_Registry(registry)
 			{
 				if (sizeof...(Components) == 0)
@@ -64,7 +65,7 @@ namespace RB
 
 			struct Iterator
 			{
-				Iterator(EntityRegistry& registry, size_t index, ComponentMask components, bool all)
+				Iterator(SceneRegistry& registry, size_t index, ComponentMask components, bool all)
 					: _Registry(registry), Index(index), Mask(components), All(all)
 				{
 				}
@@ -98,7 +99,7 @@ namespace RB
 					return _Registry.IsValidEntity(_Registry.m_Entities[Index]) && (All || Mask == (Mask & _Registry.m_Entities[Index].Components));
 				}
 
-				EntityRegistry& _Registry;
+				SceneRegistry& _Registry;
 				size_t Index{ 0 };
 				ComponentMask Mask;
 				bool All{ false };
@@ -126,7 +127,7 @@ namespace RB
 			bool m_All{ false };
 			bool m_Invalid{ false };
 			ComponentMask m_Mask;
-			EntityRegistry& m_Registry;
+			SceneRegistry& m_Registry;
 		};
 
 		template <typename ...Components>
@@ -150,7 +151,7 @@ namespace RB
 	};
 
 	template<typename T>
-	inline T* EntityRegistry::AddComponent(const EntityID& entity)
+	inline T* SceneRegistry::AddComponent(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -171,7 +172,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline T* EntityRegistry::GetComponent(const EntityID& entity) const
+	inline T* SceneRegistry::GetComponent(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return nullptr;
 
@@ -184,7 +185,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline bool EntityRegistry::HasComponent(const EntityID& entity) const
+	inline bool SceneRegistry::HasComponent(const EntityID& entity) const
 	{
 		if (!IsValidEntity(entity)) return false;
 
@@ -197,7 +198,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline void EntityRegistry::RemoveComponent(const EntityID& entity)
+	inline void SceneRegistry::RemoveComponent(const EntityID& entity)
 	{
 		if (!IsValidEntity(entity)) return;
 
@@ -206,7 +207,7 @@ namespace RB
 	}
 
 	template<typename T>
-	inline size_t EntityRegistry::FindComponentID() const
+	inline size_t SceneRegistry::FindComponentID() const
 	{
 		return FindComponentID(Type<T>().Name());
 	}

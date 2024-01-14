@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{2AEC870B-96F5-877C-1F71-9E7C8B79937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI Internal">
+      <UniqueIdentifier>{87A2C172-7305-5117-1C8B-89CD08CD1C9A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RBEditorUI\GUI Internal\CustomDrawers.h">
+      <Filter>GUI Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI Internal\DrawerFactory.h">
+      <Filter>GUI Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI Internal\DrawerMeta.h">
+      <Filter>GUI Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI Internal\GUIDrawer.h">
+      <Filter>GUI Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI.h" />
+    <ClInclude Include="RBEditorUI\GUI\Controls.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI\EditorInfo.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUI\EditorWindow.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEditorUI\GUIInternal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RBEditorUI\GUI Internal\CustomDrawers.cpp">
+      <Filter>GUI Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEditorUI\GUI Internal\GUIDrawer.cpp">
+      <Filter>GUI Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEditorUI\GUI\Controls.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEditorUI\GUI\EditorInfo.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEditorUI\GUI\EditorWindow.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

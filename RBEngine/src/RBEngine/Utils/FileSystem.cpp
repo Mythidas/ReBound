@@ -3,6 +3,12 @@
 
 namespace RB
 {
+	void FileSystem::Write(const std::string& str)
+	{
+		std::ofstream fout(m_InternalPath);
+		fout << str.c_str();
+	}
+
 	std::string FileSystem::StreamString()
 	{
 		std::ifstream stream = getStream();
