@@ -16,6 +16,10 @@ namespace RB
 	SceneRegistry::~SceneRegistry()
 	{
 		delete[] m_Entities;
+		for (size_t i = 0; i < m_ComponentPools.size(); i++)
+		{
+			delete m_ComponentPools[i];
+		}
 	}
 
 	Entity SceneRegistry::CreateEntity()
@@ -60,7 +64,7 @@ namespace RB
 
 	void SceneRegistry::AddComponent(const EntityID& entity, const TypeID& component)
 	{
-		Domain::FindComponent(component).AddFunc(entity);
+		Domain::FindComponent(component).AddFunc(this, entity);
 	}
 
 	void* SceneRegistry::GetComponent(const EntityID& entity, const TypeID& component) const

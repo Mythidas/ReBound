@@ -8,6 +8,7 @@
 #include "Windows/ContentBrowser.h"
 
 #include <imgui.h>
+#include <yaml-cpp/yaml.h>
 
 namespace RB::Editor
 {
@@ -20,9 +21,9 @@ namespace RB::Editor
         PushWindow(new Inspector());
         PushWindow(new ContentBrowser());
 
-        m_ActiveScene = Scene::Create("/test.rbscene");
+        m_ActiveScene = Scene::Create();
 
-        auto ent = m_ActiveScene->GetRegistry().CreateEntity("Test Emt");
+        Window::OnKeyPressed += RB_BIND_FNC(_OnKeyPressed);
     }
 
     void EditorLayer::OnDetach()
@@ -45,17 +46,20 @@ namespace RB::Editor
 
     void EditorLayer::OnRenderUI()
     {
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3.0f, 3.0f));
         if (ImGui::BeginMainMenuBar())
         {
-            static bool file = false;
-            if (ImGui::MenuItem("File", NULL, file))
+            if (ImGui::BeginMenu("Project"))
             {
-                SceneSerializer serial(m_ActiveScene);
-                serial.Serialize();
+                if (ImGui::MenuItem("Save Scene", "CTRL+S"))
+                    _SaveScene();
+
+                ImGui::EndMenu();
             }
 
             ImGui::EndMainMenuBar();
         }
+        ImGui::PopStyleVar();
 
         for (auto& window : m_Windows)
         {
@@ -91,5 +95,27 @@ namespace RB::Editor
     void EditorLayer::SetEditorCamera(EditorCamera* camera)
     {
         Get().m_Camera = camera;
+    }
+
+    bool EditorLayer::_OnKeyPressed(int key)
+    {
+        if (key == KeyCode::S && Input::IsKeyPressed(KeyCode::LeftControl))
+            _SaveScene();
+
+        return false;
+    }
+
+    void EditorLayer::_SaveScene()
+    {
+        SceneSerializer serial(m_ActiveScene);
+        serial.Serialize();
+        if (Debug::Result result = serial.Serialize(); result & Debug::ResultCode::Success)
+        {
+            Debug::Log::Info("Saved Scene!");
+        }
+        else
+        {
+            Debug::Log::Error(result.Message.c_str());
+        }
     }
 }

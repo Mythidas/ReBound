@@ -1,0 +1,24 @@
+Scene: Scene name here
+Entities:
+  - Entity: 0
+    Components:
+      struct RB::Tag:
+        Name: Green Stick
+      struct RB::Transform:
+        Position:
+          X: -1.20000005
+          Y: 0
+          Z: 0
+        Rotation:
+          X: 0
+          Y: 0
+          Z: 0
+        Scale:
+          X: 0.200000003
+          Y: 2.1500001
+          Z: 1
+      struct RB::SpriteRenderer:
+        Color:
+          X: 0.400000006
+          Y: 1
+          Z: 0.649999976

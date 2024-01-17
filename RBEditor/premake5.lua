@@ -25,6 +25,7 @@ project "RBEditor"
         "%{IncludeDir.GLM}",
         "%{IncludeDir.IMGUI}",
         "%{IncludeDir.IMGUIZMO}",
+        "%{IncludeDir.YAML_CPP}"
     }
 
     links
@@ -32,7 +33,13 @@ project "RBEditor"
         "RBEngine",
         "RBEditorUI",
         "ImGui",
-        "ImGuizmo"
+        "ImGuizmo",
+        "yaml-cpp"
+    }
+
+    defines
+    {
+        "YAML_CPP_STATIC_DEFINE"
     }
 
     filter "system:windows"

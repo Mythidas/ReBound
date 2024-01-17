@@ -21,6 +21,7 @@
     <ClInclude Include="Windows\Viewport.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EditorCamera.cpp" />
@@ -38,5 +39,6 @@
     <ClCompile Include="Windows\Viewport.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
+    <ClCompile Include="ProjectLayer.cpp" />
   </ItemGroup>
 </Project>

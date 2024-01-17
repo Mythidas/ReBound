@@ -1,6 +1,9 @@
 #pragma once
 
-#include "RBEngine.h"
+#include "EditorLayer.h"
+#include "ProjectLayer.h"
+
+#include <RBEngine.h>
 
 namespace RB
 {
@@ -8,5 +11,10 @@ namespace RB
 	{
 	public:
 		RBEditor();
+
+		static void OpenProject();
+
+	private:
+		Editor::ProjectLayer* m_ProjectLayer;
 	};
 }

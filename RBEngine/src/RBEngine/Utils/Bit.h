@@ -20,7 +20,10 @@ namespace RB
 		template <typename R, typename T>
 		static R Get(T num, uint32_t bit);
 
-		static uint32_t U32_4x8(uint8_t x, uint8_t y, uint8_t z, uint8_t w);
+		inline static constexpr uint32_t U32_4x8(uint8_t x, uint8_t y, uint8_t z, uint8_t w)
+		{
+			return uint32_t((w << 24) | (z << 16) | (y << 8) | x);
+		}
 	};
 
 	template<typename T>

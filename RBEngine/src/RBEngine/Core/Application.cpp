@@ -12,6 +12,7 @@ namespace RB
 	Application::Application()
 	{
 		m_Input = CreateScope<Input>();
+		m_Project = CreateScope<Project>();
 		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
@@ -62,6 +63,8 @@ namespace RB
 			}
 			m_ImGUILayer->EndUI();
 #endif
+
+			m_LayerStack.Flush();
 		}
 	}
 	bool Application::OnWindowClose()

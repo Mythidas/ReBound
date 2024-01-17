@@ -12,6 +12,7 @@ namespace RB
 
 	class SceneRegistry
 	{
+		friend class SceneSerializer;
 	public:
 		SceneRegistry();
 		~SceneRegistry();

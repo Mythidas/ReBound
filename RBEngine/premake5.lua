@@ -23,7 +23,7 @@ project "RBEngine"
 	{
 		"_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE",
-        "YAML_CPP_DLL"
+        "YAML_CPP_STATIC_DEFINE"
 	}
 
     includedirs
@@ -45,6 +45,7 @@ project "RBEngine"
         "Glad",
         "ImGui",
         "ImGuizmo",
+        "yaml-cpp",
         "OpenGL32.lib"
     }
 

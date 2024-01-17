@@ -41,9 +41,9 @@ namespace RB
 		}
 
 	public:
-		static inline T* _AddComponent(EntityID entity)
+		static inline T* _AddComponent(SceneRegistry* registry, EntityID entity)
 		{
-			return Scene::GetActive()->GetRegistry().AddComponent<T>(entity);
+			return registry->AddComponent<T>(entity);
 		}
 
 	private:

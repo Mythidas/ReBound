@@ -12,36 +12,41 @@ namespace RB
 		}
 	}
 
-	void LayerStack::PushLayer(Layer* layer)
+	void LayerStack::Flush()
 	{
-		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex++, layer);
-		layer->OnAttach();
+		for (auto it = m_Trash.begin(); it != m_Trash.end(); it++)
+		{
+			auto it_l = std::find(m_Layers.begin(), m_Layers.end(), *it);
+			if (it_l != m_Layers.end())
+			{
+				m_Layers.erase(it_l);
+			}
+		}
+
+		for (auto it = m_Pending.begin(); it != m_Pending.end(); it++)
+		{
+			m_Layers.push_back(*it);
+			m_Layers.back()->OnAttach();
+		}
+
+		m_Trash.clear();
+		m_Pending.clear();
 	}
 
-	void LayerStack::PushOverlay(Layer* overlay)
+	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_Layers.emplace_back(overlay);
-		overlay->OnAttach();
+		m_Pending.push_back(layer);
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
-		if (it != m_Layers.end())
+		for (auto it = m_Layers.begin(); it != m_Layers.end(); it++)
 		{
-			m_Layers.erase(it);
-			m_LayerInsertIndex--;
+			if (*it == layer)
+			{
+				m_Trash.push_back(layer);
+				break;
+			}
 		}
-		layer->OnDetach();
-	}
-
-	void LayerStack::PopOverlay(Layer* overlay)
-	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
-		if (it != m_Layers.end())
-		{
-			m_Layers.erase(it);
-		}
-		overlay->OnDetach();
 	}
 }

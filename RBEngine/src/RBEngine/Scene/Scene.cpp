@@ -6,7 +6,7 @@ namespace RB
 {
 	Ref<Scene> Scene::s_Active = nullptr;
 
-	Scene::Scene(const FileSystem& path)
+	Scene::Scene(const File& path)
 		: m_LocalPath(path)
 	{
 	}
@@ -34,7 +34,7 @@ namespace RB
 		return scene;
 	}
 
-	Ref<Scene> Scene::Create(const FileSystem& path)
+	Ref<Scene> Scene::Create(const File& path)
 	{
 		Ref<Scene> scene = CreateRef<Scene>(path);
 		if (!s_Active) s_Active = scene;

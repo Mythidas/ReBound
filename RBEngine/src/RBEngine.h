@@ -2,6 +2,7 @@
 
 // Core
 #include "RBEngine/Core/Application.h"
+#include "RBEngine/Core/Project.h"
 #include "RBEngine/Core/Input.h"
 #include "RBEngine/Core/Time.h"
 #include "RBEngine/Core/Defines.h"
@@ -38,3 +39,5 @@
 
 // Utils
 #include "RBEngine/Utils/Event.h"
+#include "RBEngine/Utils/File.h"
+#include "RBEngine/Utils/Directory.h"

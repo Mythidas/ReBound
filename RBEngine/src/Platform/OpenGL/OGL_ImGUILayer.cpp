@@ -34,6 +34,7 @@ namespace RB::OGL
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 
+		style.WindowBorderSize = 1.0f;
 		style.FramePadding = ImVec2(5.0f, 4.0f);
 		style.WindowPadding = ImVec2(3.0f, 3.0f);
 		style.WindowMinSize = ImVec2(250.0f, 250.0f);

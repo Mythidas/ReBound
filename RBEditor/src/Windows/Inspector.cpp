@@ -76,7 +76,7 @@ namespace RB::Editor
 
 				if (ImGui::MenuItem(component.second.Info.ShortName().c_str()))
 				{
-					component.second.AddFunc(context.ID);
+					component.second.AddFunc(&Scene::GetActive()->GetRegistry(), context.ID);
 					ImGui::CloseCurrentPopup();
 				}
 			}

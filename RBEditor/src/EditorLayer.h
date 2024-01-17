@@ -34,6 +34,10 @@ namespace RB::Editor
 		static EditorContext& GetContext() { return Get().m_Context; }
 
 	private:
+		bool _OnKeyPressed(int key);
+		void _SaveScene();
+
+	private:
 		EditorContext m_Context;
 		EditorCamera* m_Camera;
 		std::vector<EditorWindow*> m_Windows;

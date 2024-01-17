@@ -75,7 +75,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_DEBUG;RB_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_DEBUG;RB_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -95,7 +95,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -119,7 +119,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_DLL;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;..\vendor\spdlog\include;..\vendor\glfw\include;..\vendor\glad\include;..\vendor\stb_image;..\vendor\glm;..\vendor\imgui;..\vendor\imguizmo;..\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -155,11 +155,13 @@
     <ClInclude Include="RBEngine\Core\KeyCodes.h" />
     <ClInclude Include="RBEngine\Core\Layer.h" />
     <ClInclude Include="RBEngine\Core\LayerStack.h" />
+    <ClInclude Include="RBEngine\Core\Project.h" />
     <ClInclude Include="RBEngine\Core\Time.h" />
     <ClInclude Include="RBEngine\Core\Window.h" />
     <ClInclude Include="RBEngine\Debug\Assert.h" />
     <ClInclude Include="RBEngine\Debug\Log.h" />
     <ClInclude Include="RBEngine\Debug\Result.h" />
+    <ClInclude Include="RBEngine\Debug\Timer.h" />
     <ClInclude Include="RBEngine\ImGUI\ImGUILayer.h" />
     <ClInclude Include="RBEngine\Math\Mathf.h" />
     <ClInclude Include="RBEngine\Math\Matrix.h" />
@@ -191,13 +193,14 @@
     <ClInclude Include="RBEngine\Scene\Tag.h" />
     <ClInclude Include="RBEngine\Scene\Transform.h" />
     <ClInclude Include="RBEngine\Utils\Bit.h" />
+    <ClInclude Include="RBEngine\Utils\Directory.h" />
     <ClInclude Include="RBEngine\Utils\Event.h" />
-    <ClInclude Include="RBEngine\Utils\FileSystem.h" />
+    <ClInclude Include="RBEngine\Utils\File.h" />
     <ClInclude Include="RBEngine\Utils\Flags.h" />
     <ClInclude Include="RBEngine\Utils\Queue.h" />
     <ClInclude Include="RBEngine\Utils\Singleton.h" />
     <ClInclude Include="RBEngine\Utils\Stringf.h" />
-    <ClInclude Include="RBEngine\Utils\UUID.h" />
+    <ClInclude Include="RBEngine\Core\UUID.h" />
     <ClInclude Include="rbpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +214,11 @@
     <ClCompile Include="RBEngine\Core\Application.cpp" />
     <ClCompile Include="RBEngine\Core\Input.cpp" />
     <ClCompile Include="RBEngine\Core\LayerStack.cpp" />
+    <ClCompile Include="RBEngine\Core\Project.cpp" />
     <ClCompile Include="RBEngine\Core\Time.cpp" />
     <ClCompile Include="RBEngine\Core\Window.cpp" />
     <ClCompile Include="RBEngine\Debug\Log.cpp" />
+    <ClCompile Include="RBEngine\Debug\Timer.cpp" />
     <ClCompile Include="RBEngine\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="RBEngine\Math\Mathf.cpp" />
     <ClCompile Include="RBEngine\Math\Vector3.cpp" />
@@ -231,10 +236,10 @@
     <ClCompile Include="RBEngine\Scene\SceneRegistry.cpp" />
     <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />
-    <ClCompile Include="RBEngine\Utils\Bit.cpp" />
-    <ClCompile Include="RBEngine\Utils\FileSystem.cpp" />
+    <ClCompile Include="RBEngine\Utils\Directory.cpp" />
+    <ClCompile Include="RBEngine\Utils\File.cpp" />
     <ClCompile Include="RBEngine\Utils\Stringf.cpp" />
-    <ClCompile Include="RBEngine\Utils\UUID.cpp" />
+    <ClCompile Include="RBEngine\Core\UUID.cpp" />
     <ClCompile Include="rbpch.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +254,9 @@
     </ProjectReference>
     <ProjectReference Include="..\vendor\imguizmo\ImGuizmo.vcxproj">
       <Project>{36FD234F-22CA-7E5A-4BE3-6C02370FB4E8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendor\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

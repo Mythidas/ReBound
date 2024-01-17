@@ -32,10 +32,11 @@ namespace RB
 		std::vector<VariableMeta> Vars;
 	};
 
+	class SceneRegistry;
 	struct ComponentMeta
 	{
 		MetaInfo Info;
 		std::vector<VariableMeta> Vars;
-		std::function<void(unsigned long long)> AddFunc;
+		std::function<void(SceneRegistry*, unsigned long long)> AddFunc;
 	};
 }

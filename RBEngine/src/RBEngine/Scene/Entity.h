@@ -71,6 +71,11 @@ namespace RB
 			m_Registry->DestroyEntity(m_ID);
 		}
 
+		inline EntityID GetID() const
+		{
+			return m_ID;
+		}
+
 		operator UUID() const
 		{
 			return UUID(m_ID);

@@ -1,6 +1,6 @@
 #include "rbpch.h"
 #include "OGL_GraphicsPipeline.h"
-#include "RBEngine/Utils/FileSystem.h"
+#include "RBEngine/Utils/File.h"
 
 #include <glad/glad.h>
 
@@ -18,10 +18,10 @@ namespace RB::OGL
 			{
 				glGetShaderInfoLog(shader, 512, nullptr, infoLog);
 				Debug::Log::Error("Shader Compile Error: {0}", infoLog);
-				return Debug::Result::Error;
+				return Debug::ResultCode::Error;
 			}
 
-			return Debug::Result::Success;
+			return Debug::ResultCode::Success;
 		}
 
 		Debug::Result LogProgramError(uint32_t program)
@@ -34,10 +34,10 @@ namespace RB::OGL
 			{
 				glGetShaderInfoLog(program, 512, nullptr, infoLog);
 				Debug::Log::Error("Program Link Error: {0}", infoLog);
-				return Debug::Result::Error;
+				return Debug::ResultCode::Error;
 			}
 
-			return Debug::Result::Success;
+			return Debug::ResultCode::Success;
 		}
 
 		int GetAttributeSize(VertexAttribute attrib)
@@ -80,8 +80,8 @@ namespace RB::OGL
 	OGL_GraphicsPipeline::OGL_GraphicsPipeline(const Builder& builder)
 		: m_Builder(builder), m_RenderID(0), m_VertexID(0)
 	{
-		std::string vertSrc = FileSystem(builder.VertPath).StreamString();
-		std::string fragSrc = FileSystem(builder.FragPath).StreamString();
+		std::string vertSrc = File(builder.VertPath).ReadString();
+		std::string fragSrc = File(builder.FragPath).ReadString();
 
 		const char* vertCode = vertSrc.c_str();
 		const char* fragCode = fragSrc.c_str();
@@ -90,7 +90,7 @@ namespace RB::OGL
 		glShaderSource(vertShader, 1, &vertCode, nullptr);
 		glCompileShader(vertShader);
 
-		if (Utils::LogShaderError(vertShader) != Debug::Result::Success)
+		if (Utils::LogShaderError(vertShader) != Debug::ResultCode::Success)
 		{
 			Debug::Log::Error("Failed to Create Shader: {0}", builder.VertPath);
 			return;
@@ -100,7 +100,7 @@ namespace RB::OGL
 		glShaderSource(fragShader, 1, &fragCode, nullptr);
 		glCompileShader(fragShader);
 
-		if (Utils::LogShaderError(fragShader) != Debug::Result::Success)
+		if (Utils::LogShaderError(fragShader) != Debug::ResultCode::Success)
 		{
 			Debug::Log::Error("Failed to Create Shader: {0}", builder.FragPath);
 			return;
@@ -111,7 +111,7 @@ namespace RB::OGL
 		glAttachShader(m_RenderID, fragShader);
 		glLinkProgram(m_RenderID);
 
-		if (Utils::LogProgramError(m_RenderID) != Debug::Result::Success)
+		if (Utils::LogProgramError(m_RenderID) != Debug::ResultCode::Success)
 		{
 			Debug::Log::Error("Failed to Create Program ID {0}: Link Error", m_RenderID);
 			return;

@@ -4,9 +4,11 @@
 #include "Window.h"
 #include "LayerStack.h"
 #include "Input.h"
+#include "Project.h"
 #include "RBEngine/Rendering/RenderCommands.h"
 #include "RBEngine/ImGUI/ImGUILayer.h"
 #include "RBEngine/Utils/Singleton.h"
+#include "RBEngine/Utils/Bit.h"
 
 namespace RB
 {
@@ -19,12 +21,12 @@ namespace RB
 		void Run();
 
 		void PushLayer(Layer* layer) { m_LayerStack.PushLayer(layer); }
-		void PushOverlay(Layer* overlay) { m_LayerStack.PushOverlay(overlay); }
-
 		void PopLayer(Layer* layer) { m_LayerStack.PopLayer(layer); }
-		void PopOverlay(Layer* overlay) { m_LayerStack.PopOverlay(overlay); }
 
 		static Scope<Window>& GetWindow() { return Get().m_Window; }
+
+	public:
+		static const uint32_t VERSION = Bit::U32_4x8(0, 0, 1, 0);
 
 	private:
 		bool OnWindowClose();
@@ -33,6 +35,7 @@ namespace RB
 	private:
 		Scope<Window> m_Window;
 		Scope<Input> m_Input;
+		Scope<Project> m_Project;
 		Scope<RenderCommands> m_RenderCommands;
 		Ref<ImGUILayer> m_ImGUILayer;
 		LayerStack m_LayerStack;

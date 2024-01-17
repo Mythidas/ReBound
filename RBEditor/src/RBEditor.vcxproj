@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RB_PLAT_WINDOWS;RB_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;..\..\RBEngine\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -95,8 +95,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;..\..\RBEngine\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -116,8 +116,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;RB_PLAT_WINDOWS;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\RBEngine\src;..\..\RBEditorUI\src;..\..\RBEngine\vendor\spdlog\include;..\..\RBEngine\vendor\glm;..\..\RBEngine\vendor\imgui;..\..\RBEngine\vendor\imguizmo;..\..\RBEngine\vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorLayer.h" />
+    <ClInclude Include="ProjectLayer.h" />
     <ClInclude Include="RBEditor.h" />
     <ClInclude Include="Windows\ContentBrowser.h" />
     <ClInclude Include="Windows\Hierarchy.h" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="EditorLayer.cpp" />
+    <ClCompile Include="ProjectLayer.cpp" />
     <ClCompile Include="RBEditor.cpp" />
     <ClCompile Include="Windows\ContentBrowser.cpp" />
     <ClCompile Include="Windows\Hierarchy.cpp" />
@@ -163,6 +165,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\RBEngine\vendor\imguizmo\ImGuizmo.vcxproj">
       <Project>{36FD234F-22CA-7E5A-4BE3-6C02370FB4E8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RBEngine\vendor\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
