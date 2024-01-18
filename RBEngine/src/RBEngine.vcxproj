@@ -144,6 +144,7 @@
     <ClInclude Include="Platform\OpenGL\OGL_GraphicsContext.h" />
     <ClInclude Include="Platform\OpenGL\OGL_GraphicsPipeline.h" />
     <ClInclude Include="Platform\OpenGL\OGL_ImGUILayer.h" />
+    <ClInclude Include="Platform\OpenGL\OGL_Image.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderBuffer.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
     <ClInclude Include="Platform\Windows\WindowsWindow.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="RBEngine\Core\LayerStack.h" />
     <ClInclude Include="RBEngine\Core\Project.h" />
     <ClInclude Include="RBEngine\Core\Time.h" />
+    <ClInclude Include="RBEngine\Core\UUID.h" />
     <ClInclude Include="RBEngine\Core\Window.h" />
     <ClInclude Include="RBEngine\Debug\Assert.h" />
     <ClInclude Include="RBEngine\Debug\Log.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h" />
+    <ClInclude Include="RBEngine\Rendering\Image.h" />
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h" />
     <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="RBEngine\Rendering\Renderer.h" />
@@ -200,7 +203,6 @@
     <ClInclude Include="RBEngine\Utils\Queue.h" />
     <ClInclude Include="RBEngine\Utils\Singleton.h" />
     <ClInclude Include="RBEngine\Utils\Stringf.h" />
-    <ClInclude Include="RBEngine\Core\UUID.h" />
     <ClInclude Include="rbpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +210,7 @@
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsContext.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_ImGUILayer.cpp" />
+    <ClCompile Include="Platform\OpenGL\OGL_Image.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderBuffer.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp" />
@@ -216,6 +219,7 @@
     <ClCompile Include="RBEngine\Core\LayerStack.cpp" />
     <ClCompile Include="RBEngine\Core\Project.cpp" />
     <ClCompile Include="RBEngine\Core\Time.cpp" />
+    <ClCompile Include="RBEngine\Core\UUID.cpp" />
     <ClCompile Include="RBEngine\Core\Window.cpp" />
     <ClCompile Include="RBEngine\Debug\Log.cpp" />
     <ClCompile Include="RBEngine\Debug\Timer.cpp" />
@@ -227,6 +231,7 @@
     <ClCompile Include="RBEngine\Rendering\Framebuffer.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsContext.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp" />
+    <ClCompile Include="RBEngine\Rendering\Image.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderBuffer.cpp" />
     <ClCompile Include="RBEngine\Rendering\RenderCommands.cpp" />
     <ClCompile Include="RBEngine\Rendering\Renderer.cpp" />
@@ -239,7 +244,6 @@
     <ClCompile Include="RBEngine\Utils\Directory.cpp" />
     <ClCompile Include="RBEngine\Utils\File.cpp" />
     <ClCompile Include="RBEngine\Utils\Stringf.cpp" />
-    <ClCompile Include="RBEngine\Core\UUID.cpp" />
     <ClCompile Include="rbpch.cpp" />
   </ItemGroup>
   <ItemGroup>

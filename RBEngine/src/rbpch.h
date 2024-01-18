@@ -1,5 +1,7 @@
 #pragma once
 
+#define STB_IMAGE_IMPLEMENTATION
+
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Debug/Timer.h"
 #include "RBEngine/Debug/Assert.h"

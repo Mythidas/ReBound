@@ -13,7 +13,7 @@ namespace RB::OGL
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 		virtual void Resize(const UVector2& size) override;
-		virtual void* GetRenderID() const { return reinterpret_cast<void*>((uint64_t)m_RenderID); }
+		virtual void* GetRenderID() const { return reinterpret_cast<void*>((uint32_t)m_Texture); }
 
 	private:
 		uint32_t m_RenderID{ 0 };

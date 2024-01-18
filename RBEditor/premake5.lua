@@ -22,6 +22,7 @@ project "RBEditor"
         "%{wks.location}/RBEngine/src",
         "%{wks.location}/RBEditorUI/src",
         "%{IncludeDir.SPD}",
+        "%{IncludeDir.STB}",
         "%{IncludeDir.GLM}",
         "%{IncludeDir.IMGUI}",
         "%{IncludeDir.IMGUIZMO}",

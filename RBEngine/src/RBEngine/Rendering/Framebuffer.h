@@ -16,11 +16,11 @@ namespace RB
 			Ref<Framebuffer> Build() const { return Create(*this); }
 		};
 
+		static Ref<Framebuffer> Create(const Builder& builder);
+
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual void Resize(const UVector2& size) = 0;
 		virtual void* GetRenderID() const = 0;
-
-		static Ref<Framebuffer> Create(const Builder& builder);
 	};
 }

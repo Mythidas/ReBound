@@ -16,9 +16,9 @@ namespace RB
 	template <typename T>
 	struct TVector3 : public Object
 	{
-		union { T x; T r; };
-		union { T y; T g; };
-		union { T z; T b; };
+		union { T x; T r; T width; };
+		union { T y; T g; T height; };
+		union { T z; T b; T depth; };
 
 		static const Vector3 One;
 		static const Vector3 Zero;

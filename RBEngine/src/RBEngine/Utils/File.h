@@ -21,6 +21,7 @@ namespace RB
 		File() = default;
 		File(FS::path path);
 		File(const std::string& path);
+		File(const char* path);
 
 		void Write(const char* data) const;
 		void Write(const std::string& data) const;

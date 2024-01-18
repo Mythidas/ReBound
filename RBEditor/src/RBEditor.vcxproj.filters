@@ -8,6 +8,7 @@
   <ItemGroup>
     <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorLayer.h" />
+    <ClInclude Include="ProjectLayer.h" />
     <ClInclude Include="RBEditor.h" />
     <ClInclude Include="Windows\ContentBrowser.h">
       <Filter>Windows</Filter>
@@ -21,11 +22,11 @@
     <ClInclude Include="Windows\Viewport.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="EditorLayer.cpp" />
+    <ClCompile Include="ProjectLayer.cpp" />
     <ClCompile Include="RBEditor.cpp" />
     <ClCompile Include="Windows\ContentBrowser.cpp">
       <Filter>Windows</Filter>
@@ -39,6 +40,5 @@
     <ClCompile Include="Windows\Viewport.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectLayer.cpp" />
   </ItemGroup>
 </Project>

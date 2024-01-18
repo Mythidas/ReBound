@@ -22,7 +22,7 @@ namespace RB
 		{
 			auto transform = m_Registry.GetComponent<Transform>(ent);
 			auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
-			Renderer::DrawQuad(*transform, *sprite);
+			Renderer::DrawQuad(transform->Position, transform->Rotation, transform->Scale, sprite->Color);
 		}
 		Renderer::EndFrame();
 	}

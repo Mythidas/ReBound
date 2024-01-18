@@ -41,6 +41,11 @@ namespace RB
 	{
 	}
 
+	File::File(const char* path)
+		: File(FS::path(path))
+	{
+	}
+
 	void File::Write(const char* data) const
 	{
 		if (m_Invalid) return;

@@ -18,6 +18,7 @@
 
 // Rendering
 #include "RBEngine/Rendering/Renderer.h"
+#include "RBEngine/Rendering/Image.h"
 #include "RBEngine/Rendering/Framebuffer.h"
 #include "RBEngine/Rendering/RenderBuffer.h"
 #include "RBEngine/Rendering/GraphicsPipline.h"

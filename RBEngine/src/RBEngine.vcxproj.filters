@@ -51,6 +51,9 @@
     <ClInclude Include="Platform\OpenGL\OGL_ImGUILayer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="Platform\OpenGL\OGL_Image.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="Platform\OpenGL\OGL_RenderBuffer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
@@ -82,7 +85,13 @@
     <ClInclude Include="RBEngine\Core\LayerStack.h">
       <Filter>RBEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Core\Project.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Core\Time.h">
+      <Filter>RBEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Core\UUID.h">
       <Filter>RBEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Core\Window.h">
@@ -95,6 +104,9 @@
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Debug\Result.h">
+      <Filter>RBEngine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Debug\Timer.h">
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\ImGUI\ImGUILayer.h">
@@ -148,6 +160,9 @@
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Rendering\Image.h">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
@@ -190,7 +205,13 @@
     <ClInclude Include="RBEngine\Utils\Bit.h">
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Utils\Directory.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Utils\Event.h">
+      <Filter>RBEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Utils\File.h">
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Utils\Flags.h">
@@ -205,14 +226,7 @@
     <ClInclude Include="RBEngine\Utils\Stringf.h">
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Core\UUID.h">
-      <Filter>RBEngine\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="rbpch.h" />
-    <ClInclude Include="RBEngine\Utils\File.h" />
-    <ClInclude Include="RBEngine\Utils\Directory.h" />
-    <ClInclude Include="RBEngine\Core\Project.h" />
-    <ClInclude Include="RBEngine\Debug\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp">
@@ -225,6 +239,9 @@
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Platform\OpenGL\OGL_ImGUILayer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\OpenGL\OGL_Image.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Platform\OpenGL\OGL_RenderBuffer.cpp">
@@ -245,13 +262,22 @@
     <ClCompile Include="RBEngine\Core\LayerStack.cpp">
       <Filter>RBEngine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="RBEngine\Core\Project.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="RBEngine\Core\Time.cpp">
+      <Filter>RBEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Core\UUID.cpp">
       <Filter>RBEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Core\Window.cpp">
       <Filter>RBEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Debug\Log.cpp">
+      <Filter>RBEngine\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Debug\Timer.cpp">
       <Filter>RBEngine\Debug</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\ImGUI\ImGUILayer.cpp">
@@ -276,6 +302,9 @@
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp">
+      <Filter>RBEngine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Rendering\Image.cpp">
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Rendering\RenderBuffer.cpp">
@@ -305,16 +334,15 @@
     <ClCompile Include="RBEngine\Scene\Transform.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="RBEngine\Utils\Directory.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Utils\File.cpp">
+      <Filter>RBEngine\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="RBEngine\Utils\Stringf.cpp">
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Core\UUID.cpp">
-      <Filter>RBEngine\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="rbpch.cpp" />
-    <ClCompile Include="RBEngine\Utils\File.cpp" />
-    <ClCompile Include="RBEngine\Utils\Directory.cpp" />
-    <ClCompile Include="RBEngine\Core\Project.cpp" />
-    <ClCompile Include="RBEngine\Debug\Timer.cpp" />
   </ItemGroup>
 </Project>

@@ -146,6 +146,8 @@ namespace RB::OGL
 
 	void OGL_GraphicsPipeline::Draw(uint32_t count) const
 	{
+		if (count == 0) return;
+
 		glUseProgram(m_RenderID);
 		glBindVertexArray(m_VertexID);
 
