@@ -7,6 +7,6 @@ namespace RB::Editor
 {
 	void ContentBrowser::OnGUIRender()
 	{
-		ImGui::Text(Project::GetAssestsDir().ToString().c_str());
+		
 	}
 }
