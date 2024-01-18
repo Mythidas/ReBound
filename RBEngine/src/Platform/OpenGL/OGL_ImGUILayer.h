@@ -12,8 +12,5 @@ namespace RB::OGL
 
 		virtual void BeginUI() override;
 		virtual void EndUI() override;
-
-	private:
-		void SetDarkThemeColors();
 	};
 }

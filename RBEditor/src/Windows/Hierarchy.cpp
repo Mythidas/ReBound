@@ -38,7 +38,7 @@ namespace RB::Editor
 		Ref<Scene> scene = Scene::GetActive();
 		if (!scene) return;
 
-		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf;
+		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_FramePadding;
 		if (EditorLayer::GetContext().ID == entity)
 			flags |= ImGuiTreeNodeFlags_Selected;
 

@@ -46,7 +46,6 @@ namespace RB::Editor
 
     void EditorLayer::OnRenderUI()
     {
-        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3.0f, 3.0f));
         if (ImGui::BeginMainMenuBar())
         {
             if (ImGui::BeginMenu("Project"))
@@ -59,7 +58,6 @@ namespace RB::Editor
 
             ImGui::EndMainMenuBar();
         }
-        ImGui::PopStyleVar();
 
         for (auto& window : m_Windows)
         {

@@ -13,9 +13,12 @@ namespace RB
 			Ref<ImGUILayer> Build() { return Create(*this); }
 		};
 
+		static Ref<ImGUILayer> Create(const Builder& builder);
+
 		virtual void BeginUI() = 0;
 		virtual void EndUI() = 0;
 
-		static Ref<ImGUILayer> Create(const Builder& builder);
+		static void UseDarknessTheme();
+		static void UseGrayTheme();
 	};
 }
