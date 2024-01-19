@@ -9,6 +9,7 @@ namespace RB::Editor
 	void Viewport::OnAttach()
 	{
 		EditorLayer::SetEditorCamera(&m_Camera);
+		SetPadding({ 1, 1 });
 	}
 
 	void Viewport::OnUpdate()

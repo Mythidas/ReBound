@@ -4,8 +4,15 @@
 
 namespace RB::Editor
 {
+	EditorWindow::EditorWindow()
+	{
+		m_WindowPadding = { ImGui::GetStyle().WindowPadding.x, ImGui::GetStyle().WindowPadding.y };
+	}
+
 	void EditorWindow::BeginRender()
 	{
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, { m_WindowPadding.x, m_WindowPadding.y });
+
 		ImGui::Begin(GetWindowTitle());
 
 		ImVec2 windowSize = ImGui::GetContentRegionAvail();
@@ -26,8 +33,6 @@ namespace RB::Editor
 		mx -= m_WindowBounds.x;
 		my -= m_WindowBounds.w;
 
-		m_WindowPadding = { ImGui::GetStyle().WindowPadding.x, ImGui::GetStyle().WindowPadding.y };
-
 		m_CursorPosition = { mx, -my };
 
 		m_IsFocused = ImGui::IsWindowFocused();
@@ -37,5 +42,6 @@ namespace RB::Editor
 	void EditorWindow::EndRender()
 	{
 		ImGui::End();
+		ImGui::PopStyleVar();
 	}
 }

@@ -158,9 +158,9 @@ namespace RB
 	{
 		Matrix4 transform = glm::translate(Matrix4(1.0f), glm::vec3(position))
 			* glm::scale(Matrix4(1.0f), glm::vec3(scale))
-			* glm::rotate(Matrix4(1.0f), rotation.x, glm::vec3(Vector3(1.0f, 0.0f, 0.0f)))
-			* glm::rotate(Matrix4(1.0f), rotation.y, glm::vec3(Vector3(0.0f, 1.0f, 0.0f)))
-			* glm::rotate(Matrix4(1.0f), rotation.z, glm::vec3(Vector3(0.0f, 0.0f, 1.0f)));
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.x), glm::vec3(Vector3(1.0f, 0.0f, 0.0f)))
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.y), glm::vec3(Vector3(0.0f, 1.0f, 0.0f)))
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.z), glm::vec3(Vector3(0.0f, 0.0f, 1.0f)));
 
 		DrawQuad(transform, color, 0.0f);
 	}
@@ -169,9 +169,9 @@ namespace RB
 	{
 		Matrix4 transform = glm::translate(Matrix4(1.0f), glm::vec3(position))
 			* glm::scale(Matrix4(1.0f), glm::vec3(scale))
-			* glm::rotate(Matrix4(1.0f), rotation.x, glm::vec3(Vector3(1.0f, 0.0f, 0.0f)))
-			* glm::rotate(Matrix4(1.0f), rotation.y, glm::vec3(Vector3(0.0f, 1.0f, 0.0f)))
-			* glm::rotate(Matrix4(1.0f), rotation.z, glm::vec3(Vector3(0.0f, 0.0f, 1.0f)));
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.x), glm::vec3(Vector3(1.0f, 0.0f, 0.0f)))
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.y), glm::vec3(Vector3(0.0f, 1.0f, 0.0f)))
+			* glm::rotate(Matrix4(1.0f), glm::radians(rotation.z), glm::vec3(Vector3(0.0f, 0.0f, 1.0f)));
 
 		float texIndex = _GetTextureIndex(texture);
 		DrawQuad(transform, color, texIndex);
