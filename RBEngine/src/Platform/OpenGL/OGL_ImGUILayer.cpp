@@ -36,8 +36,6 @@ namespace RB::OGL
 		ImGuizmo::BeginFrame();
 
 		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-		bool show = true;
-		ImGui::ShowDemoWindow(&show);
 	}
 
 	void OGL_ImGUILayer::EndUI()

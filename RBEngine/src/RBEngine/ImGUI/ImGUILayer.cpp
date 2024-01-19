@@ -28,6 +28,7 @@ namespace RB
 		style.WindowPadding = ImVec2(3.0f, 3.0f);
 		style.WindowMinSize = ImVec2(250.0f, 250.0f);
 		style.FrameRounding = 2.0f;
+		style.WindowMenuButtonPosition = ImGuiDir_None;
 
 		UseDarknessTheme();
 

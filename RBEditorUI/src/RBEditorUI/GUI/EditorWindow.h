@@ -20,6 +20,7 @@ namespace RB::Editor
 
 		UVector2 GetSize() const { return m_WindowSize; }
 		Vector4 GetBounds() const { return m_WindowBounds; }
+		Vector2 GetPadding() const { return m_WindowPadding; }
 		Vector2 GetCursorPosition() const { return m_CursorPosition; }
 		bool IsFocused() const { return m_IsFocused; }
 		bool IsHovered() const { return m_IsHovered; }
@@ -27,6 +28,7 @@ namespace RB::Editor
 	private:
 		UVector2 m_WindowSize;
 		Vector4 m_WindowBounds;
+		Vector2 m_WindowPadding;
 		Vector2 m_CursorPosition;
 
 		bool m_IsFocused{ false };

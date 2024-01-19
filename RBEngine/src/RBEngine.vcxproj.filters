@@ -227,6 +227,7 @@
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="rbpch.h" />
+    <ClInclude Include="Platform\Windows\NativeWindows.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp">
@@ -344,5 +345,6 @@
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="rbpch.cpp" />
+    <ClCompile Include="Platform\Windows\NativeWindows.cpp" />
   </ItemGroup>
 </Project>

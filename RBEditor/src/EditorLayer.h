@@ -34,6 +34,8 @@ namespace RB::Editor
 		static EditorContext& GetContext() { return Get().m_Context; }
 
 	private:
+		void _DrawMainMenuBar();
+		void _MoveWindow();
 		bool _OnKeyPressed(int key);
 		void _SaveScene();
 
@@ -43,5 +45,6 @@ namespace RB::Editor
 		std::vector<EditorWindow*> m_Windows;
 		Ref<Scene> m_ActiveScene;
 		Ref<Scene> m_LastScene;
+		Vector2 m_MouseToWindowOffset;
 	};
 }

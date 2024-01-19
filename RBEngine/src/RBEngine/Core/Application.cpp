@@ -2,9 +2,7 @@
 #include "Application.h"
 
 #include "Time.h"
-#include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
-#include "RBEngine/Scene/SceneRegistry.h"
 #include "RBEngine/Reflection/Domain.h"
 
 namespace RB
@@ -13,7 +11,11 @@ namespace RB
 	{
 		m_Input = CreateScope<Input>();
 		m_Project = CreateScope<Project>();
-		m_Window = Window::Builder().setFixedAspectRatio(true).setTitle("ReBound").setWidth(1280).setHeight(720).Build();
+		m_Window = Window::Builder().setFixedAspectRatio(true)
+			.setTitle("ReBound")
+			.setWidth(1280)
+			.setHeight(720)
+			.Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
 		Domain::Construct();
@@ -67,6 +69,12 @@ namespace RB
 			m_LayerStack.Flush();
 		}
 	}
+
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	bool Application::OnWindowClose()
 	{
 		m_Running = false;

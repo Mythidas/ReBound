@@ -24,4 +24,5 @@
 
 #ifdef RB_PLAT_WINDOWS
 #include <Windows.h>
+#include <dwmapi.h>
 #endif

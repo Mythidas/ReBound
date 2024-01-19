@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Defines.h"
 #include "KeyCodes.h"
+#include "RBEngine/Utils/Event.h"
 #include "RBEngine/Utils/Singleton.h"
 #include "RBEngine/Math/Vector.h"
 
@@ -15,6 +15,7 @@ namespace RB
 		static bool IsKeyPressed(Key key);
 		static bool IsKeyReleased(Key key);
 		static Vector2 GetMousePosition();
+		static Vector2 GetMouseScreenPosition();
 
 		static void LockCursor(bool lock);
 

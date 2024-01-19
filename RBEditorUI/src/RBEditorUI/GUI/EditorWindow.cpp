@@ -26,6 +26,8 @@ namespace RB::Editor
 		mx -= m_WindowBounds.x;
 		my -= m_WindowBounds.w;
 
+		m_WindowPadding = { ImGui::GetStyle().WindowPadding.x, ImGui::GetStyle().WindowPadding.y };
+
 		m_CursorPosition = { mx, -my };
 
 		m_IsFocused = ImGui::IsWindowFocused();

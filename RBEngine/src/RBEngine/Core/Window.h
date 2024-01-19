@@ -1,12 +1,20 @@
 #pragma once
 
 #include "Defines.h"
+#include "RBEngine/Math/Vector.h"
 #include "RBEngine/Utils/Event.h"
 
 #include <string>
 
 namespace RB
 {
+	enum class WindowState
+	{
+		Windowed,
+		Minimized,
+		Fullscreen
+	};
+
 	class Window
 	{
 	public:
@@ -41,10 +49,15 @@ namespace RB
 
 		virtual uint32_t GetWidth() const = 0;
 		virtual uint32_t GetHeight() const = 0;
+		virtual std::string GetTitle() const = 0;
+		virtual IVector2 GetWindowPosition() const = 0;
+		virtual WindowState GetWindowState() const = 0;
+		virtual void* GetNativeWindow() = 0;
 
 		virtual void SetCursorMode(bool locked) = 0;
-
-		virtual void* GetNativeWindow() = 0;
+		virtual void SetWindowPosition(const IVector2& pos) = 0;
+		virtual void MinimizeWindow() = 0;
+		virtual void MaximizeWindow() = 0;
 
 		static Scope<Window> Create(const Builder& props);
 	};

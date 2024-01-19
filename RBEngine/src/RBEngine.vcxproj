@@ -147,6 +147,7 @@
     <ClInclude Include="Platform\OpenGL\OGL_Image.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderBuffer.h" />
     <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h" />
+    <ClInclude Include="Platform\Windows\NativeWindows.h" />
     <ClInclude Include="Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="RBEngine.h" />
     <ClInclude Include="RBEngine\Core\Application.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="Platform\OpenGL\OGL_Image.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderBuffer.cpp" />
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
+    <ClCompile Include="Platform\Windows\NativeWindows.cpp" />
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="RBEngine\Core\Application.cpp" />
     <ClCompile Include="RBEngine\Core\Input.cpp" />

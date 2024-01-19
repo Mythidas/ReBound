@@ -7,6 +7,7 @@
 
 namespace RB
 {
+	// TODO Myth: Add input Key pressed events
 	bool Input::s_Keys[352];
 	Vector2 Input::s_MousePosition;
 
@@ -32,6 +33,15 @@ namespace RB
 	Vector2 Input::GetMousePosition()
 	{
 		return s_MousePosition;
+	}
+
+	Vector2 Input::GetMouseScreenPosition()
+	{
+		IVector2 windPos;
+		double xPos, yPos;
+		glfwGetCursorPos((GLFWwindow*)Application::GetWindow()->GetNativeWindow(), &xPos, &yPos);
+		glfwGetWindowPos((GLFWwindow*)Application::GetWindow()->GetNativeWindow(), &windPos.x, &windPos.y);
+		return Vector2(xPos + windPos.x, yPos + windPos.y);
 	}
 
 	void Input::LockCursor(bool lock)

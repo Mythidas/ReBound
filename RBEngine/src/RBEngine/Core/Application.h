@@ -19,6 +19,7 @@ namespace RB
 		virtual ~Application();
 
 		void Run();
+		void Close();
 
 		void PushLayer(Layer* layer) { m_LayerStack.PushLayer(layer); }
 		void PopLayer(Layer* layer) { m_LayerStack.PopLayer(layer); }

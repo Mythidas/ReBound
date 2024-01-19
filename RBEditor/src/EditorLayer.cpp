@@ -46,18 +46,7 @@ namespace RB::Editor
 
     void EditorLayer::OnRenderUI()
     {
-        if (ImGui::BeginMainMenuBar())
-        {
-            if (ImGui::BeginMenu("Project"))
-            {
-                if (ImGui::MenuItem("Save Scene", "CTRL+S"))
-                    _SaveScene();
-
-                ImGui::EndMenu();
-            }
-
-            ImGui::EndMainMenuBar();
-        }
+        _DrawMainMenuBar();
 
         for (auto& window : m_Windows)
         {
@@ -93,6 +82,86 @@ namespace RB::Editor
     void EditorLayer::SetEditorCamera(EditorCamera* camera)
     {
         Get().m_Camera = camera;
+    }
+
+    void EditorLayer::_DrawMainMenuBar()
+    {
+        static bool showImGuiDemo = false;
+        if (showImGuiDemo)
+            ImGui::ShowDemoWindow();
+
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 10.0f, 10.0f });
+        if (ImGui::BeginMainMenuBar())
+        {
+            if (ImGui::IsWindowHovered())
+            {
+                _MoveWindow();
+            }
+
+            if (ImGui::BeginMenu("Project"))
+            {
+                if (ImGui::MenuItem("Save Scene", "CTRL+S"))
+                    _SaveScene();
+
+                ImGui::EndMenu();
+            }
+
+            if (ImGui::BeginMenu("Editor"))
+            {
+                ImGui::EndMenu();
+            }
+
+            if (ImGui::BeginMenu("Debug"))
+            {
+                if (ImGui::MenuItem("Show ImGui Demo"))
+                    showImGuiDemo = !showImGuiDemo;
+
+                ImGui::EndMenu();
+            }
+
+            {
+                float width = ImGui::CalcTextSize(Application::GetWindow()->GetTitle().c_str()).x + ImGui::GetStyle().FramePadding.x * 2.0f;
+                ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - width / 2);
+                ImGui::Text(Application::GetWindow()->GetTitle().c_str());
+            }
+
+            { // Window Operation Buttons
+                ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+                float width = ImGui::CalcTextSize(" - ").x + ImGui::GetStyle().FramePadding.x * 2.0f;
+                ImGui::SetCursorPosX(ImGui::GetWindowWidth() - width * 3);
+                if (ImGui::Button(" - "))
+                    Application::GetWindow()->MinimizeWindow();
+
+                if (ImGui::Button("[ ]"))
+                    Application::GetWindow()->MaximizeWindow();
+
+                if (ImGui::Button(" X "))
+                    Application::Get().Close();
+                ImGui::PopStyleVar();
+            }
+
+            ImGui::EndMainMenuBar();
+        }
+        ImGui::PopStyleVar();
+    }
+
+    void EditorLayer::_MoveWindow()
+    {
+        if (Input::IsKeyPressed(KeyCode::LeftMouseButton) && Application::GetWindow()->GetWindowState() == WindowState::Windowed)
+        {
+            Vector2 mousePos = Input::GetMouseScreenPosition();
+            if (m_MouseToWindowOffset.x == 0 && m_MouseToWindowOffset.y == 0)
+            {
+                IVector2 windPos = Application::GetWindow()->GetWindowPosition();
+                m_MouseToWindowOffset = { windPos.x - mousePos.x, windPos.y - mousePos.y };
+            }
+
+            Application::GetWindow()->SetWindowPosition(IVector2(mousePos.x + m_MouseToWindowOffset.x, mousePos.y + m_MouseToWindowOffset.y));
+        }
+        else
+        {
+            m_MouseToWindowOffset = { 0, 0 };
+        }
     }
 
     bool EditorLayer::_OnKeyPressed(int key)
