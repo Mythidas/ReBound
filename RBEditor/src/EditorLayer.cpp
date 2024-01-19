@@ -22,6 +22,7 @@ namespace RB::Editor
         PushWindow(new ContentBrowser());
 
         m_ActiveScene = Scene::Create();
+        m_ActiveScene->SetState(SceneState::Editing);
 
         Window::OnKeyPressed += RB_BIND_FNC(_OnKeyPressed);
     }
@@ -38,7 +39,7 @@ namespace RB::Editor
             window->OnUpdate();
         }
 
-        if (m_Camera && m_ActiveScene)
+        if (m_ActiveScene && m_ActiveScene->GetState() == SceneState::Editing)
         {
             m_ActiveScene->OnEditorUpdate(*m_Camera, m_Camera->GetTransform());
         }
@@ -101,7 +102,7 @@ namespace RB::Editor
             if (ImGui::BeginMenu("Project"))
             {
                 if (ImGui::MenuItem("Save Scene", "CTRL+S"))
-                    _SaveScene();
+                    m_ActiveScene->Save();
 
                 ImGui::EndMenu();
             }
@@ -119,10 +120,14 @@ namespace RB::Editor
                 ImGui::EndMenu();
             }
 
-            {
+            { // Set Window Title
                 float width = ImGui::CalcTextSize(Application::GetWindow()->GetTitle().c_str()).x + ImGui::GetStyle().FramePadding.x * 2.0f;
                 ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - width / 2);
-                ImGui::Text(Application::GetWindow()->GetTitle().c_str());
+
+                if (m_ActiveScene->GetDataState() == SceneDataState::Synced)
+                    ImGui::Text(Application::GetWindow()->GetTitle().c_str());
+                else
+                    ImGui::Text(std::string(Application::GetWindow()->GetTitle() + "*").c_str());
             }
 
             { // Window Operation Buttons
@@ -167,22 +172,8 @@ namespace RB::Editor
     bool EditorLayer::_OnKeyPressed(int key)
     {
         if (key == KeyCode::S && Input::IsKeyPressed(KeyCode::LeftControl))
-            _SaveScene();
+            m_ActiveScene->Save();
 
         return false;
-    }
-
-    void EditorLayer::_SaveScene()
-    {
-        SceneSerializer serial(m_ActiveScene);
-        serial.Serialize();
-        if (Debug::Result result = serial.Serialize(); result & Debug::ResultCode::Success)
-        {
-            Debug::Log::Info("Saved Scene!");
-        }
-        else
-        {
-            Debug::Log::Error(result.Message.c_str());
-        }
     }
 }

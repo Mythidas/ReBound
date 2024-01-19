@@ -54,6 +54,8 @@ namespace RB
 		virtual WindowState GetWindowState() const = 0;
 		virtual void* GetNativeWindow() = 0;
 
+		// TODO Myth: Add more cursor modes
+		virtual void SetTitle(const std::string& title) = 0;
 		virtual void SetCursorMode(bool locked) = 0;
 		virtual void SetWindowPosition(const IVector2& pos) = 0;
 		virtual void MinimizeWindow() = 0;

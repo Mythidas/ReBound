@@ -22,6 +22,7 @@ namespace RB
 		virtual WindowState GetWindowState() const override;
 		virtual void* GetNativeWindow() override { return m_Window; }
 
+		virtual void SetTitle(const std::string& title) override;
 		virtual void SetCursorMode(bool locked) override;
 		virtual void SetWindowPosition(const IVector2& pos) override;
 		virtual void MinimizeWindow() override;

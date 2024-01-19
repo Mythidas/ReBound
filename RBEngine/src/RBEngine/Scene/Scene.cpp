@@ -1,5 +1,6 @@
 #include "rbpch.h"
 #include "Scene.h"
+#include "SceneSerializer.h"
 #include "RBEngine/Rendering/Renderer.h"
 
 namespace RB
@@ -11,8 +12,37 @@ namespace RB
 	{
 	}
 
+	void Scene::Save()
+	{
+		if (m_DataState == SceneDataState::Synced) return;
+
+		SceneSerializer serial(shared_from_this());
+		if (Debug::Result result = serial.Serialize(); result & Debug::ResultCode::Success)
+		{
+			Debug::Log::Info("Saved Scene!");
+		}
+		else
+		{
+			Debug::Log::Error(result.Message.c_str());
+		}
+	}
+
+	void Scene::ReLoad()
+	{
+		SceneSerializer serial(shared_from_this());
+		if (Debug::Result result = serial.Deserialize(); result & Debug::ResultCode::Success)
+		{
+			Debug::Log::Info("Saved Scene!");
+		}
+		else
+		{
+			Debug::Log::Error(result.Message.c_str());
+		}
+	}
+
 	void Scene::OnRuntimeUpdate()
 	{
+
 	}
 
 	void Scene::OnEditorUpdate(const Camera& camera, const Transform& cameraTransform)

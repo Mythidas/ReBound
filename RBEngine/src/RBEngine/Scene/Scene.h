@@ -7,18 +7,39 @@
 
 namespace RB
 {
-	class Scene
+	enum class SceneState
+	{
+		Paused,
+		Playing,
+		Editing
+	};
+
+	enum class SceneDataState
+	{
+		Synced,
+		DeSynced
+	};
+
+	class Scene : public std::enable_shared_from_this<Scene>
 	{
 		friend class SceneSerializer;
 	public:
 		Scene() = default;
 		Scene(const File& path);
 
+		void Save();
+		void ReLoad();
+
 		void OnRuntimeUpdate();
 		void OnEditorUpdate(const Camera& camera, const Transform& cameraTransform);
 
-		inline SceneRegistry& GetRegistry() { return m_Registry; }
-		inline const File& GetPath() const { return m_LocalPath; }
+		SceneState GetState() { return m_State; }
+		SceneDataState GetDataState() { return m_DataState; }
+		SceneRegistry& GetRegistry() { return m_Registry; }
+		const File& GetPath() const { return m_LocalPath; }
+
+		void SetState(SceneState state) { m_State = state; }
+		void SetDataState(SceneDataState state) { m_DataState = state; }
 
 	public:
 		static Ref<Scene> Create();
@@ -29,8 +50,10 @@ namespace RB
 		
 	private:
 		static Ref<Scene> s_Active;
-
 		SceneRegistry m_Registry;
 		File m_LocalPath;
+
+		SceneState m_State;
+		SceneDataState m_DataState;
 	};
 }

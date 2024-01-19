@@ -20,7 +20,10 @@ namespace RB::Editor
 		if (ImGui::BeginPopupContextWindow("hierarchy_rmb_menu", ImGuiPopupFlags_NoOpenOverItems | ImGuiPopupFlags_MouseButtonRight))
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
+			{
 				scene->GetRegistry().CreateEntity();
+				scene->SetDataState(SceneDataState::DeSynced);
+			}
 
 			ImGui::EndPopup();
 		}

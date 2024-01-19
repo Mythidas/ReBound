@@ -127,6 +127,12 @@ namespace RB
 		return WindowState::Windowed;
 	}
 
+	void WindowsWindow::SetTitle(const std::string& title)
+	{
+		m_Builder.Title = title;
+		glfwSetWindowTitle(m_Window, title.c_str());
+	}
+
 	void WindowsWindow::SetCursorMode(bool locked)
 	{
 		if (locked)

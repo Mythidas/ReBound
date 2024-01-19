@@ -6,6 +6,8 @@
 
 namespace RB::Editor
 {
+	// TODO Myth: Make a Doc for code design and audit entire engine to follow
+
 	struct EditorContext
 	{
 		UUID ID{ UUID::INVALID };
@@ -37,7 +39,6 @@ namespace RB::Editor
 		void _DrawMainMenuBar();
 		void _MoveWindow();
 		bool _OnKeyPressed(int key);
-		void _SaveScene();
 
 	private:
 		EditorContext m_Context;
