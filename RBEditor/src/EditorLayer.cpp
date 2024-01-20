@@ -12,8 +12,6 @@
 
 namespace RB::Editor
 {
-    Vector3 position{ 0.0f, 0.0f, 0.0f };
-
     void EditorLayer::OnAttach()
     {
         PushWindow(new Viewport());

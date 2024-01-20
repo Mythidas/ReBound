@@ -25,8 +25,6 @@ group "Core"
     include "RBEngine"
     include "RBEditor"
     include "RBEditorUI"
-    include "RBScriptEngine"
-    include "RBScripts"
 group ""
 
 group "Misc"

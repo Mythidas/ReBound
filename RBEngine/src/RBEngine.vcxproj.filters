@@ -60,6 +60,9 @@
     <ClInclude Include="Platform\OpenGL\OGL_RenderCommands.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="Platform\Windows\NativeWindows.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -227,7 +230,6 @@
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="rbpch.h" />
-    <ClInclude Include="Platform\Windows\NativeWindows.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp">
@@ -250,6 +252,9 @@
     </ClCompile>
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\NativeWindows.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
@@ -345,6 +350,5 @@
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="rbpch.cpp" />
-    <ClCompile Include="Platform\Windows\NativeWindows.cpp" />
   </ItemGroup>
 </Project>
