@@ -39,7 +39,7 @@ namespace RB
 			Builder& setBinding(uint32_t binding) { Binding = binding; return *this; }
 			Builder& setUsage(BufferUsage usage) { Usage = usage; return *this; }
 			Builder& setRate(BufferRate rate) { Rate = rate; return *this; }
-			Ref<RenderBuffer> Build() { return Create(*this); }
+			Ref<RenderBuffer> Build() { return CreateDir(*this); }
 		};
 
 		virtual void Bind() const = 0;
@@ -47,6 +47,6 @@ namespace RB
 		virtual void* MapBufferPtr(BufferAccess access) = 0;
 		virtual void UnMapBufferPtr() = 0;
 
-		static Ref<RenderBuffer> Create(const Builder& builder);
+		static Ref<RenderBuffer> CreateDir(const Builder& builder);
 	};
 }

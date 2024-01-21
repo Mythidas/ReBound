@@ -28,10 +28,13 @@ namespace RB
 		Scene(const File& path);
 
 		void Save();
-		void ReLoad();
+		void Load();
+		Ref<Scene> Copy();
 
 		void OnRuntimeUpdate();
 		void OnEditorUpdate(const Camera& camera, const Transform& cameraTransform);
+
+		bool IsValid() const;
 
 		SceneState GetState() { return m_State; }
 		SceneDataState GetDataState() { return m_DataState; }

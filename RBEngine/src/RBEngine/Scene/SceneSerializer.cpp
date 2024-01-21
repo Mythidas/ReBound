@@ -17,19 +17,9 @@ namespace RB
 		if (!_IsValidScene()) return { Debug::ResultCode::Invalid, "Invalid Scene!" };
 
 		YAML::Emitter out;
-		out << YAML::BeginMap;
-		out << YAML::Key << "Scene" << YAML::Value << "Scene name here";
-		out << YAML::Key << "Entities" << YAML::Value << YAML::BeginSeq;
+		_GetOutData(out);
 
-		for (Entity ent : m_Scene->m_Registry.GetView())
-		{
-			_SerializeEntity(out, ent);
-		}
-
-		out << YAML::EndSeq;
-		out << YAML::EndMap;
-
-		m_Scene->m_LocalPath.Write(out.c_str());
+		m_Scene->GetPath().Write(out.c_str());
 
 		return Debug::ResultCode::Success;
 	}
@@ -41,6 +31,7 @@ namespace RB
 		YAML::Node in = YAML::Load(m_Scene->m_LocalPath.ReadString());
 		if (!in["Scene"]) return { Debug::ResultCode::Invalid, "Scene file is invalid format!" };
 
+		// TODO Myth: This does nothing right now???
 		std::string sceneName = in["Scene"].as<std::string>();
 
 		auto entities = in["Entities"];
@@ -50,15 +41,31 @@ namespace RB
 		for (auto ent : entities)
 		{
 			YAML::Node entIn = (YAML::Node)ent;
-			_DeserializeEntity(entIn, idRemap);
+			_DeserializeEntity(entIn, m_Scene, idRemap);
 		}
 
 		return Debug::ResultCode::Success;
 	}
 
-	Ref<Scene> SceneSerializer::Duplicate()
+	Ref<Scene> SceneSerializer::Copy()
 	{
-		return Ref<Scene>();
+		if (!_IsValidScene()) return Ref<Scene>();
+
+		YAML::Emitter out;
+		_GetOutData(out);
+
+		Ref<Scene> copy = Scene::Create();
+		YAML::Node in = YAML::Load(out.c_str());
+
+		auto entities = in["Entities"];
+		std::unordered_map<EntityID, EntityID> idRemap;
+		for (auto ent : entities)
+		{
+			YAML::Node entIn = (YAML::Node)ent;
+			_DeserializeEntity(entIn, copy, idRemap);
+		}
+
+		return copy;
 	}
 
 	bool SceneSerializer::_IsValidScene()
@@ -69,6 +76,21 @@ namespace RB
 		}
 
 		return true;
+	}
+
+	void SceneSerializer::_GetOutData(YAML::Emitter& out)
+	{
+		out << YAML::BeginMap;
+		out << YAML::Key << "Scene" << YAML::Value << "Scene name here";
+		out << YAML::Key << "Entities" << YAML::Value << YAML::BeginSeq;
+
+		for (Entity ent : m_Scene->m_Registry.GetView())
+		{
+			_SerializeEntity(out, ent);
+		}
+
+		out << YAML::EndSeq;
+		out << YAML::EndMap;
 	}
 
 	void SceneSerializer::_SerializeEntity(YAML::Emitter& out, const Entity& entity)
@@ -125,7 +147,7 @@ namespace RB
 		}
 	}
 
-	void SceneSerializer::_DeserializeEntity(YAML::Node& in, std::unordered_map<EntityID, EntityID>& idRemap)
+	void SceneSerializer::_DeserializeEntity(YAML::Node& in, Ref<Scene> scene, std::unordered_map<EntityID, EntityID>& idRemap)
 	{
 		EntityID entID = in["Entity"].as<uint64_t>();
 		Entity ent = m_Scene->GetRegistry().CreateEntity();
@@ -147,13 +169,13 @@ namespace RB
 				if (compIn[var.Info.DebugName])
 				{
 					auto varIn = compIn[var.Info.DebugName];
-					_DeserializeVariable(varIn, var, data);
+					_DeserializeVariable(varIn, scene, var, data);
 				}
 			}
 		}
 	}
 
-	void SceneSerializer::_DeserializeVariable(YAML::Node& in, const VariableMeta& meta, char* data)
+	void SceneSerializer::_DeserializeVariable(YAML::Node& in, Ref<Scene> scene, const VariableMeta& meta, char* data)
 	{
 		char* varData = data + meta.Offset;
 
@@ -167,7 +189,7 @@ namespace RB
 				if (in[var.Info.DebugName])
 				{
 					auto varIn = in[var.Info.DebugName];
-					_DeserializeVariable(varIn, var, varData);
+					_DeserializeVariable(varIn, scene, var, varData);
 				}
 			}
 

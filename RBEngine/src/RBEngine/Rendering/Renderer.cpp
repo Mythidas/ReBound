@@ -114,10 +114,10 @@ namespace RB
 			.Build();
 
 		s_QuadData.Pipeline = GraphicsPipeline::Builder()
-			.setVertPath("../../Assets/Shaders/QuadShader.vert")
-			.setFragPath("../../Assets/Shaders/QuadShader.frag")
+			.setVertPath("../Assets/Shaders/QuadShader.vert")
+			.setFragPath("../Assets/Shaders/QuadShader.frag")
 			.setVertexBuffer(s_QuadData.Buffer)
-			.setIndexBuffer(indexBuffer)
+			.setIndexBuffer(indexBuffer)  
 			.setRenderBuffers({ s_QuadData.CameraUniform })
 			.setAttributes({ VertexAttribute::Float3, VertexAttribute::Float3, VertexAttribute::Float2, VertexAttribute::Float })
 			.Build();

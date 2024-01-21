@@ -5,7 +5,7 @@
 
 namespace RB
 {
-	Ref<Framebuffer> Framebuffer::Create(const Builder& builder)
+	Ref<Framebuffer> Framebuffer::CreateDir(const Builder& builder)
 	{
 		switch (Renderer::GetAPI())
 		{

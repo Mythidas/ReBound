@@ -5,7 +5,7 @@
 
 namespace RB
 {
-	Ref<Image> Image::Create(const Builder& builder)
+	Ref<Image> Image::CreateDir(const Builder& builder)
 	{
 		switch (Renderer::GetAPI())
 		{

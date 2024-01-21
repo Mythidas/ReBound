@@ -5,7 +5,7 @@
 
 namespace RB
 {
-	Ref<GraphicsContext> GraphicsContext::Create(const Builder& builder)
+	Ref<GraphicsContext> GraphicsContext::CreateDir(const Builder& builder)
 	{
 		switch (Renderer::GetAPI())
 		{

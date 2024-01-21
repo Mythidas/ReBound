@@ -27,7 +27,7 @@ namespace RB
 		}
 	}
 
-	void Scene::ReLoad()
+	void Scene::Load()
 	{
 		SceneSerializer serial(shared_from_this());
 		if (Debug::Result result = serial.Deserialize(); result & Debug::ResultCode::Success)
@@ -38,6 +38,12 @@ namespace RB
 		{
 			Debug::Log::Error(result.Message.c_str());
 		}
+	}
+
+	Ref<Scene> Scene::Copy()
+	{
+		SceneSerializer serial(shared_from_this());
+		return serial.Copy();
 	}
 
 	void Scene::OnRuntimeUpdate()
@@ -55,6 +61,11 @@ namespace RB
 			Renderer::DrawQuad(transform->Position, transform->Rotation, transform->Scale, sprite->Color);
 		}
 		Renderer::EndFrame();
+	}
+
+	bool Scene::IsValid() const
+	{
+		return m_LocalPath.Exists();
 	}
 
 	Ref<Scene> Scene::Create()

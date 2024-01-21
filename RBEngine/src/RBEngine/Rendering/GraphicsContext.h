@@ -12,11 +12,11 @@ namespace RB
 			void* WindowHandle;
 
 			Builder& setWindowHandle(void* handle) { WindowHandle = handle; return *this; }
-			Ref<GraphicsContext> Build() { return Create(*this); }
+			Ref<GraphicsContext> Build() { return CreateDir(*this); }
 		};
 
 		virtual void SwapBuffers() = 0;
 
-		static Ref<GraphicsContext> Create(const Builder& builder);
+		static Ref<GraphicsContext> CreateDir(const Builder& builder);
 	};
 }

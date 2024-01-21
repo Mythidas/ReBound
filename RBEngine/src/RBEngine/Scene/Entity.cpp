@@ -19,12 +19,12 @@ namespace RB
 	{
 	}
 
-	Entity Entity::Create()
+	Entity Entity::CreateDir()
 	{
 		return Scene::GetActive()->GetRegistry().CreateEntity();
 	}
 
-	Entity Entity::Create(const std::string& name)
+	Entity Entity::CreateDir(const std::string& name)
 	{
 		return Scene::GetActive()->GetRegistry().CreateEntity(name);
 	}

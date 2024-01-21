@@ -18,14 +18,15 @@ namespace RB
 
 		Debug::Result Serialize();
 		Debug::Result Deserialize();
-		Ref<Scene> Duplicate();
+		Ref<Scene> Copy();
 
 	private:
 		bool _IsValidScene();
+		void _GetOutData(YAML::Emitter& out);
 		void _SerializeEntity(YAML::Emitter& out, const Entity& entity);
 		void _SerializeVariable(YAML::Emitter& out, char* data, const VariableMeta& meta);
-		void _DeserializeEntity(YAML::Node& in, std::unordered_map<EntityID, EntityID>& idRemap);
-		void _DeserializeVariable(YAML::Node& in, const VariableMeta& meta, char* data);
+		void _DeserializeEntity(YAML::Node& in, Ref<Scene> scene, std::unordered_map<EntityID, EntityID>& idRemap);
+		void _DeserializeVariable(YAML::Node& in, Ref<Scene> scene, const VariableMeta& meta, char* data);
 
 	private:
 		Ref<Scene> m_Scene;

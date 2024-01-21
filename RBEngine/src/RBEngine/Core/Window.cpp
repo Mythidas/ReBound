@@ -14,7 +14,7 @@ namespace RB
 	Event<int> Window::OnMouseButtonPressed; // Button
 	Event<int> Window::OnMouseButtonReleased; // Button
 
-	Scope<Window> Window::Create(const Builder& props)
+	Scope<Window> Window::CreateDir(const Builder& props)
 	{
 		// TODO: Detect platform and return the correct window
 		return CreateScope<WindowsWindow>(props);

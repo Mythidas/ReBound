@@ -7,7 +7,7 @@
 
 namespace RB
 {
-	Ref<GraphicsPipeline> GraphicsPipeline::Create(const Builder& builder)
+	Ref<GraphicsPipeline> GraphicsPipeline::CreateDir(const Builder& builder)
 	{
 		switch (Renderer::GetAPI())
 		{

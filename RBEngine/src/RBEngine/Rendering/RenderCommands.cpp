@@ -5,7 +5,7 @@
 
 namespace RB
 {
-	Scope<RenderCommands> RenderCommands::Create()
+	Scope<RenderCommands> RenderCommands::CreateDir()
 	{
 		switch (Renderer::GetAPI())
 		{

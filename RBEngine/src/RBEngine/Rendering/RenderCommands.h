@@ -11,13 +11,13 @@ namespace RB
 	public:
 		struct Builder
 		{
-			Scope<RenderCommands> Build() const { return Create(); }
+			Scope<RenderCommands> Build() const { return CreateDir(); }
 		};
 
 		static void ClearColor(const Color& color) { Get()._ClearColor(color); }
 		static void Resize(const UVector2& size) { Get()._Resize(size); }
 
-		static Scope<RenderCommands> Create();
+		static Scope<RenderCommands> CreateDir();
 
 	protected:
 		virtual void _ClearColor(const Color& color) = 0;

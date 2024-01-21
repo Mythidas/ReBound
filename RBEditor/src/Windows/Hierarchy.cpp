@@ -8,7 +8,7 @@ namespace RB::Editor
 	void Hierarchy::OnGUIRender()
 	{
 		Ref<Scene> scene = Scene::GetActive();
-		if (!scene) return;
+		if (!scene || !scene->IsValid()) return;
 
 		// Deselect
 

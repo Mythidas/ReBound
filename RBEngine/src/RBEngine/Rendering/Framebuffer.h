@@ -13,10 +13,10 @@ namespace RB
 			UVector2 Size;
 
 			Builder& setSize(const UVector2& size) { Size = size; return *this; }
-			Ref<Framebuffer> Build() const { return Create(*this); }
+			Ref<Framebuffer> Build() const { return CreateDir(*this); }
 		};
 
-		static Ref<Framebuffer> Create(const Builder& builder);
+		static Ref<Framebuffer> CreateDir(const Builder& builder);
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;

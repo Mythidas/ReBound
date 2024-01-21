@@ -10,10 +10,10 @@ namespace RB
 	public:
 		struct Builder
 		{
-			Ref<ImGUILayer> Build() { return Create(*this); }
+			Ref<ImGUILayer> Build() { return CreateDir(*this); }
 		};
 
-		static Ref<ImGUILayer> Create(const Builder& builder);
+		static Ref<ImGUILayer> CreateDir(const Builder& builder);
 
 		virtual void BeginUI() = 0;
 		virtual void EndUI() = 0;

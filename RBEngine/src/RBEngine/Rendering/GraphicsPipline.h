@@ -31,11 +31,11 @@ namespace RB
 			Builder& setIndexBuffer(const Ref<RenderBuffer>& buffer) { pIndexBuffer = buffer; return *this; }
 			Builder& setRenderBuffers(const std::vector<Ref<RenderBuffer>>& buffers) { pRenderBuffers = buffers; return *this; }
 			Builder& setAttributes(const std::vector<VertexAttribute>& attributes) { Attributes = attributes; return *this; }
-			Ref<GraphicsPipeline> Build() { return Create(*this); }
+			Ref<GraphicsPipeline> Build() { return CreateDir(*this); }
 		};
 
 		virtual void Draw(uint32_t count) const = 0;
 
-		static Ref<GraphicsPipeline> Create(const Builder& builder);
+		static Ref<GraphicsPipeline> CreateDir(const Builder& builder);
 	};
 }

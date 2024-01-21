@@ -37,7 +37,7 @@ namespace RB::Editor
             window->OnUpdate();
         }
 
-        if (m_ActiveScene && m_ActiveScene->GetState() == SceneState::Editing)
+        if (m_ActiveScene && m_ActiveScene->IsValid() && m_ActiveScene->GetState() == SceneState::Editing)
         {
             m_ActiveScene->OnEditorUpdate(*m_Camera, m_Camera->GetTransform());
         }

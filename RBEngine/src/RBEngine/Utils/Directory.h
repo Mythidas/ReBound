@@ -15,10 +15,13 @@ namespace RB
 		Directory(const FS::path& path);
 		Directory(const std::string& path);
 
-		Debug::Result Create() const;
+		Debug::Result CreateDir() const;
+		std::vector<FS::path> GetFilesInDir() const;
+		std::vector<FS::path> GetDirectoriesInDir() const;
 
 		bool Valid() const { return !m_Path.empty(); }
 		bool Exists() const { return FS::exists(m_Path); }
+		std::string Name() const { return m_Path.filename().string(); }
 		std::string ToString() const { return m_Path.string(); }
 
 		Directory operator+(const std::string& rhs) const

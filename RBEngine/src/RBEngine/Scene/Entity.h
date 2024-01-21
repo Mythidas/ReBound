@@ -87,8 +87,8 @@ namespace RB
 		}
 
 	public:
-		static Entity Create();
-		static Entity Create(const std::string& name);
+		static Entity CreateDir();
+		static Entity CreateDir(const std::string& name);
 
 	private:
 		EntityID m_ID;

@@ -51,10 +51,10 @@ namespace RB
 			Builder& setWrap(ImageWrap wrap) { Wrap = wrap; return *this; }
 			Builder& setTiling(ImageTiling tiling) { Tiling = tiling; return *this; }
 			Builder& setSize(UVector3 size) { Size = size; return *this; }
-			Ref<Image> Build() { return Image::Create(*this); }
+			Ref<Image> Build() { return Image::CreateDir(*this); }
 		};
 
-		static Ref<Image> Create(const Builder& builder);
+		static Ref<Image> CreateDir(const Builder& builder);
 
 		virtual void Bind(uint32_t slot) const = 0;
 		virtual void SetData(void* data, size_t size) = 0;

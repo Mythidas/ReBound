@@ -25,7 +25,7 @@ namespace RB
 			Builder& setHeight(const uint32_t height) { Height = height; return *this; }
 			Builder& setFixedAspectRatio(const bool aspr) { FixedAspectRatio = aspr; return *this; }
 			Builder& setVSync(const bool vsync) { VSync = vsync; return *this; }
-			Scope<Window> Build() const { return Window::Create(*this); }
+			Scope<Window> Build() const { return Window::CreateDir(*this); }
 
 			std::string Title{ "AxtonEngine" };
 			uint32_t Width{ 1280 };
@@ -61,6 +61,6 @@ namespace RB
 		virtual void MinimizeWindow() = 0;
 		virtual void MaximizeWindow() = 0;
 
-		static Scope<Window> Create(const Builder& props);
+		static Scope<Window> CreateDir(const Builder& props);
 	};
 }

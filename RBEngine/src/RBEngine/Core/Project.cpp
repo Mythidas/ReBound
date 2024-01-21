@@ -21,7 +21,7 @@ namespace RB
 		Debug::Log::Info("Project file created...");
 
 		// Create the assets directory
-		if (auto result = GetAssestsDir().Create(); result & Debug::ResultCode::Success)
+		if (auto result = GetAssestsDir().CreateDir(); result & Debug::ResultCode::Success)
 		{
 			Debug::Log::Info("Asset Directory created...");
 		}

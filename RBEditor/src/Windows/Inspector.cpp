@@ -34,19 +34,41 @@ namespace RB::Editor
 				continue;
 			}
 
+			if (comp.Info.ID == Type<Transform>().ID())
+			{
+				_DrawTransform(data);
+				continue;
+			}
+
 			// TODO Myth: Change this to a ImageButton once textures are implemented in engine
-			// TODO Myth: Change the button to a drop down with options Reset and Remove
-			bool node = ImGui::TreeNodeEx(comp.Info.ShortName().c_str(), ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_FramePadding); ImGui::SameLine(GetSize().x - 15.0f);
+			bool node = ImGui::TreeNodeEx(comp.Info.ShortName().c_str(), ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_FramePadding);
+
+			ImGui::SameLine(GetSize().x - 15.0f);
 			if (ImGui::Button("R"))
 			{
-				Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
-				Scene::GetActive()->GetRegistry().AddComponent(context.ID, comp.Info.ID);
+				ImGui::OpenPopup("##RemResComp");
+			}
+
+			if (ImGui::BeginPopup("##RemResComp"))
+			{
+				if (ImGui::MenuItem("Reset Component"))
+				{
+					Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
+					Scene::GetActive()->GetRegistry().AddComponent(context.ID, comp.Info.ID);
+				}
+
+				if (ImGui::MenuItem("Remove Component"))
+				{
+					Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
+				}
+
+				ImGui::EndPopup();
 			}
 
 			if (node)
 			{
 				if (!Internal::GUIDrawer::UseDrawer(comp.Info, data))
-	{
+				{
 					for (auto& var : comp.Vars)
 					{
 						_DrawVariableInfo(data, var);
@@ -85,16 +107,6 @@ namespace RB::Editor
 		}
 	}
 
-	void Inspector::_DrawTag(char* data)
-	{
-		Tag* tag = reinterpret_cast<Tag*>(data);
-		ImGui::Spacing();
-		Controls::Checkbox("", tag->Active); ImGui::SameLine();
-		Controls::Text("", tag->Name);
-		ImGui::Spacing();
-		ImGui::Separator();
-	}
-
 	void Inspector::_DrawVariableInfo(char* data, const VariableMeta& var)
 	{
 		if (Internal::GUIDrawer::UseDrawer(var.Info, data + var.Offset)) return;
@@ -112,5 +124,33 @@ namespace RB::Editor
 		{
 			ImGui::DragFloat(var.Info.DebugName.c_str(), (float*)(data + var.Offset));
 		}
+	}
+
+	void Inspector::_DrawTag(char* data)
+	{
+		Tag* tag = reinterpret_cast<Tag*>(data);
+		ImGui::Spacing();
+		Controls::Checkbox("", tag->Active); ImGui::SameLine();
+		Controls::Text("", tag->Name);
+		ImGui::Spacing();
+		ImGui::Separator();
+	}
+
+	void Inspector::_DrawTransform(char* data)
+	{
+		Transform* transform = reinterpret_cast<Transform*>(data);
+
+		bool node = ImGui::TreeNodeEx("Transform", ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_FramePadding);
+		if (node)
+		{
+			Controls::Vector3("Position", transform->Position);
+			Controls::Vector3("Rotation", transform->Rotation);
+			Controls::Vector3("Scale", transform->Scale);
+
+			ImGui::Spacing();
+			ImGui::TreePop();
+		}
+
+		ImGui::Separator();
 	}
 }

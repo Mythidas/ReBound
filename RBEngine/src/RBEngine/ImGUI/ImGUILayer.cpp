@@ -6,7 +6,7 @@
 
 namespace RB
 {
-	Ref<ImGUILayer> ImGUILayer::Create(const Builder& builder)
+	Ref<ImGUILayer> ImGUILayer::CreateDir(const Builder& builder)
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -108,7 +108,7 @@ namespace RB
 		style.ItemSpacing = ImVec2(6.00f, 6.00f);
 		style.ItemInnerSpacing = ImVec2(6.00f, 6.00f);
 		style.TouchExtraPadding = ImVec2(0.00f, 0.00f);
-		style.IndentSpacing = 12;
+		style.IndentSpacing = 16;
 		style.ScrollbarSize = 12;
 		style.GrabMinSize = 12;
 		style.WindowBorderSize = 0;

@@ -7,7 +7,7 @@
 
 namespace RB
 {
-	Ref<RenderBuffer> RenderBuffer::Create(const Builder& builder)
+	Ref<RenderBuffer> RenderBuffer::CreateDir(const Builder& builder)
 	{
 		switch (Renderer::GetAPI())
 		{

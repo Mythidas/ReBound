@@ -16,7 +16,7 @@ namespace RB
 	{
 	}
 
-	Debug::Result Directory::Create() const
+	Debug::Result Directory::CreateDir() const
 	{
 		if (!Valid()) return Debug::ResultCode::Invalid;
 
@@ -27,6 +27,32 @@ namespace RB
 		}
 
 		return Debug::ResultCode::Error;
+	}
+
+	std::vector<FS::path> Directory::GetFilesInDir() const
+	{
+		if (!Exists()) return std::vector<FS::path>();
+
+		std::vector<FS::path> files;
+		for (auto& path : FS::directory_iterator(m_Path))
+		{
+			if (!path.is_directory())
+				files.push_back(path);
+		}
+		return files;
+	}
+
+	std::vector<FS::path> Directory::GetDirectoriesInDir() const
+	{
+		if (!Exists()) return std::vector<FS::path>();
+
+		std::vector<FS::path> files;
+		for (auto& path : FS::directory_iterator(m_Path))
+		{
+			if (path.is_directory())
+				files.push_back(path);
+		}
+		return files;
 	}
 	
 	Directory Directory::GetDirectoryDialog()
