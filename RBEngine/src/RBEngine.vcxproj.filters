@@ -103,6 +103,9 @@
     <ClInclude Include="RBEngine\Debug\Assert.h">
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Debug\Console.h">
+      <Filter>RBEngine\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Debug\Log.h">
       <Filter>RBEngine\Debug</Filter>
     </ClInclude>
@@ -230,6 +233,7 @@
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="rbpch.h" />
+    <ClInclude Include="RBEngine\Scene\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp">
@@ -350,5 +354,6 @@
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="rbpch.cpp" />
+    <ClCompile Include="RBEngine\Scene\SceneManager.cpp" />
   </ItemGroup>
 </Project>

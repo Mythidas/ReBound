@@ -27,8 +27,8 @@ namespace RB
 		Scene() = default;
 		Scene(const File& path);
 
-		void Save();
-		void Load();
+		bool Save();
+		bool Load();
 		Ref<Scene> Copy();
 
 		void OnRuntimeUpdate();

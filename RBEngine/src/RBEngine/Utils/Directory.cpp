@@ -54,6 +54,32 @@ namespace RB
 		}
 		return files;
 	}
+
+	bool Directory::HasFiles() const
+	{
+		if (!Exists()) return false;
+
+		for (auto& path : FS::directory_iterator(m_Path))
+		{
+			if (!path.is_directory())
+				return true;
+		}
+
+		return false;
+	}
+
+	bool Directory::HasDirectories() const
+	{
+		if (!Exists()) return false;
+
+		for (auto& path : FS::directory_iterator(m_Path))
+		{
+			if (path.is_directory())
+				return true;
+		}
+
+		return false;
+	}
 	
 	Directory Directory::GetDirectoryDialog()
 	{

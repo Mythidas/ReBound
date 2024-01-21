@@ -83,6 +83,13 @@ namespace RB::Editor
         Get().m_Camera = camera;
     }
 
+    void EditorLayer::SetActiveScene(Ref<Scene> scene)
+    {
+        Get().m_ActiveScene = scene;
+        Scene::SetActive(scene);
+        scene->SetState(SceneState::Editing);
+    }
+
     void EditorLayer::_DrawMainMenuBar()
     {
         static bool showImGuiDemo = false;

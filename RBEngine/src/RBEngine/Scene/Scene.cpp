@@ -12,31 +12,35 @@ namespace RB
 	{
 	}
 
-	void Scene::Save()
+	bool Scene::Save()
 	{
-		if (m_DataState == SceneDataState::Synced) return;
+		if (m_DataState == SceneDataState::Synced) return true;
 
 		SceneSerializer serial(shared_from_this());
 		if (Debug::Result result = serial.Serialize(); result & Debug::ResultCode::Success)
 		{
 			Debug::Log::Info("Saved Scene!");
+			return true;
 		}
 		else
 		{
-			Debug::Log::Error(result.Message.c_str());
+			Debug::Log::Error(result.Message);
+			return false;
 		}
 	}
 
-	void Scene::Load()
+	bool Scene::Load()
 	{
 		SceneSerializer serial(shared_from_this());
 		if (Debug::Result result = serial.Deserialize(); result & Debug::ResultCode::Success)
 		{
-			Debug::Log::Info("Saved Scene!");
+			Debug::Log::Info("Loaded Scene!");
+			return true;
 		}
 		else
 		{
-			Debug::Log::Error(result.Message.c_str());
+			Debug::Log::Error(result.Message);
+			return false;
 		}
 	}
 

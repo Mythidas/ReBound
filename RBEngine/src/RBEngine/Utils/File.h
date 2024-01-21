@@ -33,6 +33,7 @@ namespace RB
 		bool Valid() const { return m_Invalid; }
 		bool Exists() const { return FS::exists(m_Path); }
 		std::string Extension() const { return m_Path.extension().string(); }
+		std::string Name() const { return m_Path.filename().string(); }
 		std::string ToString() const { return m_Path.string(); }
 		FS::path GetDirectory() const { return m_Path.parent_path(); }
 

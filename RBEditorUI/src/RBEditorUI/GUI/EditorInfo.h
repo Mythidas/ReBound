@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RBEngine/Math/Vector.h"
+
 namespace RB::Editor
 {
 	class EditorInfo
@@ -7,6 +9,6 @@ namespace RB::Editor
 	public:
 		static float LineHeight();
 		static float TextPadding();
-		static float ElementPadding();
+		static Vector2 ElementPadding();
 	};
 }

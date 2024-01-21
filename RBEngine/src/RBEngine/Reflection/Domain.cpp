@@ -10,7 +10,7 @@ namespace RB
 	std::unordered_map<std::string, ObjectMeta> Domain::s_RegisteredObjects;
 	std::unordered_map<std::string, ComponentMeta> Domain::s_RegisteredComponents;
 
-	void Domain::Construct()
+	void Domain::_Construct()
 	{
 		// Register Objects
 		auto vec3 = ObjectFactory<Vector3>()

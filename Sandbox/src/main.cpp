@@ -8,16 +8,16 @@ class SimpleLayer : public RB::Layer
 public:
 	virtual void OnAttach() override
 	{
-		RB::Log::Info("SimpleLayer Attached!");
+		RB::Debug::Log::Info("SimpleLayer Attached!");
 	}
 
 	RB::Vector3 Pos{ 0 };
 
 	virtual void OnUpdate() override
 	{
-		RB::Renderer::BeginFrame();
-		RB::Renderer::DrawQuad(Pos);
-		RB::Renderer::EndFrame();
+		//RB::Renderer::BeginFrame();
+		//RB::Renderer::DrawQuad(Pos);
+		//RB::Renderer::EndFrame();
 	}
 
 	virtual void OnRenderUI() override

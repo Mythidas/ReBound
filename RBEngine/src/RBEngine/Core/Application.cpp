@@ -2,13 +2,17 @@
 #include "Application.h"
 
 #include "Time.h"
+#include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
 #include "RBEngine/Reflection/Domain.h"
 
 namespace RB
 {
+	// TODO Myth: Add MISC to the top of Tech Doc class structure for constructors etc...
 	Application::Application()
 	{
+		Debug::Log::_Construct();
+
 		m_Input = CreateScope<Input>();
 		m_Project = CreateScope<Project>();
 		m_Window = Window::Builder().setFixedAspectRatio(true)
@@ -18,8 +22,8 @@ namespace RB
 			.Build();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
-		Domain::Construct();
-		Renderer::Construct();
+		Domain::_Construct();
+		Renderer::_Construct();
 
 		m_ImGUILayer = ImGUILayer::Builder().Build();
 
@@ -32,7 +36,7 @@ namespace RB
 	Application::~Application()
 	{
 		m_LayerStack.Clear();
-		Renderer::Destruct();
+		Renderer::_Destruct();
 
 		Debug::Log::Info("Application closing...");
 	}

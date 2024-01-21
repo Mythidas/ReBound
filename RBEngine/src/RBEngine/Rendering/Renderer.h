@@ -19,8 +19,8 @@ namespace RB
 	{
 	private:
 		friend class Application;
-		static void Construct();
-		static void Destruct();
+		static void _Construct();
+		static void _Destruct();
 
 	public:
 		static void BeginFrame(const Camera& camera, const Transform& transform);

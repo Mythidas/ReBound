@@ -162,6 +162,7 @@
     <ClInclude Include="RBEngine\Core\UUID.h" />
     <ClInclude Include="RBEngine\Core\Window.h" />
     <ClInclude Include="RBEngine\Debug\Assert.h" />
+    <ClInclude Include="RBEngine\Debug\Console.h" />
     <ClInclude Include="RBEngine\Debug\Log.h" />
     <ClInclude Include="RBEngine\Debug\Result.h" />
     <ClInclude Include="RBEngine\Debug\Timer.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="RBEngine\Scene\Entity.h" />
     <ClInclude Include="RBEngine\Scene\EntityEntry.h" />
     <ClInclude Include="RBEngine\Scene\Scene.h" />
+    <ClInclude Include="RBEngine\Scene\SceneManager.h" />
     <ClInclude Include="RBEngine\Scene\SceneRegistry.h" />
     <ClInclude Include="RBEngine\Scene\SceneSerializer.h" />
     <ClInclude Include="RBEngine\Scene\Tag.h" />
@@ -240,6 +242,7 @@
     <ClCompile Include="RBEngine\Scene\Entity.cpp" />
     <ClCompile Include="RBEngine\Scene\EntityEntry.cpp" />
     <ClCompile Include="RBEngine\Scene\Scene.cpp" />
+    <ClCompile Include="RBEngine\Scene\SceneManager.cpp" />
     <ClCompile Include="RBEngine\Scene\SceneRegistry.cpp" />
     <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp" />
     <ClCompile Include="RBEngine\Scene\Transform.cpp" />

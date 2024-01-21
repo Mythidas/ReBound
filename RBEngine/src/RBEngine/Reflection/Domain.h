@@ -10,7 +10,7 @@ namespace RB
 	{
 	private:
 		friend class Application;
-		static void Construct();
+		static void _Construct();
 
 	public:
 		static void RegisterObject(const ObjectMeta& meta);

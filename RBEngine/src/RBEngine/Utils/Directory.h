@@ -21,12 +21,19 @@ namespace RB
 
 		bool Valid() const { return !m_Path.empty(); }
 		bool Exists() const { return FS::exists(m_Path); }
+		bool HasFiles() const;
+		bool HasDirectories() const;
 		std::string Name() const { return m_Path.filename().string(); }
 		std::string ToString() const { return m_Path.string(); }
 
 		Directory operator+(const std::string& rhs) const
 		{
 			return m_Path.string() + rhs;
+		}
+
+		bool operator==(const Directory& rhs) const
+		{
+			return m_Path == rhs.m_Path;
 		}
 
 		operator FS::path() const

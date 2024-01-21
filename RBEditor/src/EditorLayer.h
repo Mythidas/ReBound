@@ -31,6 +31,7 @@ namespace RB::Editor
 
 		static void SetEditorCamera(EditorCamera* camera);
 		static void SetContext(const EditorContext& context) { Get().m_Context = context; }
+		static void SetActiveScene(Ref<Scene> scene);
 
 		static EditorCamera& GetEditorCamera() { return *Get().m_Camera; }
 		static EditorContext& GetContext() { return Get().m_Context; }

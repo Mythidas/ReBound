@@ -102,7 +102,7 @@ namespace RB::Editor
 	void Controls::_SetPadding(float padding)
 	{
 		if (padding == 0)
-			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + EditorInfo::ElementPadding());
+			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + EditorInfo::ElementPadding().x);
 		else
 			ImGui::SetCursorPosX(ImGui::GetCursorPosX() + padding);
 	}

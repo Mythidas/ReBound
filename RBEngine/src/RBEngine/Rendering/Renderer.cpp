@@ -53,7 +53,7 @@ namespace RB
 
 	static Render::Data s_QuadData;
 
-	void Renderer::Construct()
+	void Renderer::_Construct()
 	{
 		s_QuadData.Buffer = RenderBuffer::Builder()
 			.setSize(sizeof(Render::Vertex) * Render::MaxVertices)
@@ -127,7 +127,7 @@ namespace RB
 			.Build();
 	}
 
-	void Renderer::Destruct()
+	void Renderer::_Destruct()
 	{
 		delete[] s_QuadData.StagingBuffer;
 	}
