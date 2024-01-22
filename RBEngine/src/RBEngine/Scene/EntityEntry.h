@@ -25,6 +25,7 @@ namespace RB
 		EntityEntry() : ID(0) {}
 		EntityEntry(SceneRegistry* registry) : ID(0), Registry(registry) {}
 
+	public:
 		operator EntityID() const
 		{
 			return ID;

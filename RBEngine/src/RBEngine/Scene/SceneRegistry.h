@@ -12,7 +12,6 @@ namespace RB
 
 	class SceneRegistry
 	{
-		friend class SceneSerializer;
 	public:
 		SceneRegistry();
 		~SceneRegistry();
@@ -133,6 +132,9 @@ namespace RB
 
 		template <typename ...Components>
 		inline View<Components...> GetView() { return View<Components...>(*this); }
+
+	private:
+		friend class SceneSerializer;
 
 	private:
 		template <typename T>

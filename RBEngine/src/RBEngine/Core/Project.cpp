@@ -6,6 +6,10 @@
 
 namespace RB
 {
+	Directory Project::s_Dir{};
+	std::string Project::s_Name{ "New Project" };
+	uint32_t Project::s_Version{ Bit::U32_4x8(0, 0, 1, 0) };
+
 	Debug::Result Project::NewProject(const Directory& path)
 	{
 		Timer timer;
@@ -15,7 +19,7 @@ namespace RB
 			return  { Debug::ResultCode::Invalid, "Invalid project directory!" };
 		}
 
-		Get().m_Dir = path;
+		s_Dir = path;
 		SaveProject();
 
 		Debug::Log::Info("Project file created...");
@@ -46,8 +50,8 @@ namespace RB
 			return { Debug::ResultCode::Error, ss.str() };
 		}
 
-		Get().m_Dir = path.GetDirectory();
-		Get().m_Version = in["Project Version"].as<uint32_t>();
+		s_Dir = path.GetDirectory();
+		s_Version = in["Project Version"].as<uint32_t>();
 
 		return Debug::ResultCode::Success;
 	}
@@ -56,12 +60,12 @@ namespace RB
 	{
 		YAML::Emitter out;
 		out << YAML::BeginMap;
-		out << YAML::Key << "Project" << YAML::Value << Get().m_Name;
+		out << YAML::Key << "Project" << YAML::Value << s_Name;
 		out << YAML::Key << "Engine Version" << YAML::Value << Application::VERSION;
-		out << YAML::Key << "Project Version" << YAML::Key << Get().m_Version;
+		out << YAML::Key << "Project Version" << YAML::Key << s_Version;
 		out << YAML::EndMap;
 
-		File(Get().m_Dir + "/project.rebound").Write(out.c_str());
+		File(s_Dir + "/project.rebound").Write(out.c_str());
 
 		return Debug::ResultCode::Success;
 	}

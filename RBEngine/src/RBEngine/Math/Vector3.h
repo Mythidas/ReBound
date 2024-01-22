@@ -34,6 +34,7 @@ namespace RB
 		TVector3(T x, T y, T z) : x(x), y(y), z(z) {}
 		TVector3(const gVec3& vec3) : x(vec3.x), y(vec3.y), z(vec3.z) {}
 
+	public:
 		// Scalar Ops
 		TVector3<T> operator+(const T& rhs) const;
 		TVector3<T> operator-(const T& rhs) const;

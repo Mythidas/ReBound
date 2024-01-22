@@ -1,6 +1,5 @@
 #include "rbpch.h"
 #include "Window.h"
-
 #include "Platform/Windows/WindowsWindow.h"
 
 namespace RB
@@ -14,9 +13,9 @@ namespace RB
 	Event<int> Window::OnMouseButtonPressed; // Button
 	Event<int> Window::OnMouseButtonReleased; // Button
 
-	Scope<Window> Window::CreateDir(const Builder& props)
+	Scope<Window> Window::Builder::Build() const
 	{
 		// TODO: Detect platform and return the correct window
-		return CreateScope<WindowsWindow>(props);
+		return CreateScope<WindowsWindow>(*this);
 	}
 }

@@ -12,20 +12,22 @@ Classes will be organized to have the most relevant API information at the top o
 
 **Static Classes may have a private _Constructor or _Destructor and must mark a friend class of Application where they can be called during the runtime of the application**
 
+- Private:
+	- TypeDefs
+	- Friend Classes
 - Public:
 	- Events
 	- Builder
 	- Methods:
 		- Standard Methods
-		- Virtual Methods
 		- Getters
 		- Setters
+		- Virtual Methods
 - Public Static:
 	- Static Methods
 	- Const Variables
-- Private:
-	- TypeDefs
-	- Friend Classes
+- Public:
+	- Operators
 - Private Static:
 	- Methods
 	- Variables
@@ -37,14 +39,15 @@ Classes will be organized to have the most relevant API information at the top o
 	- Names will start with a capital letter
 	- Platform specific classes will begin with the platform I.E. OGL_Texture for and OpenGL Texture
 - Variables:
+	- Public Members can either be first letter capitalized or all lower case with _ spaces
 	- Private Member Variables will be prefixed with m_
 	- Private Static Variables will be prefixed with s_
-	- Public Const Variables will be fully capitalized
+	- Public Const Variables will be fully capitalized with _ spaces
 - Methods:
 	- Public Methods will be First Letter Capital with Camel Case I.E. GetMainWindow()
 	- Private Methods will follow the same rules and be prefixed with _ I.E. _GetMainWindow()
 - Enums:
-	- Enums will be plainly types I.E. None, Filled, Spotted
+	- Enums will be plainly typed I.E. None, Filled, Spotted
 	- Numerical enums will prefixed with e I.E. e1D, e2D, e3D
 	- Enums that support bit flags will be named as a plural I.E. Payload (No Flags), Payloads (Flags)
 - Misc:

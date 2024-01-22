@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SpriteRenderer.h"
-#include "Framebuffer.h"
-#include "Camera.h"
-#include "RBEngine/Scene/Transform.h"
 #include "Image.h"
+#include "Framebuffer.h"
 #include "RBEngine/Math/Matrix.h"
+#include "RBEngine/Components/Camera.h"
+#include "RBEngine/Components/Transform.h"
+#include "RBEngine/Components/SpriteRenderer.h"
 
 namespace RB
 {
@@ -17,11 +17,6 @@ namespace RB
 
 	class Renderer
 	{
-	private:
-		friend class Application;
-		static void _Construct();
-		static void _Destruct();
-
 	public:
 		static void BeginFrame(const Camera& camera, const Transform& transform);
 		static void EndFrame();
@@ -37,12 +32,15 @@ namespace RB
 		static RenderAPI GetAPI() { return s_API; }
 
 	private:
+		friend class Application;
+
+	private:
+		static RenderAPI s_API;
+		static void _Construct();
+		static void _Destruct();
 		static void _CheckBatch();
 		static void _BeginBatch();
 		static void _EndBatch();
 		static float _GetTextureIndex(Ref<Image> texture);
-
-	private:
-		static RenderAPI s_API;
 	};
 }

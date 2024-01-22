@@ -1,6 +1,5 @@
 #include "rbpch.h"
 #include "Application.h"
-
 #include "Time.h"
 #include "RBEngine/Debug/Log.h"
 #include "RBEngine/Rendering/Renderer.h"
@@ -8,13 +7,11 @@
 
 namespace RB
 {
-	// TODO Myth: Add MISC to the top of Tech Doc class structure for constructors etc...
 	Application::Application()
 	{
 		Debug::Log::_Construct();
 
 		m_Input = CreateScope<Input>();
-		m_Project = CreateScope<Project>();
 		m_Window = Window::Builder().setFixedAspectRatio(true)
 			.setTitle("ReBound")
 			.setWidth(1280)
@@ -45,7 +42,7 @@ namespace RB
 	{
 		while (m_Running)
 		{
-			Time::Tick();
+			Time::_Tick();
 			m_Window->OnUpdate();
 			
 			for (Layer* layer : m_LayerStack)

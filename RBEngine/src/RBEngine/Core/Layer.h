@@ -11,13 +11,13 @@ namespace RB
 			: m_DebugName(name) {}
 		virtual ~Layer() = default;
 
+		const std::string& GetName() const { return m_DebugName; }
+
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 		virtual void OnUpdate() {}
 		virtual void OnFixedUpdate() {}
 		virtual void OnRenderUI() {}
-
-		const std::string& GetName() const { return m_DebugName; }
 
 	protected:
 		std::string m_DebugName;

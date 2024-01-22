@@ -25,7 +25,7 @@ namespace RB
 			return m_Type;
 		}
 
-		inline void* GetData(size_t index)
+		void* GetData(size_t index)
 		{
 			return m_Data + index * m_ComponentSize;
 		}

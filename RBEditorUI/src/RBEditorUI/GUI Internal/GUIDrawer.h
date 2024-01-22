@@ -9,7 +9,7 @@ namespace RB::Editor::Internal
 	class GUIDrawer
 	{
 	public:
-		static void Construct();
+		static void _Construct();
 
 		static void RegisterDrawer(const TypeID& id, const DrawerMeta& meta);
 		static bool UseDrawer(const MetaInfo& meta, char* data);

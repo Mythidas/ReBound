@@ -5,7 +5,7 @@
 #include "RenderCommands.h"
 #include "RBEngine/Core/Application.h"
 
-#include "glm/gtc/matrix_transform.hpp"
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace RB
 {
@@ -125,6 +125,8 @@ namespace RB
 		s_QuadData.SwapBuffer = Framebuffer::Builder()
 			.setSize({ Application::GetWindow()->GetWidth(), Application::GetWindow()->GetHeight() })
 			.Build();
+
+		RenderCommands::EnableDepthTesting(true);
 	}
 
 	void Renderer::_Destruct()

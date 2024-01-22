@@ -5,12 +5,12 @@
 
 namespace RB
 {
-	Ref<Image> Image::CreateDir(const Builder& builder)
+	Ref<Image> Image::Builder::Build() const
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RenderAPI::None: RB_ASSERT(false, "RenderAPI::None currently unsupported!"); return nullptr;
-		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_Image>(builder);
+		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_Image>(*this);
 		}
 
 		RB_ASSERT(false, "Unknown RenderAPI!");

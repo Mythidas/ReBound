@@ -32,11 +32,11 @@ namespace RB::Editor
 
 		for (Entity ent : scene->GetRegistry().GetView<Tag>())
 		{
-			DrawEntityNode(ent);
+			_DrawEntityNode(ent);
 		}
 	}
 
-	void Hierarchy::DrawEntityNode(Entity& entity)
+	void Hierarchy::_DrawEntityNode(Entity& entity)
 	{
 		Ref<Scene> scene = Scene::GetActive();
 		if (!scene) return;

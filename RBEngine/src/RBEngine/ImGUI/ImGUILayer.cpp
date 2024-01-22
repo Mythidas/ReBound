@@ -6,7 +6,7 @@
 
 namespace RB
 {
-	Ref<ImGUILayer> ImGUILayer::CreateDir(const Builder& builder)
+	Ref<ImGUILayer> ImGUILayer::Builder::Build() const
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -35,7 +35,7 @@ namespace RB
 		switch (Renderer::GetAPI())
 		{
 		case RenderAPI::None: RB_ASSERT(false, "RenderAPI::None currently unsupported!"); return nullptr;
-		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_ImGUILayer>(builder);
+		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_ImGUILayer>(*this);
 		}
 
 		RB_ASSERT(false, "Unknown RenderAPI!");

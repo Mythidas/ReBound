@@ -22,3 +22,25 @@ Entities:
           X: 1
           Y: 0.200000003
           Z: 1
+  - Entity: 0
+    Components:
+      struct RB::Tag:
+        Name: Empty Entity
+      struct RB::Transform:
+        Position:
+          X: -0.0500000007
+          Y: -2.04999995
+          Z: -0.0500000007
+        Rotation:
+          X: 0
+          Y: -48
+          Z: 0
+        Scale:
+          X: 1
+          Y: 1
+          Z: 1
+      struct RB::SpriteRenderer:
+        Color:
+          X: 0.550000012
+          Y: 1
+          Z: 1

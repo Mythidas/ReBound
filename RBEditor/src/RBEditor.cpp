@@ -6,7 +6,7 @@ namespace RB
 {
 	RBEditor::RBEditor()
 	{
-		Editor::Internal::GUIDrawer::Construct();
+		Editor::Internal::GUIDrawer::_Construct();
 		m_ProjectLayer = new Editor::ProjectLayer();
 		PushLayer(m_ProjectLayer);
 	}

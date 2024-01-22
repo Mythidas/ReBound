@@ -18,22 +18,6 @@ namespace RB
 	class Window
 	{
 	public:
-		struct Builder
-		{
-			Builder& setTitle(const std::string& title) { Title = title; return *this; }
-			Builder& setWidth(const uint32_t width) { Width = width; return *this; }
-			Builder& setHeight(const uint32_t height) { Height = height; return *this; }
-			Builder& setFixedAspectRatio(const bool aspr) { FixedAspectRatio = aspr; return *this; }
-			Builder& setVSync(const bool vsync) { VSync = vsync; return *this; }
-			Scope<Window> Build() const { return Window::CreateDir(*this); }
-
-			std::string Title{ "AxtonEngine" };
-			uint32_t Width{ 1280 };
-			uint32_t Height{ 720 };
-			bool FixedAspectRatio{ true };
-			bool VSync{ false };
-		};
-
 		static Event<> OnWindowClose; // No arguments
 		static Event<int, int> OnWindowResize; // Width, Height
 		static Event<int> OnKeyPressed; // Key
@@ -42,6 +26,22 @@ namespace RB
 		static Event<float> OnMouseScrolled;
 		static Event<int> OnMouseButtonPressed; // Button
 		static Event<int> OnMouseButtonReleased; // Button
+
+		struct Builder
+		{
+			Builder& setTitle(const std::string& title) { Title = title; return *this; }
+			Builder& setWidth(const uint32_t width) { Width = width; return *this; }
+			Builder& setHeight(const uint32_t height) { Height = height; return *this; }
+			Builder& setFixedAspectRatio(const bool aspr) { FixedAspectRatio = aspr; return *this; }
+			Builder& setVSync(const bool vsync) { VSync = vsync; return *this; }
+			Scope<Window> Build() const;
+
+			std::string Title{ "AxtonEngine" };
+			uint32_t Width{ 1280 };
+			uint32_t Height{ 720 };
+			bool FixedAspectRatio{ true };
+			bool VSync{ false };
+		};
 
 		virtual ~Window() = default;
 
@@ -60,7 +60,5 @@ namespace RB
 		virtual void SetWindowPosition(const IVector2& pos) = 0;
 		virtual void MinimizeWindow() = 0;
 		virtual void MaximizeWindow() = 0;
-
-		static Scope<Window> CreateDir(const Builder& props);
 	};
 }

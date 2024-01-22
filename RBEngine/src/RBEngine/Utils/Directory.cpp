@@ -83,6 +83,7 @@ namespace RB
 	
 	Directory Directory::GetDirectoryDialog()
 	{
+		// TODO Myth: Create a platform specific way to handle this operation
 		FS::path path;
 		HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 		if (SUCCEEDED(result))

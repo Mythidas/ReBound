@@ -8,20 +8,19 @@
 
 namespace RB
 {
-	class Project : public Singleton<Project>
+	class Project
 	{
 	public:
 		static Debug::Result NewProject(const Directory& path);
 		static Debug::Result LoadProject(const File& path);
 		static Debug::Result SaveProject();
 
-		static const uint32_t GetProjectVersion() { return Get().m_Version; }
-		static const Directory GetAssestsDir() { return Get().m_Dir + "/Assets"; }
+		static const uint32_t GetProjectVersion() { return s_Version; }
+		static const Directory GetAssestsDir() { return s_Dir + "/Assets"; }
 
 	private:
-		Directory m_Dir{};
-		std::string m_Name{ "New Project" };
-		uint32_t m_Version{ Bit::U32_4x8(0, 0, 1, 0) };
-
+		static Directory s_Dir;
+		static std::string s_Name;
+		static uint32_t s_Version;
 	};
 }

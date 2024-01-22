@@ -3,7 +3,7 @@
 
 namespace RB
 {
-	const float Time::FixedDeltaTime = 0.02f;
+	const float Time::FIXED_DELTA_TIME = 0.02f;
 
 	Time::TimePoint Time::s_LastFrame = std::chrono::high_resolution_clock::now();
 	Time::TimePoint Time::s_LastFixedFrame;
@@ -16,7 +16,7 @@ namespace RB
 
 	static float s_OneSecond = 1.0f;
 
-	void Time::Tick()
+	void Time::_Tick()
 	{
 		TimePoint now = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<float> delta = now - s_LastFrame;
@@ -40,7 +40,7 @@ namespace RB
 		}
 
 		std::chrono::duration<float> fixedDelta = now - s_LastFixedFrame;
-		if (fixedDelta.count() >= FixedDeltaTime)
+		if (fixedDelta.count() >= FIXED_DELTA_TIME)
 		{
 			s_LastFixedFrame = now;
 			s_FixedDeltaTime = fixedDelta.count();

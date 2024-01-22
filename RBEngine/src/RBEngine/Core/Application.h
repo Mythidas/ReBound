@@ -24,9 +24,8 @@ namespace RB
 		void PushLayer(Layer* layer) { m_LayerStack.PushLayer(layer); }
 		void PopLayer(Layer* layer) { m_LayerStack.PopLayer(layer); }
 
-		static Scope<Window>& GetWindow() { return Get().m_Window; }
-
 	public:
+		static Scope<Window>& GetWindow() { return Get().m_Window; }
 		static const uint32_t VERSION = Bit::U32_4x8(0, 0, 1, 0);
 
 	private:
@@ -36,7 +35,6 @@ namespace RB
 	private:
 		Scope<Window> m_Window;
 		Scope<Input> m_Input;
-		Scope<Project> m_Project;
 		Scope<RenderCommands> m_RenderCommands;
 		Ref<ImGUILayer> m_ImGUILayer;
 		LayerStack m_LayerStack;

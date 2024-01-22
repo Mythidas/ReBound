@@ -12,6 +12,7 @@ namespace RB
 	public:
 		Input();
 
+	public:
 		static bool IsKeyPressed(Key key);
 		static bool IsKeyReleased(Key key);
 		static Vector2 GetMousePosition();

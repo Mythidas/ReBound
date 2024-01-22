@@ -22,6 +22,7 @@ namespace RB
 		TVector2(T all) : x(all), y(all) {}
 		TVector2(T x, T y) : x(x), y(y) {}
 
+	public:
 		// Scalar Ops
 		TVector2 operator+(const T& rhs) const;
 		TVector2 operator-(const T& rhs) const;

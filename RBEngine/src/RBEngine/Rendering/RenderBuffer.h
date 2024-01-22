@@ -39,14 +39,12 @@ namespace RB
 			Builder& setBinding(uint32_t binding) { Binding = binding; return *this; }
 			Builder& setUsage(BufferUsage usage) { Usage = usage; return *this; }
 			Builder& setRate(BufferRate rate) { Rate = rate; return *this; }
-			Ref<RenderBuffer> Build() { return CreateDir(*this); }
+			Ref<RenderBuffer> Build() const;
 		};
 
 		virtual void Bind() const = 0;
 		virtual void SetData(void* data, size_t size, uint32_t offset) = 0;
 		virtual void* MapBufferPtr(BufferAccess access) = 0;
 		virtual void UnMapBufferPtr() = 0;
-
-		static Ref<RenderBuffer> CreateDir(const Builder& builder);
 	};
 }

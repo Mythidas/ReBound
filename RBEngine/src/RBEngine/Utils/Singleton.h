@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RBEngine/Core/Defines.h"
 #include "RBEngine/Debug/Assert.h"
 #include "RBEngine/Reflection/Type.h"
 

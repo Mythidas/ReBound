@@ -1,8 +1,8 @@
 #include "rbpch.h"
 #include "SceneRegistry.h"
 #include "Entity.h"
-#include "Transform.h"
-#include "Tag.h"
+#include "RBEngine/Components/Tag.h"
+#include "RBEngine/Components/Transform.h"
 #include "RBEngine/Reflection/Domain.h"
 
 namespace RB

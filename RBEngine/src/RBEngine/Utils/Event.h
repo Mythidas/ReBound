@@ -7,7 +7,9 @@ namespace RB
 	template <typename... Args>
 	class Event
 	{
-		typedef std::function<bool(Args...)> Func;
+	private:
+		using Func = std::function<bool(Args...)>;
+
 	public:
 		void operator()(Args... args)
 		{

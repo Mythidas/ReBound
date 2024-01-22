@@ -17,10 +17,6 @@ namespace RB::Debug
 {
 	class Log
 	{
-	private:
-		friend class RB::Application;
-		static void _Construct();
-
 	public:
 		template <typename... Args>
 		inline static void Trace(spdlog::format_string_t<Args...> message, Args &&...args)
@@ -53,6 +49,12 @@ namespace RB::Debug
 		static void Warn(const std::string& message);
 		static void Error(const std::string& message);
 		static void Critical(const std::string& message);
+
+	private:
+		friend class RB::Application;
+
+	private:
+		static void _Construct();
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_ClientLog;

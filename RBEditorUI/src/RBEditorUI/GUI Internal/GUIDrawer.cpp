@@ -6,7 +6,7 @@ namespace RB::Editor::Internal
 {
 	std::unordered_map<TypeID, DrawerMeta> GUIDrawer::s_Drawers;
 
-	void GUIDrawer::Construct()
+	void GUIDrawer::_Construct()
 	{
 		auto vec3Draw = DrawerFactory<Vector3>()
 			.Register(Vector3Drawer::Draw);

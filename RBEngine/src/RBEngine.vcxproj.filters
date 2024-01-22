@@ -154,7 +154,7 @@
     <ClInclude Include="RBEngine\Reflection\Type.h">
       <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Rendering\Camera.h">
+    <ClInclude Include="RBEngine\Components\Camera.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h">
@@ -178,13 +178,13 @@
     <ClInclude Include="RBEngine\Rendering\Renderer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Rendering\SpriteRenderer.h">
+    <ClInclude Include="RBEngine\Components\SpriteRenderer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\ComponentPool.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\Components.h">
+    <ClInclude Include="RBEngine\Components\Components.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\Entity.h">
@@ -202,10 +202,10 @@
     <ClInclude Include="RBEngine\Scene\SceneSerializer.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\Tag.h">
+    <ClInclude Include="RBEngine\Components\Tag.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Scene\Transform.h">
+    <ClInclude Include="RBEngine\Components\Transform.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Utils\Bit.h">
@@ -302,7 +302,7 @@
     <ClCompile Include="RBEngine\Reflection\Domain.cpp">
       <Filter>RBEngine\Reflection</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Rendering\Camera.cpp">
+    <ClCompile Include="RBEngine\Components\Camera.cpp">
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Rendering\Framebuffer.cpp">
@@ -329,9 +329,6 @@
     <ClCompile Include="RBEngine\Scene\Entity.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Scene\EntityEntry.cpp">
-      <Filter>RBEngine\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="RBEngine\Scene\Scene.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
@@ -341,7 +338,7 @@
     <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Scene\Transform.cpp">
+    <ClCompile Include="RBEngine\Components\Transform.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Utils\Directory.cpp">

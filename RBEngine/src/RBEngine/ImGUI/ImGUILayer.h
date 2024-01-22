@@ -10,14 +10,13 @@ namespace RB
 	public:
 		struct Builder
 		{
-			Ref<ImGUILayer> Build() { return CreateDir(*this); }
+			Ref<ImGUILayer> Build() const;
 		};
-
-		static Ref<ImGUILayer> CreateDir(const Builder& builder);
 
 		virtual void BeginUI() = 0;
 		virtual void EndUI() = 0;
 
+	public:
 		static void UseDarknessTheme();
 		static void UseGrayTheme();
 	};

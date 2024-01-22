@@ -3,19 +3,10 @@
 #include "RBEngine/Utils/File.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/fmt/bundled/format.h>
 
 namespace RB::Debug
 {
 	std::shared_ptr<spdlog::logger> Log::s_ClientLog;
-
-	void Log::_Construct()
-	{
-		spdlog::set_pattern("%^[%T] %v%$");
-
-		s_ClientLog = spdlog::stdout_color_mt("App");
-		s_ClientLog->set_level(spdlog::level::trace);
-	}
 
 	void Debug::Log::Trace(const std::string& message)
 	{
@@ -40,5 +31,13 @@ namespace RB::Debug
 	void Debug::Log::Critical(const std::string& message)
 	{
 		s_ClientLog->critical(message);
+	}
+
+	void Log::_Construct()
+	{
+		spdlog::set_pattern("%^[%T] %v%$");
+
+		s_ClientLog = spdlog::stdout_color_mt("App");
+		s_ClientLog->set_level(spdlog::level::trace);
 	}
 }

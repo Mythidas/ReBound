@@ -13,6 +13,6 @@ namespace RB::Editor
 		virtual const char* GetWindowTitle() const { return "Hierarchy"; }
 
 	private:
-		void DrawEntityNode(Entity& entity);
+		void _DrawEntityNode(Entity& entity);
 	};
 }

@@ -5,12 +5,12 @@
 
 namespace RB
 {
-	Ref<Framebuffer> Framebuffer::CreateDir(const Builder& builder)
+	Ref<Framebuffer> Framebuffer::Builder::Build() const
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RenderAPI::None: RB_ASSERT(false, "RenderAPI::None currently unsupported!"); return nullptr;
-		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_Framebuffer>(builder);
+		case RenderAPI::OpenGL: return CreateRef<OGL::OGL_Framebuffer>(*this);
 		}
 
 		RB_ASSERT(false, "Unknown RenderAPI!");

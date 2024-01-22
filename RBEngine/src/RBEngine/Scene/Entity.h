@@ -71,6 +71,11 @@ namespace RB
 			m_Registry->DestroyEntity(m_ID);
 		}
 
+	public:
+		static Entity CreateDir();
+		static Entity CreateDir(const std::string& name);
+
+	public:
 		inline EntityID GetID() const
 		{
 			return m_ID;
@@ -85,10 +90,6 @@ namespace RB
 		{
 			return m_ID;
 		}
-
-	public:
-		static Entity CreateDir();
-		static Entity CreateDir(const std::string& name);
 
 	private:
 		EntityID m_ID;

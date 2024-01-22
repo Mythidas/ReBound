@@ -26,6 +26,10 @@ namespace RB
 		std::string Name() const { return m_Path.filename().string(); }
 		std::string ToString() const { return m_Path.string(); }
 
+	public:
+		static Directory GetDirectoryDialog();
+
+	public:
 		Directory operator+(const std::string& rhs) const
 		{
 			return m_Path.string() + rhs;
@@ -40,9 +44,6 @@ namespace RB
 		{
 			return m_Path;
 		}
-
-	public:
-		static Directory GetDirectoryDialog();
 
 	private:
 		FS::path m_Path;
