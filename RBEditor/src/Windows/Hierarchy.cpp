@@ -7,7 +7,7 @@ namespace RB::Editor
 {
 	void Hierarchy::OnGUIRender()
 	{
-		Ref<Scene> scene = Scene::GetActive();
+		Ref<Scene> scene = SceneManager::GetActive();
 		if (!scene || !scene->IsValid()) return;
 
 		// Deselect
@@ -38,7 +38,7 @@ namespace RB::Editor
 
 	void Hierarchy::_DrawEntityNode(Entity& entity)
 	{
-		Ref<Scene> scene = Scene::GetActive();
+		Ref<Scene> scene = SceneManager::GetActive();
 		if (!scene) return;
 
 		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_FramePadding;

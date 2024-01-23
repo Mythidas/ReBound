@@ -5,8 +5,6 @@
 
 namespace RB
 {
-	Ref<Scene> Scene::s_Active = nullptr;
-
 	Scene::Scene(const File& path)
 		: m_LocalPath(path)
 	{
@@ -20,6 +18,7 @@ namespace RB
 		if (Debug::Result result = serial.Serialize(); result & Debug::ResultCode::Success)
 		{
 			Debug::Log::Info("Saved Scene!");
+			m_DataState = SceneDataState::Synced;
 			return true;
 		}
 		else
@@ -50,39 +49,25 @@ namespace RB
 		return serial.Copy();
 	}
 
-	void Scene::OnRuntimeUpdate()
+	void Scene::OnUpdate(Camera* camera, Transform* transform)
 	{
-
-	}
-
-	void Scene::OnEditorUpdate(const Camera& camera, const Transform& cameraTransform)
-	{
-		Renderer::BeginFrame(camera, cameraTransform);
-		for (const auto& ent : SceneRegistry::View<SpriteRenderer>(m_Registry))
+		if (m_State == SceneState::Editing)
 		{
-			auto transform = m_Registry.GetComponent<Transform>(ent);
-			auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
-			Renderer::DrawQuad(transform->Position, transform->Rotation, transform->Scale, sprite->Color);
+			if (!camera || !transform) return;
+
+			Renderer::BeginFrame(*camera, *transform);
+			for (const auto& ent : SceneRegistry::View<SpriteRenderer>(m_Registry))
+			{
+				auto transform = m_Registry.GetComponent<Transform>(ent);
+				auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
+				Renderer::DrawQuad(transform->Position, transform->Rotation, transform->Scale, sprite->Color);
+			}
+			Renderer::EndFrame();
 		}
-		Renderer::EndFrame();
 	}
 
 	bool Scene::IsValid() const
 	{
 		return m_LocalPath.Exists();
-	}
-
-	Ref<Scene> Scene::Create()
-	{
-		Ref<Scene> scene = CreateRef<Scene>();
-		if (!s_Active) s_Active = scene;
-		return scene;
-	}
-
-	Ref<Scene> Scene::Create(const File& path)
-	{
-		Ref<Scene> scene = CreateRef<Scene>(path);
-		if (!s_Active) s_Active = scene;
-		return scene;
 	}
 }

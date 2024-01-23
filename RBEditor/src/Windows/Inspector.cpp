@@ -22,11 +22,11 @@ namespace RB::Editor
 	{
 		EditorContext context = EditorLayer::GetContext();
 
-		auto components = Scene::GetActive()->GetRegistry().GetComponents(context.ID);
+		auto components = SceneManager::GetActive()->GetRegistry().GetComponents(context.ID);
 
 		for (auto& comp : components)
 		{
-			char* data = (char*)Scene::GetActive()->GetRegistry().GetComponent(context.ID, comp.Info.ID);
+			char* data = (char*)SceneManager::GetActive()->GetRegistry().GetComponent(context.ID, comp.Info.ID);
 
 			if (comp.Info.ID == Type<Tag>().ID())
 			{
@@ -53,13 +53,13 @@ namespace RB::Editor
 			{
 				if (ImGui::MenuItem("Reset Component"))
 				{
-					Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
-					Scene::GetActive()->GetRegistry().AddComponent(context.ID, comp.Info.ID);
+					SceneManager::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
+					SceneManager::GetActive()->GetRegistry().AddComponent(context.ID, comp.Info.ID);
 				}
 
 				if (ImGui::MenuItem("Remove Component"))
 				{
-					Scene::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
+					SceneManager::GetActive()->GetRegistry().RemoveComponent(context.ID, comp.Info.ID);
 				}
 
 				ImGui::EndPopup();
@@ -93,12 +93,12 @@ namespace RB::Editor
 				if (component.second.Info.ID == Type<Tag>().ID() || component.second.Info.ID == Type<Transform>().ID())
 					continue;
 
-				if (Scene::GetActive()->GetRegistry().HasComponent(context.ID, component.second.Info.ID))
+				if (SceneManager::GetActive()->GetRegistry().HasComponent(context.ID, component.second.Info.ID))
 					continue;
 
 				if (ImGui::MenuItem(component.second.Info.ShortName().c_str()))
 				{
-					component.second.AddFunc(&Scene::GetActive()->GetRegistry(), context.ID);
+					component.second.AddFunc(&SceneManager::GetActive()->GetRegistry(), context.ID);
 					ImGui::CloseCurrentPopup();
 				}
 			}

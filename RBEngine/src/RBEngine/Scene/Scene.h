@@ -30,8 +30,7 @@ namespace RB
 		bool Load();
 		Ref<Scene> Copy();
 
-		void OnRuntimeUpdate();
-		void OnEditorUpdate(const Camera& camera, const Transform& cameraTransform);
+		void OnUpdate(Camera* camera, Transform* transform);
 
 		bool IsValid() const;
 
@@ -42,19 +41,11 @@ namespace RB
 
 		void SetState(SceneState state) { m_State = state; }
 		void SetDataState(SceneDataState state) { m_DataState = state; }
-
-	public:
-		static Ref<Scene> Create();
-		static Ref<Scene> Create(const File& path);
-		
-		static void SetActive(Ref<Scene> active) { s_Active = active; }
-		static Ref<Scene>& GetActive() { return s_Active; }
 		
 	private:
 		friend class SceneSerializer;
 
 	private:
-		static Ref<Scene> s_Active;
 		SceneRegistry m_Registry;
 		File m_LocalPath;
 

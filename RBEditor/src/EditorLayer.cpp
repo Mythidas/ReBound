@@ -19,9 +19,6 @@ namespace RB::Editor
         PushWindow(new Inspector());
         PushWindow(new ContentBrowser());
 
-        m_ActiveScene = Scene::Create();
-        m_ActiveScene->SetState(SceneState::Editing);
-
         Window::OnKeyPressed += RB_BIND_FNC(_OnKeyPressed);
     }
 
@@ -37,9 +34,9 @@ namespace RB::Editor
             window->OnUpdate();
         }
 
-        if (m_ActiveScene && m_ActiveScene->IsValid() && m_ActiveScene->GetState() == SceneState::Editing)
+        if (SceneManager::GetActive()->IsValid())
         {
-            m_ActiveScene->OnEditorUpdate(*m_Camera, m_Camera->GetTransform());
+            SceneManager::GetActive()->OnUpdate(m_Camera, &m_Camera->GetTransform());
         }
     }
 
@@ -83,13 +80,6 @@ namespace RB::Editor
         Get().m_Camera = camera;
     }
 
-    void EditorLayer::SetActiveScene(Ref<Scene> scene)
-    {
-        Get().m_ActiveScene = scene;
-        Scene::SetActive(scene);
-        scene->SetState(SceneState::Editing);
-    }
-
     void EditorLayer::_DrawMainMenuBar()
     {
         static bool showImGuiDemo = false;
@@ -107,7 +97,7 @@ namespace RB::Editor
             if (ImGui::BeginMenu("Project"))
             {
                 if (ImGui::MenuItem("Save Scene", "CTRL+S"))
-                    m_ActiveScene->Save();
+                    SceneManager::GetActive()->Save();
 
                 ImGui::EndMenu();
             }
@@ -129,7 +119,7 @@ namespace RB::Editor
                 float width = ImGui::CalcTextSize(Application::GetWindow()->GetTitle().c_str()).x + ImGui::GetStyle().FramePadding.x * 2.0f;
                 ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - width / 2);
 
-                if (m_ActiveScene->GetDataState() == SceneDataState::Synced)
+                if (SceneManager::GetActive()->GetDataState() == SceneDataState::Synced)
                     ImGui::Text(Application::GetWindow()->GetTitle().c_str());
                 else
                     ImGui::Text(std::string(Application::GetWindow()->GetTitle() + "*").c_str());
@@ -177,7 +167,7 @@ namespace RB::Editor
     bool EditorLayer::_OnKeyPressed(int key)
     {
         if (key == KeyCode::S && Input::IsKeyPressed(KeyCode::LeftControl))
-            m_ActiveScene->Save();
+          SceneManager::GetActive()->Save();
 
         return false;
     }

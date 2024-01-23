@@ -29,6 +29,7 @@
 #include "RBEngine/Scene/EntityEntry.h"
 #include "RBEngine/Scene/SceneRegistry.h"
 #include "RBEngine/Scene/SceneSerializer.h"
+#include "RBEngine/Scene/SceneManager.h"
 
 // Components
 #include "RBEngine/Components/Components.h"

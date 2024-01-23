@@ -41,6 +41,6 @@ Entities:
           Z: 1
       struct RB::SpriteRenderer:
         Color:
-          X: 0.550000012
+          X: 1
           Y: 1
-          Z: 1
+          Z: 0.550000012

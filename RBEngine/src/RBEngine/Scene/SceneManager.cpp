@@ -1,26 +1,41 @@
 #include "rbpch.h"
 #include "SceneManager.h"
+#include "RBEngine/Core/Project.h"
 
 namespace RB
 {
-	std::unordered_map<std::string, File> SceneManager::s_Scenes;
-	Ref<Scene> SceneManager::s_ActiveScene;
+	Ref<Scene> SceneManager::s_ActiveScene = CreateRef<Scene>();
+	Ref<Scene> SceneManager::s_StoredScene = nullptr;
 
-	void SceneManager::LoadScene(const std::string& name)
+	void SceneManager::LoadScene(const File& path, bool cacheOld)
 	{
-		Ref<Scene> scene = Scene::Create(s_Scenes[name]);
+		if (cacheOld)
+			s_StoredScene = s_ActiveScene;
+
+		Ref<Scene> scene = CreateRef<Scene>(path);
 		scene->Load();
-		s_ActiveScene = scene;
-	}
 
-	void SceneManager::SetActive(Ref<Scene> scene)
-	{
-		if (scene->IsValid())
+		if (_IsValidScene(scene))
 			s_ActiveScene = scene;
 	}
 
-	void SceneManager::_Construct()
+	void SceneManager::LoadScene(Ref<Scene> scene, bool cacheOld)
 	{
+		if (cacheOld)
+			s_StoredScene = s_ActiveScene;
 
+		if (_IsValidScene(scene))
+			s_ActiveScene = scene;
+	}
+
+	void SceneManager::LoadCachedScene()
+	{
+		if (_IsValidScene(s_StoredScene))
+			s_ActiveScene = s_StoredScene;
+	}
+
+	bool SceneManager::_IsValidScene(Ref<Scene> scene)
+	{
+		return scene && scene->IsValid();
 	}
 }

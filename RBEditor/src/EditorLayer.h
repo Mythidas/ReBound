@@ -31,7 +31,6 @@ namespace RB::Editor
 
 		static void SetEditorCamera(EditorCamera* camera);
 		static void SetContext(const EditorContext& context) { Get().m_Context = context; }
-		static void SetActiveScene(Ref<Scene> scene);
 
 		static EditorCamera& GetEditorCamera() { return *Get().m_Camera; }
 		static EditorContext& GetContext() { return Get().m_Context; }
@@ -45,8 +44,6 @@ namespace RB::Editor
 		EditorContext m_Context;
 		EditorCamera* m_Camera;
 		std::vector<EditorWindow*> m_Windows;
-		Ref<Scene> m_ActiveScene;
-		Ref<Scene> m_LastScene;
 		Vector2 m_MouseToWindowOffset;
 	};
 }

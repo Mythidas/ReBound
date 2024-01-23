@@ -54,7 +54,7 @@ namespace RB
 		YAML::Emitter out;
 		_GetOutData(out);
 
-		Ref<Scene> copy = Scene::Create();
+		Ref<Scene> copy = CreateRef<Scene>();
 		YAML::Node in = YAML::Load(out.c_str());
 
 		auto entities = in["Entities"];

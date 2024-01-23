@@ -1,11 +1,11 @@
 #include "rbpch.h"
 #include "Entity.h"
-#include "Scene.h"
+#include "SceneManager.h"
 
 namespace RB
 {
 	Entity::Entity(const EntityID& id)
-		: m_ID(id), m_Registry(&Scene::GetActive()->GetRegistry())
+		: m_ID(id), m_Registry(&SceneManager::GetActive()->GetRegistry())
 	{
 	}
 
@@ -21,11 +21,11 @@ namespace RB
 
 	Entity Entity::CreateDir()
 	{
-		return Scene::GetActive()->GetRegistry().CreateEntity();
+		return SceneManager::GetActive()->GetRegistry().CreateEntity();
 	}
 
 	Entity Entity::CreateDir(const std::string& name)
 	{
-		return Scene::GetActive()->GetRegistry().CreateEntity(name);
+		return SceneManager::GetActive()->GetRegistry().CreateEntity(name);
 	}
 }

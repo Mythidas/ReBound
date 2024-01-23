@@ -45,7 +45,7 @@ namespace RB::Editor
 				{
 					if (ImGui::MenuItem("New Scene"))
 					{
-						Ref<Scene> scene = Scene::Create(File(m_SelectedDir + "/NewScene.rbscene"));
+						Ref<Scene> scene = CreateRef<Scene>((File(m_SelectedDir + "/NewScene.rbscene")));
 						scene->Save();
 					}
 
@@ -164,11 +164,8 @@ namespace RB::Editor
 	{
 		if (file.Extension() == ".rbscene")
 		{
-			Ref<Scene> scene = Scene::Create(file);
-			if (scene->Load())
-			{
-				EditorLayer::Get().SetActiveScene(scene);
-			}
+			SceneManager::LoadScene(file);
+			SceneManager::GetActive()->SetState(SceneState::Editing);
 		}
 	}
 }
