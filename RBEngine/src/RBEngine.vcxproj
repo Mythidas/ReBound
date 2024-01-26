@@ -150,6 +150,11 @@
     <ClInclude Include="Platform\Windows\NativeWindows.h" />
     <ClInclude Include="Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="RBEngine.h" />
+    <ClInclude Include="RBEngine\Components\Camera.h" />
+    <ClInclude Include="RBEngine\Components\Components.h" />
+    <ClInclude Include="RBEngine\Components\SpriteRenderer.h" />
+    <ClInclude Include="RBEngine\Components\Tag.h" />
+    <ClInclude Include="RBEngine\Components\Transform.h" />
     <ClInclude Include="RBEngine\Core\Application.h" />
     <ClInclude Include="RBEngine\Core\Defines.h" />
     <ClInclude Include="RBEngine\Core\EntryPoint.h" />
@@ -179,7 +184,6 @@
     <ClInclude Include="RBEngine\Reflection\Meta.h" />
     <ClInclude Include="RBEngine\Reflection\ObjectFactory.h" />
     <ClInclude Include="RBEngine\Reflection\Type.h" />
-    <ClInclude Include="RBEngine\Components\Camera.h" />
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsContext.h" />
     <ClInclude Include="RBEngine\Rendering\GraphicsPipline.h" />
@@ -187,17 +191,13 @@
     <ClInclude Include="RBEngine\Rendering\RenderBuffer.h" />
     <ClInclude Include="RBEngine\Rendering\RenderCommands.h" />
     <ClInclude Include="RBEngine\Rendering\Renderer.h" />
-    <ClInclude Include="RBEngine\Components\SpriteRenderer.h" />
     <ClInclude Include="RBEngine\Scene\ComponentPool.h" />
-    <ClInclude Include="RBEngine\Components\Components.h" />
     <ClInclude Include="RBEngine\Scene\Entity.h" />
     <ClInclude Include="RBEngine\Scene\EntityEntry.h" />
     <ClInclude Include="RBEngine\Scene\Scene.h" />
     <ClInclude Include="RBEngine\Scene\SceneManager.h" />
     <ClInclude Include="RBEngine\Scene\SceneRegistry.h" />
     <ClInclude Include="RBEngine\Scene\SceneSerializer.h" />
-    <ClInclude Include="RBEngine\Components\Tag.h" />
-    <ClInclude Include="RBEngine\Components\Transform.h" />
     <ClInclude Include="RBEngine\Utils\Bit.h" />
     <ClInclude Include="RBEngine\Utils\Directory.h" />
     <ClInclude Include="RBEngine\Utils\Event.h" />
@@ -218,6 +218,8 @@
     <ClCompile Include="Platform\OpenGL\OGL_RenderCommands.cpp" />
     <ClCompile Include="Platform\Windows\NativeWindows.cpp" />
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="RBEngine\Components\Camera.cpp" />
+    <ClCompile Include="RBEngine\Components\Transform.cpp" />
     <ClCompile Include="RBEngine\Core\Application.cpp" />
     <ClCompile Include="RBEngine\Core\Input.cpp" />
     <ClCompile Include="RBEngine\Core\LayerStack.cpp" />
@@ -231,7 +233,6 @@
     <ClCompile Include="RBEngine\Math\Mathf.cpp" />
     <ClCompile Include="RBEngine\Math\Vector3.cpp" />
     <ClCompile Include="RBEngine\Reflection\Domain.cpp" />
-    <ClCompile Include="RBEngine\Components\Camera.cpp" />
     <ClCompile Include="RBEngine\Rendering\Framebuffer.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsContext.cpp" />
     <ClCompile Include="RBEngine\Rendering\GraphicsPipline.cpp" />
@@ -244,7 +245,6 @@
     <ClCompile Include="RBEngine\Scene\SceneManager.cpp" />
     <ClCompile Include="RBEngine\Scene\SceneRegistry.cpp" />
     <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp" />
-    <ClCompile Include="RBEngine\Components\Transform.cpp" />
     <ClCompile Include="RBEngine\Utils\Directory.cpp" />
     <ClCompile Include="RBEngine\Utils\File.cpp" />
     <ClCompile Include="RBEngine\Utils\Stringf.cpp" />

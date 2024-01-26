@@ -13,6 +13,9 @@
     <Filter Include="RBEngine">
       <UniqueIdentifier>{EFE641AA-DBB3-9CB5-04CD-8A5DF0F8D143}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RBEngine\Components">
+      <UniqueIdentifier>{A438E7D5-109A-C4E3-9907-0B960568FBA2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="RBEngine\Core">
       <UniqueIdentifier>{A7B85BEE-1379-D724-DCB3-20A248331C01}</UniqueIdentifier>
     </Filter>
@@ -67,6 +70,21 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine.h" />
+    <ClInclude Include="RBEngine\Components\Camera.h">
+      <Filter>RBEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Components\Components.h">
+      <Filter>RBEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Components\SpriteRenderer.h">
+      <Filter>RBEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Components\Tag.h">
+      <Filter>RBEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RBEngine\Components\Transform.h">
+      <Filter>RBEngine\Components</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Core\Application.h">
       <Filter>RBEngine\Core</Filter>
     </ClInclude>
@@ -154,9 +172,6 @@
     <ClInclude Include="RBEngine\Reflection\Type.h">
       <Filter>RBEngine\Reflection</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Components\Camera.h">
-      <Filter>RBEngine\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="RBEngine\Rendering\Framebuffer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
@@ -178,13 +193,7 @@
     <ClInclude Include="RBEngine\Rendering\Renderer.h">
       <Filter>RBEngine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="RBEngine\Components\SpriteRenderer.h">
-      <Filter>RBEngine\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="RBEngine\Scene\ComponentPool.h">
-      <Filter>RBEngine\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="RBEngine\Components\Components.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\Entity.h">
@@ -196,16 +205,13 @@
     <ClInclude Include="RBEngine\Scene\Scene.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="RBEngine\Scene\SceneManager.h">
+      <Filter>RBEngine\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="RBEngine\Scene\SceneRegistry.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Scene\SceneSerializer.h">
-      <Filter>RBEngine\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="RBEngine\Components\Tag.h">
-      <Filter>RBEngine\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="RBEngine\Components\Transform.h">
       <Filter>RBEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="RBEngine\Utils\Bit.h">
@@ -233,7 +239,6 @@
       <Filter>RBEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="rbpch.h" />
-    <ClInclude Include="RBEngine\Scene\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\OpenGL\OGL_Framebuffer.cpp">
@@ -262,6 +267,12 @@
     </ClCompile>
     <ClCompile Include="Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Components\Camera.cpp">
+      <Filter>RBEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RBEngine\Components\Transform.cpp">
+      <Filter>RBEngine\Components</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Core\Application.cpp">
       <Filter>RBEngine\Core</Filter>
@@ -302,9 +313,6 @@
     <ClCompile Include="RBEngine\Reflection\Domain.cpp">
       <Filter>RBEngine\Reflection</Filter>
     </ClCompile>
-    <ClCompile Include="RBEngine\Components\Camera.cpp">
-      <Filter>RBEngine\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="RBEngine\Rendering\Framebuffer.cpp">
       <Filter>RBEngine\Rendering</Filter>
     </ClCompile>
@@ -332,13 +340,13 @@
     <ClCompile Include="RBEngine\Scene\Scene.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="RBEngine\Scene\SceneManager.cpp">
+      <Filter>RBEngine\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="RBEngine\Scene\SceneRegistry.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Scene\SceneSerializer.cpp">
-      <Filter>RBEngine\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="RBEngine\Components\Transform.cpp">
       <Filter>RBEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="RBEngine\Utils\Directory.cpp">
@@ -351,6 +359,5 @@
       <Filter>RBEngine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="rbpch.cpp" />
-    <ClCompile Include="RBEngine\Scene\SceneManager.cpp" />
   </ItemGroup>
 </Project>
