@@ -1,6 +1,8 @@
 #include "rbpch.h"
 #include "Scene.h"
+#include "Entity.h"
 #include "SceneSerializer.h"
+#include "RBEngine/Components/Tag.h"
 #include "RBEngine/Rendering/Renderer.h"
 
 namespace RB
@@ -33,6 +35,7 @@ namespace RB
 		SceneSerializer serial(shared_from_this());
 		if (Debug::Result result = serial.Deserialize(); result & Debug::ResultCode::Success)
 		{
+			m_DataState = SceneDataState::Synced;
 			Debug::Log::Info("Loaded Scene!");
 			return true;
 		}
@@ -56,8 +59,10 @@ namespace RB
 			if (!camera || !transform) return;
 
 			Renderer::BeginFrame(*camera, *transform);
-			for (const auto& ent : SceneRegistry::View<SpriteRenderer>(m_Registry))
+			for (Entity ent : m_Registry.GetView<SpriteRenderer>())
 			{
+				if (ent.IsActive()) continue;
+
 				auto transform = m_Registry.GetComponent<Transform>(ent);
 				auto sprite = m_Registry.GetComponent<SpriteRenderer>(ent);
 				Renderer::DrawQuad(transform->Position, transform->Rotation, transform->Scale, sprite->Color);

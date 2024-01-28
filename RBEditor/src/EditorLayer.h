@@ -8,14 +8,17 @@ namespace RB::Editor
 {
 	// TODO Myth: Make a Doc for code design and audit entire engine to follow
 
+	enum class EditorPayload
+	{
+		None,
+		Entity,
+		File
+	};
+
 	struct EditorContext
 	{
 		UUID ID{ UUID::INVALID };
-		enum class Payloads
-		{
-			None,
-			Entity
-		} Payload = Payloads::None;
+		EditorPayload Payload{ EditorPayload::None };
 	};
 
 	class EditorLayer : public Layer, public Singleton<EditorLayer>

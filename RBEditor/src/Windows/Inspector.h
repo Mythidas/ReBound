@@ -17,5 +17,7 @@ namespace RB::Editor
 		void _DrawVariableInfo(char* data, const VariableMeta& var);
 		void _DrawTag(char* data);
 		void _DrawTransform(char* data);
+
+		void _DrawFileInfo();
 	};
 }

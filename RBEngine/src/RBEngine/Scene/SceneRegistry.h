@@ -3,6 +3,7 @@
 #include "rbpch.h"
 #include "EntityEntry.h"
 #include "ComponentPool.h"
+#include "RBEngine/Components/Tag.h"
 #include "RBEngine/Reflection/Type.h"
 #include "RBEngine/Reflection/Meta.h"
 
@@ -96,7 +97,8 @@ namespace RB
 
 				bool IsValidIndex()
 				{
-					return _Registry.IsValidEntity(_Registry.m_Entities[Index]) && (All || Mask == (Mask & _Registry.m_Entities[Index].Components));
+					if (!_Registry.IsValidEntity(_Registry.m_Entities[Index])) return false;
+					return All || Mask == (Mask & _Registry.m_Entities[Index].Components);
 				}
 
 				SceneRegistry& _Registry;

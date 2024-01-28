@@ -14,73 +14,75 @@ namespace RB
 		Entity(const EntityID& id, SceneRegistry& registry);
 
 		template <typename T>
-		inline T* AddComponent()
+		T* AddComponent()
 		{
 			if (!m_Registry) return nullptr;
 			return m_Registry->AddComponent<T>(m_ID);
 		}
 		template <typename T>
-		inline T* GetComponent() const
+		T* GetComponent() const
 		{
 			if (!m_Registry) return nullptr;
 			return m_Registry->GetComponent<T>(m_ID);
 		}
 		template <typename T>
-		inline T* HasComponent() const
+		T* HasComponent() const
 		{
 			if (!m_Registry) return nullptr;
 			return m_Registry->HasComponent<T>(m_ID);
 		}
 		template <typename T>
-		inline void RemoveComponent()
+		void RemoveComponent()
 		{
 			if (!m_Registry) return;
 			m_Registry->RemoveComponent<T>(m_ID);
 		}
 
-		inline std::vector<ComponentMeta> GetComponents() const
+		std::vector<ComponentMeta> GetComponents() const
 		{
 			if (!m_Registry) return std::vector<ComponentMeta>();
 			return m_Registry->GetComponents(m_ID);
 		}
 
-		inline void AddComponent(const TypeID& component)
+		void AddComponent(const TypeID& component)
 		{
 			if (!m_Registry) return;
 			return m_Registry->AddComponent(m_ID, component);
 		}
-		inline void* GetComponent(const TypeID& component) const
+		void* GetComponent(const TypeID& component) const
 		{
 			if (!m_Registry) return nullptr;
 			return m_Registry->GetComponent(m_ID, component);
 		}
-		inline bool HasComponent(const TypeID& component) const
+		bool HasComponent(const TypeID& component) const
 		{
 			if (!m_Registry) return false;
 			return m_Registry->HasComponent(m_ID, component);
 		}
-		inline void RemoveComponent(const TypeID& component)
+		void RemoveComponent(const TypeID& component)
 		{
 			if (!m_Registry) return;
 			return m_Registry->RemoveComponent(m_ID, component);
 		}
 
-		inline void Destroy()
+		void Destroy()
 		{
 			if (!m_Registry) return;
 			m_Registry->DestroyEntity(m_ID);
 		}
 
-	public:
-		static Entity CreateDir();
-		static Entity CreateDir(const std::string& name);
+		bool IsActive() const;
 
-	public:
-		inline EntityID GetID() const
+		EntityID GetID() const
 		{
 			return m_ID;
 		}
 
+	public:
+		static Entity Create();
+		static Entity Create(const std::string& name);
+
+	public:
 		operator UUID() const
 		{
 			return UUID(m_ID);

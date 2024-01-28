@@ -19,12 +19,19 @@ namespace RB
 	{
 	}
 
-	Entity Entity::CreateDir()
+	bool Entity::IsActive() const
+	{
+		if (!m_Registry) return false;
+		Tag* tag = m_Registry->GetComponent<Tag>(*this);
+		return !tag || !tag->Active;
+	}
+
+	Entity Entity::Create()
 	{
 		return SceneManager::GetActive()->GetRegistry().CreateEntity();
 	}
 
-	Entity Entity::CreateDir(const std::string& name)
+	Entity Entity::Create(const std::string& name)
 	{
 		return SceneManager::GetActive()->GetRegistry().CreateEntity(name);
 	}

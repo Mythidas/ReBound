@@ -17,7 +17,7 @@ layout(std140, binding = 0) uniform Camera
 
 void main()
 {
-	gl_Position = u_Projection * u_View * vec4(iPos, 1);
+	gl_Position = u_Projection * u_View * vec4(iPos.x, -iPos.y, iPos.z, 1);
 	oColor = vec4(iColor, 1);
 	oTexCoord = iTexCoord;
 	oTexIndex = iTexIndex;

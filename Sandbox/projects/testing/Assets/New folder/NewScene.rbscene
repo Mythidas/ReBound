@@ -3,44 +3,110 @@ Entities:
   - Entity: 0
     Components:
       struct RB::Tag:
-        Name: Empty Entity
+        Name: Paddle
       struct RB::Transform:
         Position:
           X: 0
-          Y: -2.04999995
+          Y: 0
           Z: 0
         Rotation:
           X: 0
           Y: 0
           Z: 0
         Scale:
-          X: 1
-          Y: 1
+          X: 2.5
+          Y: 0.25
           Z: 1
       struct RB::SpriteRenderer:
         Color:
           X: 1
-          Y: 0.200000003
+          Y: 1
           Z: 1
   - Entity: 0
     Components:
       struct RB::Tag:
-        Name: Empty Entity
+        Name: Wall Top
       struct RB::Transform:
         Position:
-          X: -0.0500000007
-          Y: -2.04999995
-          Z: -0.0500000007
+          X: 0
+          Y: 17.5
+          Z: 0
         Rotation:
           X: 0
-          Y: -48
+          Y: 0
           Z: 0
         Scale:
-          X: 1
-          Y: 1
+          X: 35
+          Y: 0.25
           Z: 1
       struct RB::SpriteRenderer:
         Color:
           X: 1
           Y: 1
-          Z: 0.550000012
+          Z: 1
+  - Entity: 0
+    Components:
+      struct RB::Tag:
+        Name: Wall Bottom
+      struct RB::Transform:
+        Position:
+          X: 0
+          Y: -0.5
+          Z: 0
+        Rotation:
+          X: 0
+          Y: 0
+          Z: 0
+        Scale:
+          X: 35
+          Y: 0.25
+          Z: 1
+      struct RB::SpriteRenderer:
+        Color:
+          X: 1
+          Y: 1
+          Z: 1
+  - Entity: 0
+    Components:
+      struct RB::Tag:
+        Name: Wall Right
+      struct RB::Transform:
+        Position:
+          X: 17.5
+          Y: 8.5
+          Z: 0
+        Rotation:
+          X: 0
+          Y: 0
+          Z: 0
+        Scale:
+          X: 0.25
+          Y: 18.25
+          Z: 1
+      struct RB::SpriteRenderer:
+        Color:
+          X: 1
+          Y: 1
+          Z: 1
+  - Entity: 0
+    Components:
+      struct RB::Tag:
+        Name: Wall Left
+      struct RB::Transform:
+        Position:
+          X: -17.5
+          Y: 8.5
+          Z: 0
+        Rotation:
+          X: 0
+          Y: 0
+          Z: 0
+        Scale:
+          X: 0.25
+          Y: 18.25
+          Z: 1
+      struct RB::SpriteRenderer:
+        Color:
+          X: 1
+          Y: 1
+          Z: 1

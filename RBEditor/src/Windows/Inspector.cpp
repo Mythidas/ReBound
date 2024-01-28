@@ -10,11 +10,11 @@ namespace RB::Editor
 	void Inspector::OnGUIRender()
 	{
 		EditorContext context = EditorLayer::GetContext();
-		if (context.Payload == EditorContext::Payloads::None) return;
 		
 		switch (context.Payload)
 		{
-		case EditorContext::Payloads::Entity: _DrawEntityInfo(); return;
+		case EditorPayload::Entity: _DrawEntityInfo(); break;
+		case EditorPayload::File: _DrawFileInfo(); break;
 		}
 	}
 
@@ -152,5 +152,13 @@ namespace RB::Editor
 		}
 
 		ImGui::Separator();
+	}
+
+	void Inspector::_DrawFileInfo()
+	{
+		EditorContext context = EditorLayer::GetContext();
+
+		std::string value;
+		Controls::Text("", value);
 	}
 }

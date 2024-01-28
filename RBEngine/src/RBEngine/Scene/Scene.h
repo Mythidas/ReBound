@@ -49,7 +49,8 @@ namespace RB
 		SceneRegistry m_Registry;
 		File m_LocalPath;
 
-		SceneState m_State;
-		SceneDataState m_DataState;
+		SceneState m_State{ SceneState::Playing };
+		// TODO Myth: Rethink how this works when implementing Commands in editor
+		SceneDataState m_DataState{ SceneDataState::Synced };
 	};
 }

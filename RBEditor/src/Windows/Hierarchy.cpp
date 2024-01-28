@@ -49,11 +49,11 @@ namespace RB::Editor
 		bool opened = ImGui::TreeNodeEx((void*)tag->Name.c_str(), flags, tag->Name.c_str());
 
 		if (ImGui::IsItemHovered() && Input::IsKeyPressed(KeyCode::LeftMouseButton))
-			EditorLayer::SetContext({ entity, EditorContext::Payloads::Entity });
+			EditorLayer::SetContext({ entity, EditorPayload::Entity });
 
 		if (ImGui::BeginPopupContextItem(0, ImGuiPopupFlags_NoOpenOverExistingPopup | ImGuiPopupFlags_MouseButtonRight))
 		{
-			EditorLayer::SetContext({ entity, EditorContext::Payloads::Entity });
+			EditorLayer::SetContext({ entity, EditorPayload::Entity });
 
 			if (ImGui::MenuItem("Delete Entity"))
 				entity.Destroy();

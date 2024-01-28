@@ -19,6 +19,7 @@ namespace RB::Editor
 		void _DrawFileEntry(const File& file, Vector2& cursor);
 		void _DrawDirEntry(const Directory& dir, Vector2& cursor);
 		void _HandleContextSelection(const File& file);
+		void _HandleContextOpen(const File& file);
 
 	private:
 		Ref<Image> m_FolderIcon;

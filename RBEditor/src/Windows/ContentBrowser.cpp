@@ -38,7 +38,7 @@ namespace RB::Editor
 		ImGui::SameLine();
 
 		{ // Rhs directory contents
-			ImGui::BeginChild("Middle pane", ImVec2(ImGui::GetContentRegionAvail().x - 150, 0), ImGuiChildFlags_Border | ImGuiChildFlags_ResizeX);
+			ImGui::BeginChild("Right pane", ImVec2(ImGui::GetContentRegionAvail().x, 0), ImGuiChildFlags_Border);
 			
 			{ // Right Click Menu
 				if (ImGui::BeginPopupContextWindow("content_rmb_menu", ImGuiPopupFlags_NoOpenOverItems | ImGuiPopupFlags_MouseButtonRight))
@@ -68,13 +68,6 @@ namespace RB::Editor
 			ImGui::EndChild();
 		}
 		ImGui::SameLine();
-
-		{ // Browser Settings
-			ImGui::BeginChild("Right pane", ImVec2(150, 0), ImGuiChildFlags_Border);
-			ImGui::Text("Icon Size");
-			ImGui::SliderFloat("##iconsize", &m_ThumbnailSize, 24.0f, 50.0f);
-			ImGui::EndChild();
-		}
 	}
 
 	void ContentBrowser::_DrawDirNode(const Directory& dir)
@@ -120,14 +113,26 @@ namespace RB::Editor
 
 	void ContentBrowser::_DrawFileEntry(const File& file, Vector2& cursor)
 	{
+		ImGui::PushID(file.Name().c_str());
 		ImGui::SetCursorPos({ cursor.x, cursor.y });
 		if (ImGui::Selectable("##file", false, ImGuiSelectableFlags_AllowDoubleClick | ImGuiSelectableFlags_AllowOverlap, { ImGui::GetContentRegionAvail().x, m_ThumbnailSize }))
 		{
-			if (ImGui::IsMouseDoubleClicked(0))
+
+		}
+
+		if (ImGui::IsItemHovered())
+		{
+			if (ImGui::IsMouseClicked(0))
 			{
 				_HandleContextSelection(file);
 			}
+
+			if (ImGui::IsMouseDoubleClicked(0))
+			{
+				_HandleContextOpen(file);
+			}
 		}
+
 		ImGui::SameLine();
 		ImGui::SetNextItemAllowOverlap();
 		ImGui::SetCursorPos({ cursor.x + EditorInfo::ElementPadding().x, cursor.y});
@@ -137,6 +142,7 @@ namespace RB::Editor
 		ImGui::SetCursorPos({ cursor.x + m_ThumbnailSize + EditorInfo::ElementPadding().x * 2, (cursor.y - EditorInfo::ElementPadding().y * 2) + m_ThumbnailSize / 2 });
 		ImGui::Text(file.Name().c_str());
 		cursor.y += m_ThumbnailSize + EditorInfo::ElementPadding().y * 2;
+		ImGui::PopID();
 	}
 
 	void ContentBrowser::_DrawDirEntry(const Directory& dir, Vector2& cursor)
@@ -161,6 +167,15 @@ namespace RB::Editor
 	}
 
 	void ContentBrowser::_HandleContextSelection(const File& file)
+	{
+		// TODO Myth: Handle selecting files for the inspector
+		if (file.Extension() == ".rbscene")
+		{
+			Debug::Log::Trace("Test");
+		}
+	}
+
+	void ContentBrowser::_HandleContextOpen(const File& file)
 	{
 		if (file.Extension() == ".rbscene")
 		{
