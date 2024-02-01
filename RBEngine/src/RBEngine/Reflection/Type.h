@@ -20,6 +20,7 @@ namespace RB
 		Unknown = 0,
 		Object,
 		Component,
+		Bool,
 		String,
 		Int32,
 		Int64,
@@ -51,6 +52,8 @@ namespace RB
 				return TypeRef::Component;
 			else if constexpr (std::is_same_v<T, std::string>)
 				return TypeRef::String;
+			else if constexpr (std::is_same_v<T, bool>)
+				return TypeRef::Bool;
 			else if constexpr (std::is_same_v<T, int>)
 				return TypeRef::Int32;
 			else if constexpr (std::is_same_v<T, long long>)

@@ -15,8 +15,9 @@ namespace RB::Editor
 
 	void Controls::Checkbox(const std::string& label, bool& checked)
 	{
-		_DrawLabel(label);
 		ImGui::Checkbox("##Checkbox", &checked);
+		ImGui::SameLine();
+		_DrawLabel(label);
 	}
 
 	void Controls::ButtonCombo(const std::string& label, int& index, std::vector<const char*> values)

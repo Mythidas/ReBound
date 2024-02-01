@@ -12,6 +12,8 @@ namespace RB
 	class ComponentFactory
 	{
 	public:
+		ComponentFactory(Domain* domain) : m_Domain(domain) {}
+
 		template <auto Data>
 		inline ComponentFactory<T>& Data(const std::string& id, size_t offset)
 		{
@@ -35,8 +37,7 @@ namespace RB
 			meta.Info.ID = Type<T>().ID();
 			meta.Vars = m_Vars;
 			meta.AddFunc = _AddComponent;
-
-			Domain::RegisterComponent(meta);
+			m_Domain->RegisterComponent(meta);
 			return meta;
 		}
 
@@ -47,6 +48,7 @@ namespace RB
 		}
 
 	private:
+		Domain* m_Domain;
 		std::vector<VariableMeta> m_Vars;
 	};
 }

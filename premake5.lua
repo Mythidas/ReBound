@@ -27,6 +27,6 @@ group "Core"
     include "RBEditorUI"
 group ""
 
-group "Misc"
-    include "Sandbox"
+group "Game"
+    include "UserScripts"
 group ""

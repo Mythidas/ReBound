@@ -88,7 +88,7 @@ namespace RB::Editor
 
 		if (ImGui::BeginPopup("Add Component"))
 		{
-			for (auto& component : Domain::GetAllComponents())
+			for (auto& component : Domain::Get().GetAllComponents())
 			{
 				if (component.second.Info.ID == Type<Tag>().ID() || component.second.Info.ID == Type<Transform>().ID())
 					continue;
@@ -113,12 +113,16 @@ namespace RB::Editor
 
 		if (var.Ref == TypeRef::Object)
 		{
-			auto object = Domain::FindObject(var.Info.ID);
+			auto object = Domain::Get().FindObject(var.Info.ID);
 
 			for (auto& objVar : object.Vars)
 			{
 				_DrawVariableInfo(data + var.Offset, objVar);
 			}
+		}
+		else if (var.Ref == TypeRef::Bool)
+		{
+			Controls::Checkbox(var.Info.ShortName(), *(bool*)(data + var.Offset));
 		}
 		else if (var.Ref == TypeRef::Float)
 		{

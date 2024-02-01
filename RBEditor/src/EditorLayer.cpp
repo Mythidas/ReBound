@@ -20,6 +20,24 @@ namespace RB::Editor
         PushWindow(new ContentBrowser());
 
         Window::OnKeyPressed += RB_BIND_FNC(_OnKeyPressed);
+
+        // Load UserScripts DLL and Import Types
+        HINSTANCE hDLL = LoadLibrary((Project::GetProjectDir() + "/bin/UserScripts.dll").ToStringW().c_str());
+        if (!hDLL)
+        {
+          Debug::Log::Error("Couldn't Load UserScripts!");
+          return;
+        }
+
+        typedef void (*MYPROC)(Domain*);
+        MYPROC func = (MYPROC)GetProcAddress(hDLL, "ImportComponents");
+        if (!func)
+        {
+          Debug::Log::Error("Couldn't Load UserScripts::ImportComponents!");
+          return;
+        }
+
+        func(&Domain::Get());
     }
 
     void EditorLayer::OnDetach()

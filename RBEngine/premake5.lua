@@ -49,8 +49,6 @@ project "RBEngine"
         "OpenGL32.lib"
     }
 
-    flags { "NoPCH" }
-
     filter "system:windows"
         systemversion "latest"
 

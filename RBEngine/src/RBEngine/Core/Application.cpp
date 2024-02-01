@@ -17,9 +17,9 @@ namespace RB
 			.setWidth(1280)
 			.setHeight(720)
 			.Build();
+		m_Domain = CreateScope<Domain>();
 		m_RenderCommands = RenderCommands::Builder().Build();
 
-		Domain::_Construct();
 		Renderer::_Construct();
 
 		m_ImGUILayer = ImGUILayer::Builder().Build();

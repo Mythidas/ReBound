@@ -64,7 +64,7 @@ namespace RB
 
 	void SceneRegistry::AddComponent(const EntityID& entity, const TypeID& component)
 	{
-		Domain::FindComponent(component).AddFunc(this, entity);
+		Domain::Get().FindComponent(component).AddFunc(this, entity);
 	}
 
 	void* SceneRegistry::GetComponent(const EntityID& entity, const TypeID& component) const
@@ -107,7 +107,7 @@ namespace RB
 		for (size_t i = 0; i < m_ComponentPools.size(); i++)
 		{
 			if (m_Entities[GetEntityIndex(entity)].Components.test(i))
-				components.push_back(Domain::FindComponent(m_ComponentPools[i]->GetType()));
+				components.push_back(Domain::Get().FindComponent(m_ComponentPools[i]->GetType()));
 		}
 
 		return components;

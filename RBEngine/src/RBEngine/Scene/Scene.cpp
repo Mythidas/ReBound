@@ -10,6 +10,8 @@ namespace RB
 	Scene::Scene(const File& path)
 		: m_LocalPath(path)
 	{
+		if (!path.Exists())
+			m_DataState = SceneDataState::DeSynced;
 	}
 
 	bool Scene::Save()

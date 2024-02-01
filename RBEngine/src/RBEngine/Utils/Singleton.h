@@ -11,7 +11,6 @@ namespace RB
 	public:
 		Singleton()
 		{
-			RB_ASSERT(!s_Instance, "{0} already exists!", Type<T>().Name());
 			s_Instance = static_cast<T*>(this);
 		}
 

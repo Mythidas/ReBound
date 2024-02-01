@@ -11,6 +11,8 @@ namespace RB
 	class ObjectFactory
 	{
 	public:
+		ObjectFactory(Domain* domain) : m_Domain(domain) {}
+
 		template <auto Data>
 		inline ObjectFactory<T>& Data(const std::string& id, size_t offset)
 		{
@@ -33,11 +35,12 @@ namespace RB
 			meta.Info.DebugName = Type<T>().Name();
 			meta.Info.ID = Type<T>().ID();
 			meta.Vars = m_Vars;
-			Domain::RegisterObject(meta);
+			m_Domain->RegisterObject(meta);
 			return meta;
 		}
 
 	private:
+		Domain* m_Domain;
 		std::vector<VariableMeta> m_Vars;
 	};
 }

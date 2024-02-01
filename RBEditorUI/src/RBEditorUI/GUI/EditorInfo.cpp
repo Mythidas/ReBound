@@ -12,7 +12,7 @@ namespace RB::Editor
 
 	float EditorInfo::TextPadding()
 	{
-		return LineHeight() * 0.15f + ImGui::GetCursorPosY();
+		return ((LineHeight() * 0.15f) * 0.5f) + ImGui::GetCursorPosY();
 	}
 
 	Vector2 EditorInfo::ElementPadding()

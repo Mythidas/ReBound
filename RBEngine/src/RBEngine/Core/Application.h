@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Project.h"
 #include "RBEngine/Rendering/RenderCommands.h"
+#include "RBEngine/Reflection/Domain.h"
 #include "RBEngine/ImGUI/ImGUILayer.h"
 #include "RBEngine/Utils/Singleton.h"
 #include "RBEngine/Utils/Bit.h"
@@ -35,6 +36,7 @@ namespace RB
 	private:
 		Scope<Window> m_Window;
 		Scope<Input> m_Input;
+		Scope<Domain> m_Domain;
 		Scope<RenderCommands> m_RenderCommands;
 		Ref<ImGUILayer> m_ImGUILayer;
 		LayerStack m_LayerStack;

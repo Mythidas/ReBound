@@ -23,8 +23,12 @@ namespace RB
 		bool Exists() const { return FS::exists(m_Path); }
 		bool HasFiles() const;
 		bool HasDirectories() const;
+
 		std::string Name() const { return m_Path.filename().string(); }
 		std::string ToString() const { return m_Path.string(); }
+
+		std::wstring NameW() const { return m_Path.filename().wstring(); }
+		std::wstring ToStringW() const { return m_Path.wstring(); }
 
 	public:
 		static Directory GetDirectoryDialog();

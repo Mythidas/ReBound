@@ -123,7 +123,7 @@ namespace RB
 		{
 		case TypeRef::Object:
 		{
-			ObjectMeta obj = Domain::FindObject(meta.Info.ID);
+			ObjectMeta obj = Domain::Get().FindObject(meta.Info.ID);
 			out << YAML::Value << YAML::BeginMap;
 			for (auto& var : obj.Vars)
 			{
@@ -158,7 +158,7 @@ namespace RB
 
 		for (auto comp : comps)
 		{
-			ComponentMeta meta = Domain::FindComponent(comp.first.as<std::string>());
+			ComponentMeta meta = Domain::Get().FindComponent(comp.first.as<std::string>());
 			meta.AddFunc(&m_Scene->GetRegistry(), ent);
 			char* data = (char*)ent.GetComponent(meta.Info.ID);
 			if (!data) continue;
@@ -183,7 +183,7 @@ namespace RB
 		{
 		case TypeRef::Object:
 		{
-			ObjectMeta obj = Domain::FindObject(meta.Info.ID);
+			ObjectMeta obj = Domain::Get().FindObject(meta.Info.ID);
 			for (auto& var : obj.Vars)
 			{
 				if (in[var.Info.DebugName])

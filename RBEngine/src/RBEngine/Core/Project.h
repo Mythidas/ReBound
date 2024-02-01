@@ -16,6 +16,7 @@ namespace RB
 		static Debug::Result SaveProject();
 
 		static const uint32_t GetProjectVersion() { return s_Version; }
+		static const Directory GetProjectDir() { return s_Dir; }
 		static const Directory GetAssestsDir() { return s_Dir + "/Assets"; }
 
 	private:
